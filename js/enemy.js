@@ -7,13 +7,18 @@ function Enemy(game, x, y){
 }
 
 //create sprite here
-Enemy.prototype.create(){
-    this.sprite = this.game.add.sprite(this.x, this.y, 'enemy');
-}
+Enemy.prototype = {
 
+    create: function(){
+
+        this.sprite = this.game.add.sprite(this.x, this.y, 'enemy');
+
+    },
 //collision here
-Enemy.prototype.update(){
+    update: function(){
+        console.log("enemy spotted");
+    }
 
-}
 
 //all other functionalities here
+};

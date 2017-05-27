@@ -1,19 +1,33 @@
-function Player(game, x, y){
+function Player(game, level, x, y){
     this.game = game;
+    this.level = level;
     this.x = x;
     this.y = y;
     this.sprite = null;
     this.health = 100;
 }
 
-//create sprite here
-Player.prototype.create(){
-    this.sprite = this.game.add.sprite(this.x, this.y, 'player');
-}
+Player.prototype = {
+    //create sprite here
+    create: function(){
 
-//collision here
-Player.prototype.update(){
+        this.sprite = this.game.add.sprite(this.x, this.y, 'player');
+        this.game.physics.arcade.enable(this.sprite);
+        this.sprite.body.collideWorldBounds = true;
+        this.sprite.body.gravity.y = 150;
+        this.sprite.body.setSize(64, 230, 40, 20);
+        this.game.camera.follow(this.sprite);
 
-}
+    },
 
-//all other functionalities here
+    update: function(){
+
+        this.game.physics.arcade.collide(this.sprite, this.level.wall);
+
+
+    }
+    //all other functionalities here
+};
+
+
+
