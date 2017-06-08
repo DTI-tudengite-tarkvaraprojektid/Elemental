@@ -46,6 +46,28 @@
                  "width":60.6061,
                  "x":214.788,
                  "y":800.241
+                }, 
+                {
+                 "height":56,
+                 "id":31,
+                 "name":"chest",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":56,
+                 "x":652,
+                 "y":896
+                }, 
+                {
+                 "height":52,
+                 "id":33,
+                 "name":"chest",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":824,
+                 "y":900
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -53,7 +75,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":31,
+ "nextobjectid":35,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":64,
