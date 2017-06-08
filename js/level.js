@@ -30,6 +30,7 @@ Level.prototype = {
         //resizes the game world to match the layer dimensions
         this.background.resizeWorld();
 
+        this.chest_objs = [];
         this.enemies = this.game.add.group();
         this.chests = this.game.add.group();
 
@@ -43,13 +44,13 @@ Level.prototype = {
 
             }
             else if(element.name === "enemy"){
-                this.createFromTiledObject(element, this.enemies);
+                var enemy = "";
             }
             else if(element.name === "chest"){
-                console.log("chest");
                 var chest = new Chest(this.game, this, element.x, element.y);
                 chest.create();
-                this.createFromTiledObject(element, chest.sprite, this.chests);
+                this.chest_objs.push(chest);
+                this.chests.add(chest.sprite);
             }
         }, this);
     },
@@ -57,23 +58,14 @@ Level.prototype = {
     //call all the update functions of sprites
     update: function() {
         this.player.update();
-        for (var i = 0; i < this.chests.length; i++) {
-            this.chests[i].update();
-        }
+        this.chest_objs.forEach(function(c){
+            c.update();
+        });
         for (i = 0; i < this.enemies.length; i++) {
             this.enemies[i].update();
         }
-    },
-
-    //create a sprite from an object
-    createFromTiledObject: function(element, sprite, group) {
-
-        group.add(sprite);
-        //copy all properties to the sprite
-        Object.keys(element.properties).forEach(function(key){
-            object[key] = element.properties[key];
-        });
     }
+
 
 };
 

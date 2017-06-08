@@ -17,7 +17,6 @@ Chest.prototype = {
         this.sprite = this.game.add.sprite(this.x, this.y, 'chest_closed');
         this.game.physics.arcade.enable(this.sprite);
         this.item = this.items[Math.floor(Math.random() * this.items.length)];
-        console.log("created");
     },
 
     update: function(player){
