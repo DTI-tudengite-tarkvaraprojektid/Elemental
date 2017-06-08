@@ -8,6 +8,7 @@ function Level(game){
     this.background = null;
     this.wall = null;
 }
+
 Level.prototype = {
 
     //load tilemap here
@@ -41,8 +42,14 @@ Level.prototype = {
                 this.player.create();
 
             }
-            if(element.name === "enemy"){
+            else if(element.name === "enemy"){
                 this.createFromTiledObject(element, this.enemies);
+            }
+            else if(element.name === "chest"){
+                console.log("chest");
+                var chest = new Chest(this.game, this, element.x, element.y);
+                chest.create();
+                this.createFromTiledObject(element, chest.sprite, this.chests);
             }
         }, this);
     },
@@ -50,18 +57,21 @@ Level.prototype = {
     //call all the update functions of sprites
     update: function() {
         this.player.update();
-        for (var i = 0; i < this.enemies.length; i++) {
+        for (var i = 0; i < this.chests.length; i++) {
+            this.chests[i].update();
+        }
+        for (i = 0; i < this.enemies.length; i++) {
             this.enemies[i].update();
         }
     },
 
     //create a sprite from an object
-    createFromTiledObject: function(element, group) {
-        var sprite = group.create(element.x, element.y, element.properties.sprite);
+    createFromTiledObject: function(element, sprite, group) {
 
+        group.add(sprite);
         //copy all properties to the sprite
         Object.keys(element.properties).forEach(function(key){
-            sprite[key] = element.properties[key];
+            object[key] = element.properties[key];
         });
     }
 

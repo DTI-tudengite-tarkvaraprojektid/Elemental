@@ -8,6 +8,7 @@ function Player(game, level, x, y){
 	this.facing = 'idle';
 	this.jumpTimer = 0;
 	this.jumpButton;
+	this.inventory = [];
 	
 }
 
