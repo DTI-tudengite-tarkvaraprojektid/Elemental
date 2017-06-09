@@ -61,8 +61,13 @@ Level.prototype = {
 
         this.chest_objs.forEach(function(c){
             c.update(this.player);
+<<<<<<< HEAD
         }, this);
         for (var i = 0; i < this.enemies.length; i++) {
+=======
+        },this);
+        for (i = 0; i < this.enemies.length; i++) {
+>>>>>>> origin/krister
             this.enemies[i].update();
         }
     }

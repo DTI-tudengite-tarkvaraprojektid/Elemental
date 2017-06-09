@@ -24,12 +24,15 @@ Chest.prototype = {
         } else {
             this.item = this.points[Math.floor(Math.random() * this.points.length)];
         }
+		this.sprite.scale.setTo(3,3);
+        this.item = this.items[Math.floor(Math.random() * this.items.length)];
+		this.sprite.body.immovable = true;
 
     },
 
     update: function(player){
-
-        if(this.opened === true){
+        if(this.sprite.opened){
+			console.log("if");
             this.sprite.loadTexture('chest_opened');
             this.giveItem(player);
         }
@@ -39,6 +42,6 @@ Chest.prototype = {
         player.inventory.push(this.item);
     }
 
-
+/* changes */
 
 };
