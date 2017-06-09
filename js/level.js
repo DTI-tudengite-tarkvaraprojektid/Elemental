@@ -7,6 +7,9 @@ function Level(game){
     this.platforms = null;
     this.background = null;
     this.wall = null;
+    this.score = 0;
+    this.countdown = 10;
+    this.last_tick = 0;
 }
 
 Level.prototype = {
@@ -53,21 +56,24 @@ Level.prototype = {
                 this.chests.add(chest.sprite);
             }
         }, this);
+        this.timesprite = this.game.add.text(1360*0.8, 768 * 0.05, "Timer: " + this.countdown, {fill: 'white'});
+        this.timesprite.fixedToCamera = true;
     },
 
     //call all the update functions of sprites
     update: function() {
+        if(this.game.time.now - this.last_tick >= 1000 && this.countdown !== 0){
+            this.last_tick = this.game.time.now;
+            this.countdown = Number(this.countdown) - 1;
+            this.timesprite.setText("Timer: " + this.countdown);
+        }
+
         this.player.update();
 
-        this.chest_objs.forEach(function(c){
+        this.chest_objs.forEach(function(c) {
             c.update(this.player);
-<<<<<<< HEAD
         }, this);
         for (var i = 0; i < this.enemies.length; i++) {
-=======
-        },this);
-        for (i = 0; i < this.enemies.length; i++) {
->>>>>>> origin/krister
             this.enemies[i].update();
         }
     }
