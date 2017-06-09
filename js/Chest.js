@@ -33,6 +33,6 @@ Chest.prototype = {
         player.inventory[player.inventory.length] = this.item;
     }
 
-
+/* changes */
 
 };
