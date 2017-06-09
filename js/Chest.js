@@ -16,12 +16,14 @@ Chest.prototype = {
     create: function(){
         this.sprite = this.game.add.sprite(this.x, this.y, 'chest_closed');
         this.game.physics.arcade.enable(this.sprite);
+		this.sprite.scale.setTo(3,3);
         this.item = this.items[Math.floor(Math.random() * this.items.length)];
+		this.sprite.body.immovable = true;
     },
 
     update: function(player){
-
-        if(this.opened === true){
+        if(this.sprite.opened){
+			console.log("if");
             this.sprite.loadTexture('chest_opened');
             this.giveItem(player);
         }
