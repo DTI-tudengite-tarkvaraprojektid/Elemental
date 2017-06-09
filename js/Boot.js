@@ -10,7 +10,7 @@ Elemental.Boot.prototype = {
 
     create: function(){
         //stretch screen
-        //this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
         //have the game centered horizontally
         this.scale.pageAlignHorizontally = true;
