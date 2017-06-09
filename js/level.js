@@ -58,10 +58,11 @@ Level.prototype = {
     //call all the update functions of sprites
     update: function() {
         this.player.update();
+
         this.chest_objs.forEach(function(c){
-            c.update();
-        });
-        for (i = 0; i < this.enemies.length; i++) {
+            c.update(this.player);
+        }, this);
+        for (var i = 0; i < this.enemies.length; i++) {
             this.enemies[i].update();
         }
     }
