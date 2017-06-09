@@ -10,6 +10,8 @@ function Player(game, level, x, y){
 	this.jumpButton;
 	this.inventory = [];
 	this.camera = null;
+	this.jumpAbility = true;
+	this.moveAbility = true;
 	
 }
 
@@ -39,9 +41,10 @@ Player.prototype = {
 		
 	},
     movement: function(){
+	if (this.moveAbility == true){
         if (this.cursors.left.isDown){
 			
-			this.sprite.body.velocity.x = -150;
+			this.sprite.body.velocity.x = -200;
 
 			if (this.facing != 'left')
 				{
@@ -51,7 +54,7 @@ Player.prototype = {
 		}
 		else if (this.cursors.right.isDown)
 		{
-			this.sprite.body.velocity.x = 150;
+			this.sprite.body.velocity.x = 200;
 			
 			if (this.facing != 'right')
 			{
@@ -77,11 +80,56 @@ Player.prototype = {
 			}
 		}
 		
-		if (this.jumpButton.isDown && this.sprite.body.onFloor() && this.game.time.now > this.jumpTimer)
+		if (this.jumpButton.isDown && this.sprite.body.onFloor() && this.game.time.now > this.jumpTimer && this.jumpAbility == true)
 		{
 			this.sprite.body.velocity.y = -400;
 			this.jumpTimer = this.game.time.now + 750;
 		}
+	} else {
+		        if (this.cursors.left.isDown && !this.sprite.body.onFloor()){
+			
+			this.sprite.body.velocity.x = -200;
+
+			if (this.facing != 'left')
+				{
+					//animatsioon siia
+					this.facing = 'left';
+				}
+		}
+		else if (this.cursors.right.isDown && !this.sprite.body.onFloor())
+		{
+			this.sprite.body.velocity.x = 200;
+			
+			if (this.facing != 'right')
+			{
+				//animatsioon siia
+				this.facing = 'right';
+			}
+		}
+		else
+		{
+			if (this.facing != 'idle')
+			{
+				
+				if (this.facing == 'left')
+				{
+					//player.frame = 0;
+				}
+				else
+				{
+					//player.frame = 5;
+				}
+
+				facing = 'idle';
+			}
+		}
+		
+		if (this.jumpButton.isDown && this.sprite.body.onFloor() && this.game.time.now > this.jumpTimer && this.jumpAbility == true)
+		{
+			this.sprite.body.velocity.y = -400;
+			this.jumpTimer = this.game.time.now + 750;
+		}
+	}
 	},
 	
 	interact: function(player, chest){
