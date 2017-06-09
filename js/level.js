@@ -59,8 +59,8 @@ Level.prototype = {
     update: function() {
         this.player.update();
         this.chest_objs.forEach(function(c){
-            c.update();
-        });
+            c.update(this.player);
+        },this);
         for (i = 0; i < this.enemies.length; i++) {
             this.enemies[i].update();
         }
