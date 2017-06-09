@@ -58,10 +58,16 @@ Level.prototype = {
     //call all the update functions of sprites
     update: function() {
         this.player.update();
+
         this.chest_objs.forEach(function(c){
-            c.update();
-        });
+            c.update(this.player);
+<<<<<<< HEAD
+        }, this);
+        for (var i = 0; i < this.enemies.length; i++) {
+=======
+        },this);
         for (i = 0; i < this.enemies.length; i++) {
+>>>>>>> origin/krister
             this.enemies[i].update();
         }
     }
