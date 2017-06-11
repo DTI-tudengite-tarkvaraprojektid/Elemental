@@ -1,6 +1,7 @@
 var Elemental = Elemental || {};
-
-Elemental.game = new Phaser.Game(1360, 768, Phaser.AUTO, '');
+var SCREEN_WIDTH = 1360;
+var SCREEN_HEIGHT = 768;
+Elemental.game = new Phaser.Game(SCREEN_WIDTH, SCREEN_HEIGHT, Phaser.AUTO, '');
 
 Elemental.game.state.add('Boot', Elemental.Boot);
 Elemental.game.state.add('Preload', Elemental.Preload);

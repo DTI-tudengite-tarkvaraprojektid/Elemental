@@ -6,7 +6,6 @@ function Player(game, level, x, y){
     this.sprite = null;
     this.health = 100;
 	this.jumpTimer = 0;
-	this.jumpButton;
 	this.walking = false;
 	this.camera = null;
 	this.jumpAbility = true;
@@ -18,15 +17,15 @@ Player.prototype = {
     //create sprite here
     create: function(){
 
-        this.sprite = this.game.add.sprite(this.x, this.y, 'player_walk');
+        this.sprite = this.game.add.sprite(this.x, this.y, 'player');
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.collideWorldBounds = true;
         this.sprite.body.gravity.y = 500;
         //this.sprite.body.setSize(64, 230, 40, 20);
         this.camera = this.game.camera.follow(this.sprite);
-
-        this.sprite.animations.add('player_walk', [0, 1, 2]);
+        this.sprite.animations.add('player_walk', [1, 2, 3]);
         this.sprite.animations.add('idle', [0]);
+        //this.sprite.scale.setTo(0.75, 0.75);
         this.sprite.anchor.setTo(0.5, 0.5);
 		this.cursors = this.game.input.keyboard.createCursorKeys();
 		this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -55,6 +54,7 @@ Player.prototype = {
             if (this.sprite.scale.x > 0) {
                 this.sprite.scale.x *= -1;
             }
+            this.walking = true;
         }
         else if (this.cursors.right.isDown) {
             this.sprite.animations.play('player_walk', 5, true);
@@ -62,8 +62,9 @@ Player.prototype = {
             if (this.sprite.scale.x < 0) {
                 this.sprite.scale.x *= -1;
             }
+            this.walking = true;
         }
-        this.walking = true;
+
     }
     if(!this.walking){
 		this.sprite.animations.play('idle');

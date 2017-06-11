@@ -56,7 +56,7 @@ Level.prototype = {
                 this.chests.add(chest.sprite);
             }
         }, this);
-        this.timesprite = this.game.add.text(1360*0.8, 768 * 0.05, "Timer: " + this.countdown, {fill: 'white'});
+        this.timesprite = this.game.add.text(SCREEN_WIDTH*0.8, SCREEN_HEIGHT* 0.05, "Timer: " + this.countdown, {fill: 'white'});
         this.timesprite.fixedToCamera = true;
     },
 
@@ -73,9 +73,9 @@ Level.prototype = {
         this.chest_objs.forEach(function(c) {
             c.update(this.player);
         }, this);
-        for (var i = 0; i < this.enemies.length; i++) {
-            this.enemies[i].update();
-        }
+        //for (var i = 0; i < this.enemies.length; i++) {
+        //    this.enemies[i].update();
+        //}
     }
 
 
