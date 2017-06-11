@@ -38,7 +38,7 @@ Chest.prototype = {
     },
 
     giveItem: function(player){
-        player.inventory.push(this.item);
+        player.inventory.add(this.item);
     }
 
 /* changes */
