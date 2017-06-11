@@ -8,7 +8,6 @@ function Player(game, level, x, y){
 	this.jumpTimer = 0;
 	this.jumpButton;
 	this.walking = false;
-	this.inventory = [];
 	this.camera = null;
 	this.jumpAbility = true;
 	this.moveAbility = true;
@@ -32,6 +31,7 @@ Player.prototype = {
 		this.cursors = this.game.input.keyboard.createCursorKeys();
 		this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
+        this.inventory = this.game.add.group();
     },
 
     update: function(){
@@ -66,7 +66,6 @@ Player.prototype = {
         this.walking = true;
     }
     if(!this.walking){
-		this.sprite.animations.stop();
 		this.sprite.animations.play('idle');
 	}
 	//this.sprite.animations.play('idle');
