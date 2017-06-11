@@ -34,6 +34,7 @@ Level.prototype = {
         this.background.resizeWorld();
 
         this.chest_objs = [];
+        this.enemy_objs = [];
         this.enemies = this.game.add.group();
         this.chests = this.game.add.group();
 
@@ -43,21 +44,25 @@ Level.prototype = {
 
             if(element.name === "player"){
                 this.player = new Player(this.game, this, element.x, element.y);
-                this.player.create();
 
             }
             else if(element.name === "enemy"){
-                var enemy = "";
+                var enemy = new Enemy(this.game, this, element.x, element.y);
+                this.enemy_objs.push(enemy);
+                this.enemies.add(enemy.sprite);
             }
             else if(element.name === "chest"){
                 var chest = new Chest(this.game, this, element.x, element.y);
-                chest.create();
                 this.chest_objs.push(chest);
                 this.chests.add(chest.sprite);
             }
         }, this);
-        this.timesprite = this.game.add.text(SCREEN_WIDTH*0.8, SCREEN_HEIGHT* 0.05, "Timer: " + this.countdown, {fill: 'white'});
+        this.timesprite = this.game.add.text(SCREEN_WIDTH*0.8, SCREEN_HEIGHT* 0.05,
+            "Timer: " + this.countdown, {fill: 'white'});
+        this.scoresprite = this.game.add.text(SCREEN_WIDTH*0.15, SCREEN_HEIGHT*0.05,
+            "Score: " + this.score, {fill: 'white'});
         this.timesprite.fixedToCamera = true;
+        this.scoresprite.fixedToCamera = true;
     },
 
     //call all the update functions of sprites
@@ -70,12 +75,14 @@ Level.prototype = {
 
         this.player.update();
 
-        this.chest_objs.forEach(function(c) {
-            c.update(this.player);
+        this.chest_objs.forEach(function(chest) {
+            if(!chest.isEmpty){
+                chest.update(this.player);
+            }
         }, this);
-        //for (var i = 0; i < this.enemies.length; i++) {
-        //    this.enemies[i].update();
-        //}
+        this.enemy_objs.forEach(function(enemy){
+            enemy.update(this.player);
+        }, this);
     }
 
 
