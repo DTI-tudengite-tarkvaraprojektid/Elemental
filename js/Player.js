@@ -74,13 +74,13 @@ Player.prototype = {
 		this.sprite.body.velocity.y = -400;
 
 		if(!this.moveAbility){
-            if (this.cursors.left.isDown) {
+            if (this.cursors.left.isDown && !this.sprite.body.onFloor()) {
                 this.sprite.body.velocity.x = -200;
                 if (this.sprite.scale.x > 0) {
                     this.sprite.scale.x *= -1;
                 }
             }
-            else if (this.cursors.right.isDown) {
+            else if (this.cursors.right.isDown && !this.sprite.body.onFloor()) {
                 this.sprite.body.velocity.x = 200;
                 if (this.sprite.scale.x < 0) {
                     this.sprite.scale.x *= -1;
