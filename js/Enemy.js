@@ -50,7 +50,6 @@ Enemy.prototype = {
 
     attack: function(player){
         //this.sprite.animations.play('attack');
-        //this.sprite.animations.currentAnim.frame;
         /*
         if(Math.abs(this.sprite.body.x - player.sprite.body.x) < 80 && this.sprite.animations.currentAnim.frame === 2){
             player.health = Number(player.health) - 1;
