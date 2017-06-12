@@ -5,11 +5,13 @@ function Chest(game, level, x, y){
     this.y = y;
     this.sprite = null;
     this.opened = false;
+    this.isEmpty = false;
     this.elements = ['actions', 'art', 'avatar',
         'balance', 'challenges', 'feedback',
         'levels', 'luck', 'progress', 'scoreboard'];
     this.item = null;
     this.points = [ '100', '200', '300', '400', '500'];
+    this.create();
 
 }
 
@@ -24,7 +26,7 @@ Chest.prototype = {
         } else {
             this.item = this.points[Math.floor(Math.random() * this.points.length)];
         }
-		this.sprite.scale.setTo(0.5, 0.5);
+
         this.item = this.elements[Math.floor(Math.random() * this.elements.length)];
 		this.sprite.body.immovable = true;
 
@@ -34,11 +36,13 @@ Chest.prototype = {
         if(this.sprite.opened){
             this.sprite.loadTexture('chest_opened');
             this.giveItem(player);
+            this.isEmpty = true;
         }
     },
 
     giveItem: function(player){
-        player.inventory.add(this.item);
+        this.level.score = Number(this.level.score) + 100;
+        this.level.scoresprite.setText("Score: " + this.level.score);
     }
 
 /* changes */
