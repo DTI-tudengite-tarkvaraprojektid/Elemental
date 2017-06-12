@@ -10,7 +10,7 @@ function Chest(game, level, x, y){
         'balance', 'challenges', 'feedback',
         'levels', 'luck', 'progress', 'scoreboard'];
     this.item = null;
-    this.points = [ '100', '200', '300', '400', '500'];
+    this.points = [ '100', '150', '200', '250', '300'];
     this.create();
 
 }

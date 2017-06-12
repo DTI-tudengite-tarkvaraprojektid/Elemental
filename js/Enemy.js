@@ -36,23 +36,24 @@ Enemy.prototype = {
                 }
             }
         }, this);
+        if(Math.abs(this.sprite.body.x - player.sprite.body.x) < 80){
+            this.sprite.body.velocity.x = 0;
+            this.attack(player);
+        }
     },
 
     reverse: function(){
-        console.log("reverse");
         this.sprite.body.velocity.x *= -1;
         this.sprite.scale.x *= -1;
 
     },
 
-    attack: function(){
-
-    },
-
-    spawn: function(){
-
+    attack: function(player){
+        //this.sprite.animations.play('attack');
+        //this.sprite.animations.currentAnim.frame;
+        /*
+        if(Math.abs(this.sprite.body.x - player.sprite.body.x) < 80 && this.sprite.animations.currentAnim.frame === 2){
+            player.health = Number(player.health) - 1;
+        } */
     }
-
-
-//all other functionalities here
 };
