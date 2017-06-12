@@ -7,6 +7,7 @@ function Player(game, level, x, y){
     this.health = 100;
 	this.jumpTimer = 0;
 	this.walking = false;
+	this.jumping = false;
 	this.camera = null;
 	this.jumpAbility = true;
 	this.moveAbility = true;
@@ -24,7 +25,8 @@ Player.prototype = {
         this.sprite.body.gravity.y = 500;
         //this.sprite.body.setSize(64, 230, 40, 20);
         this.camera = this.game.camera.follow(this.sprite);
-        this.sprite.animations.add('player_walk', [1, 2, 3, 4]);
+        this.sprite.animations.add('player_walk', [2, 3, 4, 5]);
+		this.sprite.animations.add('player_jump', [1]);
         this.sprite.animations.add('idle', [0]);
         this.sprite.scale.setTo(3, 3);
         this.sprite.anchor.setTo(0.5, 0.5);
@@ -67,28 +69,20 @@ Player.prototype = {
         }
 
     }
-    if(!this.walking){
+    if(!this.walking && !this.jumping){
 		this.sprite.animations.play('idle');
+	}
+	if(this.jumping){
+		this.sprite.animations.play('player_jump', 1, true);
+	}
+	if(!this.sprite.body.onFloor()){
+		this.jumping = true;
+	} else {
+		this.jumping = false;
 	}
 	//this.sprite.animations.play('idle');
 	if (this.jumpButton.isDown && this.sprite.body.onFloor() && this.jumpAbility) {
 		this.sprite.body.velocity.y = -500;
-
-		/*if(!this.moveAbility){
-            if (this.cursors.left.isDown && !this.sprite.body.onFloor()) {
-                this.sprite.body.velocity.x = -200;
-                if (this.sprite.scale.x > 0) {
-                    this.sprite.scale.x *= -1;
-                }
-            }
-            else if (this.cursors.right.isDown && !this.sprite.body.onFloor()) {
-                this.sprite.body.velocity.x = 200;
-                if (this.sprite.scale.x < 0) {
-                    this.sprite.scale.x *= -1;
-                }
-
-            }
-		}*/
 	}
 	if (!this.sprite.body.onFloor() && this.cursors.right.isDown && !this.moveAbility){
 		this.sprite.body.velocity.x = 250;
