@@ -12,11 +12,18 @@ Elemental.Game.prototype = {
 
     update: function(){
         this.level.update();
-    }/*,
+    },
 
-    render: function () {
+    render: function (){
         this.game.debug.body(this.level.player.sprite);
         this.level.wall.debug = true;
-    }*/
+        this.renderGroup(this.level.enemies);
+    },
+
+    renderGroup: function(group){
+        group.forEachAlive(function (member){
+            this.game.debug.body(member);
+        }, this);
+    }
 
 };

@@ -22,7 +22,7 @@ Player.prototype = {
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.collideWorldBounds = true;
         this.sprite.body.gravity.y = 500;
-        //this.sprite.body.setSize(64, 230, 40, 20);
+        this.sprite.body.setSize(18, 58, 18, 5);
         this.camera = this.game.camera.follow(this.sprite);
         this.sprite.animations.add('player_walk', [1, 2, 3, 4]);
         this.sprite.animations.add('idle', [0]);
