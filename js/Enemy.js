@@ -17,6 +17,7 @@ Enemy.prototype = {
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.collideWorldBounds = true;
         this.sprite.body.gravity.y = 500;
+        this.sprite.body.setSize(18, 58, 18, 5);
         this.sprite.scale.setTo(2, 2);
         this.sprite.body.velocity.x = 300;
 
@@ -27,10 +28,10 @@ Enemy.prototype = {
         this.game.physics.arcade.collide(this.sprite, player.sprite);
         this.level.tilemap.objects['spawners'].forEach(function(element) {
             if(element.name === "reverse"){
-                if(this.sprite.body.x > element.x || this.sprite.body.x + this.sprite.body.width === element.x){
+                if(this.sprite.body.x < element.x + element.width && this.sprite.body.x > element.x ||
+                    this.sprite.body.x + this.sprite.body.width > element.x &&
+                    this.sprite.body.x + this.sprite.body.width < element.x + element.width){
                     this.reverse();
-                    console.log(this.sprite.x, element.x);
-
                 }
             }
         }, this);
