@@ -35,8 +35,8 @@ Level.prototype = {
 
         this.chest_objs = [];
         this.enemy_objs = [];
-        this.enemies = this.game.add.group();
         this.chests = this.game.add.group();
+        this.enemies = this.game.add.group();
 
         //iterate over all objects in the 'spawner' layer, spawning player and enemies
         // at coordinates given by json
@@ -44,7 +44,6 @@ Level.prototype = {
 
             if(element.name === "player"){
                 this.player = new Player(this.game, this, element.x, element.y);
-
             }
             else if(element.name === "enemy"){
                 var enemy = new Enemy(this.game, this, element.x, element.y);

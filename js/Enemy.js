@@ -17,15 +17,14 @@ Enemy.prototype = {
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.collideWorldBounds = true;
         this.sprite.body.gravity.y = 500;
+        this.sprite.body.immovable = true;
         this.sprite.body.setSize(18, 58, 18, 5);
         this.sprite.scale.setTo(3, 3);
         this.sprite.anchor.setTo(0.5, 0.5);
-
-
     },
 //collision here
     update: function(player){
-        this.sprite.body.velocity.x = 150 * this.sprite.scale.x;
+        this.sprite.body.velocity.x = 50 * this.sprite.scale.x;
         this.game.physics.arcade.collide(this.sprite, this.level.wall);
         this.game.physics.arcade.collide(this.sprite, player.sprite);
         this.level.tilemap.objects['spawners'].forEach(function(element) {
