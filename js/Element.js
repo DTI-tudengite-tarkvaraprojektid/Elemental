@@ -1,9 +1,12 @@
-function Element(game, level, name){
+function Element(x, y, name, game, level){
 
+    this.x = x;
+    this.y = y;
     this.name = name;
     this.game = game;
     this.level = level;
     this.create();
+
 
 }
 
@@ -11,7 +14,7 @@ Element.prototype = {
 
     create: function(){
 
-        this.sprite = this.game.add.sprite(1200, 20, this.name);
+        this.sprite = this.game.add.sprite(this.x, this.y, this.name);
         if(this.name === 'actions'){
             this.actions();
         } else if(this.name === 'art'){
@@ -31,7 +34,6 @@ Element.prototype = {
         } else if(this.name === 'scoreboard'){
             this.scoreboard();
         }
-        this.moveToInventory();
     },
 
     //krister
@@ -87,9 +89,5 @@ Element.prototype = {
 
     scoreboard: function(){
         //scoreboard removed
-    },
-
-    moveToInventory: function(){
-        this.level.player.inventory.add(this.sprite);
     }
 };
