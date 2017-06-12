@@ -9,6 +9,10 @@ Elemental.Boot.prototype = {
     },
 
     create: function(){
+
+        this.cache = new Phaser.Cache(this);
+        this.load.reset();
+        this.load.removeAll();
         //stretch screen
         this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 

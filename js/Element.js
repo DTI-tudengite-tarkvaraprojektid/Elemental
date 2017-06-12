@@ -3,6 +3,7 @@ function Element(game, level, name){
     this.name = name;
     this.game = game;
     this.level = level;
+    this.create();
 
 }
 
@@ -33,28 +34,33 @@ Element.prototype = {
         this.moveToInventory();
     },
 
+    //krister
     actions: function(){
         //cannot move, jump, can't collect items
     },
 
+    //richard
     art: function(){
-        //level is lo-res
+        //level is low quality
     },
-
+    //krister
     avatar: function(){
-        //player avatar is lo-res
+        //player avatar is low quality
     },
 
     balance: function(){
+    //krister
         //NPCs are weakened(player gains weapon/armor)
         //NPCs are strengthened(player loses all armor/weapon)
+    //richard
         //More NPCs spawned
-        //NPCs disappear
+        //Take back as many elements you want for free
     },
 
+    //richard
     challenge: function(){
         //timer is stopped
-        //
+        //All NPCs removed
     },
 
     feedback: function(){
@@ -63,21 +69,24 @@ Element.prototype = {
         // points removed
     },
 
+    //richard
     levels: function(){
         // all levels are same
     },
 
     luck: function(){
-
+        //chests with points and elements differentiated
 
     },
 
+    //richard
     progress: function(){
-
+        //all chests become empty
+        //no more points awarded
     },
 
     scoreboard: function(){
-
+        //scoreboard removed
     },
 
     moveToInventory: function(){

@@ -10,6 +10,7 @@ function Player(game, level, x, y){
 	this.camera = null;
 	this.jumpAbility = true;
 	this.moveAbility = true;
+	this.create();
 	
 }
 
@@ -17,15 +18,15 @@ Player.prototype = {
     //create sprite here
     create: function(){
 
-        this.sprite = this.game.add.sprite(this.x, this.y, 'player');
+        this.sprite = this.game.add.sprite(this.x, this.y, 'peasant');
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.collideWorldBounds = true;
         this.sprite.body.gravity.y = 500;
         //this.sprite.body.setSize(64, 230, 40, 20);
         this.camera = this.game.camera.follow(this.sprite);
-        this.sprite.animations.add('player_walk', [1, 2, 3]);
+        this.sprite.animations.add('player_walk', [1, 2, 3, 4]);
         this.sprite.animations.add('idle', [0]);
-        //this.sprite.scale.setTo(0.75, 0.75);
+        this.sprite.scale.setTo(3, 3);
         this.sprite.anchor.setTo(0.5, 0.5);
 		this.cursors = this.game.input.keyboard.createCursorKeys();
 		this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -50,7 +51,7 @@ Player.prototype = {
 	if (this.moveAbility) {
         if (this.cursors.left.isDown) {
             this.sprite.animations.play('player_walk', 5, true);
-            this.sprite.body.velocity.x = -200;
+            this.sprite.body.velocity.x = -300;
             if (this.sprite.scale.x > 0) {
                 this.sprite.scale.x *= -1;
             }
@@ -58,7 +59,7 @@ Player.prototype = {
         }
         else if (this.cursors.right.isDown) {
             this.sprite.animations.play('player_walk', 5, true);
-            this.sprite.body.velocity.x = 200;
+            this.sprite.body.velocity.x = 300;
             if (this.sprite.scale.x < 0) {
                 this.sprite.scale.x *= -1;
             }
@@ -71,7 +72,7 @@ Player.prototype = {
 	}
 	//this.sprite.animations.play('idle');
 	if (this.jumpButton.isDown && this.sprite.body.onFloor() && this.jumpAbility) {
-		this.sprite.body.velocity.y = -400;
+		this.sprite.body.velocity.y = -500;
 
 		if(!this.moveAbility){
             if (this.cursors.left.isDown && !this.sprite.body.onFloor()) {
@@ -94,8 +95,7 @@ Player.prototype = {
 	},
 	
 	interact: function(player, chest){
-		if (this.game.input.keyboard.createCursorKeys().up.isDown){
-			console.log("up");
+		if (this.game.input.keyboard.createCursorKeys().up.isDown && !chest.isEmpty){
 			chest.opened = true;
 		}
 	}
