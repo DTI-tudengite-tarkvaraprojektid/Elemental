@@ -51,7 +51,7 @@ Player.prototype = {
 	if (this.moveAbility) {
         if (this.cursors.left.isDown) {
             this.sprite.animations.play('player_walk', 5, true);
-            this.sprite.body.velocity.x = -300;
+            this.sprite.body.velocity.x = -250;
             if (this.sprite.scale.x > 0) {
                 this.sprite.scale.x *= -1;
             }
@@ -59,7 +59,7 @@ Player.prototype = {
         }
         else if (this.cursors.right.isDown) {
             this.sprite.animations.play('player_walk', 5, true);
-            this.sprite.body.velocity.x = 300;
+            this.sprite.body.velocity.x = 250;
             if (this.sprite.scale.x < 0) {
                 this.sprite.scale.x *= -1;
             }
@@ -74,7 +74,7 @@ Player.prototype = {
 	if (this.jumpButton.isDown && this.sprite.body.onFloor() && this.jumpAbility) {
 		this.sprite.body.velocity.y = -500;
 
-		if(!this.moveAbility){
+		/*if(!this.moveAbility){
             if (this.cursors.left.isDown && !this.sprite.body.onFloor()) {
                 this.sprite.body.velocity.x = -200;
                 if (this.sprite.scale.x > 0) {
@@ -88,9 +88,15 @@ Player.prototype = {
                 }
 
             }
-		}
+		}*/
 	}
-
+	if (!this.sprite.body.onFloor() && this.cursors.right.isDown && !this.moveAbility){
+		this.sprite.body.velocity.x = 250;
+	}
+	
+	if (!this.sprite.body.onFloor() && this.cursors.left.isDown && !this.moveAbility){
+		this.sprite.body.velocity.x = -250;
+	}
 
 	},
 	
