@@ -32,7 +32,6 @@ Player.prototype = {
         this.sprite.anchor.setTo(0.5, 0.5);
 		this.cursors = this.game.input.keyboard.createCursorKeys();
 		this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
 		this.elements = [];
         this.inventory = this.game.add.group();
     },

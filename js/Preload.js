@@ -11,8 +11,7 @@ Elemental.Preload.prototype = {
         this.load.image('chest_opened', 'Assets/openchest.png');
         this.load.image('chest_closed', 'Assets/chest.png');
         this.load.image('enemy', 'Assets/enemyprop1.png');
-        /*
-        this.load.spritesheet('actions', 'Assets/actions.png');
+        this.load.spritesheet('actions', 'Assets/actions.png');/*
         this.load.spritesheet('art', 'Assets/art.png');
         this.load.spritesheet('avatar', 'Assets/avatar.png');
         this.load.spritesheet('balance', 'Assets/balance.png');

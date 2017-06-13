@@ -6,6 +6,7 @@ function Element(x, y, name, game, level){
     this.game = game;
     this.level = level;
     this.create();
+	this.elementname = "";
 
 
 }
@@ -38,7 +39,35 @@ Element.prototype = {
 
     //krister
     actions: function(){
-        //cannot move, jump, can't collect items
+	var this.luckyNumber= math.floor(math.random(1,2));
+	if (this.luckyNumber == 1){
+		
+		if (!this.level.player.moveAbility) {
+			this.level.player.moveAbility = true;
+			this.level.player.inventory.forEach(function(element){
+				if(element.elementname === "move"){
+				element.kill();
+				}
+			}, this);
+		} else {
+			this.level.player.moveAbility = false;
+			this.elementname = "jump"
+		}
+	} else if (this.luckyNumber == 2) {
+
+				if (!this.level.player.jumpAbility) {
+			this.level.player.jumpAbility = true;
+			this.level.player.inventory.forEach(function(element){
+				if(element.elementname === "jump"){
+				element.kill();
+				}
+			}, this);
+		} else {
+			this.level.player.jumpAbility = false;
+		this.elementname = "jump"
+		}
+	}
+        //can't collect items
     },
 
     //richard
