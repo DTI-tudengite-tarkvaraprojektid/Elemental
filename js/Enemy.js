@@ -5,6 +5,7 @@ function Enemy(game, level, x, y){
     this.y = y;
     this.sprite = null;
     this.health = 100;
+    this.reverse_cd = 0;
     this.create();
 }
 
@@ -12,15 +13,16 @@ function Enemy(game, level, x, y){
 Enemy.prototype = {
 
     create: function(){
-
         this.sprite = this.game.add.sprite(this.x, this.y, 'enemy');
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.collideWorldBounds = true;
         this.sprite.body.gravity.y = 500;
         this.sprite.body.immovable = true;
-        this.sprite.body.setSize(18, 58, 18, 5);
+        this.sprite.body.setSize(18, 48, 24, 16);
         this.sprite.scale.setTo(3, 3);
         this.sprite.anchor.setTo(0.5, 0.5);
+        this.sprite.animations.add('walk', [0, 1, 2, 3]);
+        this.sprite.animations.add('attack', [1, 2]);
     },
 //collision here
     update: function(player){
@@ -32,13 +34,18 @@ Enemy.prototype = {
                 if(this.sprite.body.x < element.x + element.width && this.sprite.body.x > element.x ||
                     this.sprite.body.x + this.sprite.body.width > element.x &&
                     this.sprite.body.x + this.sprite.body.width < element.x + element.width){
-                    this.reverse();
+                        if(this.game.time.now - this.reverse_cd >= 1000){
+                            this.reverse_cd = this.game.time.now;
+                            this.reverse();
+                        }
                 }
             }
         }, this);
-        if(Math.abs(this.sprite.body.x - player.sprite.body.x) < 80){
+        if(Math.abs(this.sprite.body.x - player.sprite.body.x) < 80 && Math.abs(this.sprite.body.y - player.sprite.body.y) < 100){
             this.sprite.body.velocity.x = 0;
             this.attack(player);
+        } else {
+            this.sprite.animations.play('walk', 5, true);
         }
     },
 
@@ -46,10 +53,11 @@ Enemy.prototype = {
         this.sprite.body.velocity.x *= -1;
         this.sprite.scale.x *= -1;
 
+
     },
 
     attack: function(player){
-        //this.sprite.animations.play('attack');
+        this.sprite.animations.play('attack', 5, true);
         /*
         if(Math.abs(this.sprite.body.x - player.sprite.body.x) < 80 && this.sprite.animations.currentAnim.frame === 2){
             player.health = Number(player.health) - 1;
