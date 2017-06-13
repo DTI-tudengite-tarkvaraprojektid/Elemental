@@ -16,6 +16,8 @@ Element.prototype = {
     create: function(){
 
         this.sprite = this.game.add.sprite(this.x, this.y, this.name);
+        this.sprite.fixedToCamera = true;
+        this.sprite.scale.setTo(0.5, 0.5);
         if(this.name === 'actions'){
             this.actions();
         } else if(this.name === 'art'){
@@ -23,9 +25,16 @@ Element.prototype = {
         } else if(this.name === 'avatar'){
             this.avatar();
         } else if(this.name === 'balance'){
+            this.sprite.animations.add('armor', [0]);
+            this.sprite.animations.add('nosword', [1]);
             this.balance();
-        } else if(this.name === 'challenge'){
+        } else if(this.name === 'feedback'){
+            this.sprite.animations.add('timer', [0]);
+            this.sprite.animations.add('points', [1]);
+            this.sprite.animations.add('health', [2]);
             this.feedback();
+        } else if(this.name === 'challenge'){
+            this.challenge();
         } else if(this.name === 'levels'){
             this.levels();
         } else if(this.name === 'luck'){
@@ -39,7 +48,7 @@ Element.prototype = {
 
     //krister
     actions: function(){
-	var this.luckyNumber= math.floor(math.random(1,2));
+	this.luckyNumber = Math.floor((Math.random() * 2) + 1);
 	if (this.luckyNumber == 1){
 		
 		if (!this.level.player.moveAbility) {
@@ -80,6 +89,8 @@ Element.prototype = {
     },
 
     balance: function(){
+        this.sprite.animations.play('armor');
+        this.sprite.animations.play('nosword');
     //krister
         //NPCs are weakened(player gains weapon/armor)
         //NPCs are strengthened(player loses all armor/weapon)
@@ -95,6 +106,15 @@ Element.prototype = {
     },
 
     feedback: function(){
+        var rand = Math.floor((Math.random() * 3) + 1);
+        if(rand === 1){
+            this.sprite.animations.play('timer');
+        } else if(rand === 2){
+            this.sprite.animations.play('points');
+        } else if(rand === 3){
+            this.sprite.animations.play('health');
+        }
+
         // health bar removed
         // timer removed(still ticking)
         // points removed
