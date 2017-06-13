@@ -1,9 +1,13 @@
-function Element(game, level, name){
+function Element(x, y, name, game, level){
 
+    this.x = x;
+    this.y = y;
     this.name = name;
     this.game = game;
     this.level = level;
     this.create();
+	this.elementname = "";
+
 
 }
 
@@ -11,7 +15,7 @@ Element.prototype = {
 
     create: function(){
 
-        this.sprite = this.game.add.sprite(1200, 20, this.name);
+        this.sprite = this.game.add.sprite(this.x, this.y, this.name);
         if(this.name === 'actions'){
             this.actions();
         } else if(this.name === 'art'){
@@ -31,12 +35,39 @@ Element.prototype = {
         } else if(this.name === 'scoreboard'){
             this.scoreboard();
         }
-        this.moveToInventory();
     },
 
     //krister
     actions: function(){
-        //cannot move, jump, can't collect items
+	var this.luckyNumber= math.floor(math.random(1,2));
+	if (this.luckyNumber == 1){
+		
+		if (!this.level.player.moveAbility) {
+			this.level.player.moveAbility = true;
+			this.level.player.inventory.forEach(function(element){
+				if(element.elementname === "move"){
+				element.kill();
+				}
+			}, this);
+		} else {
+			this.level.player.moveAbility = false;
+			this.elementname = "jump"
+		}
+	} else if (this.luckyNumber == 2) {
+
+				if (!this.level.player.jumpAbility) {
+			this.level.player.jumpAbility = true;
+			this.level.player.inventory.forEach(function(element){
+				if(element.elementname === "jump"){
+				element.kill();
+				}
+			}, this);
+		} else {
+			this.level.player.jumpAbility = false;
+		this.elementname = "jump"
+		}
+	}
+        //can't collect items
     },
 
     //richard
@@ -87,9 +118,5 @@ Element.prototype = {
 
     scoreboard: function(){
         //scoreboard removed
-    },
-
-    moveToInventory: function(){
-        this.level.player.inventory.add(this.sprite);
     }
 };
