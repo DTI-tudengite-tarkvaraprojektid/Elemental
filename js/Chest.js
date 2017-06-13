@@ -6,9 +6,8 @@ function Chest(game, level, x, y){
     this.sprite = null;
     this.opened = false;
     this.isEmpty = false;
-    this.elements = ['actions', 'art', 'avatar',
-        'balance', 'challenges', 'feedback',
-        'levels', 'luck', 'progress', 'scoreboard'];
+    //'actions', 'art', 'avatar', 'challenges', 'levels', 'luck', 'progress', 'scoreboard'
+    this.elements = ['balance', 'feedback'];
     this.points = [ '100', '150', '200', '250', '300'];
     this.item = null;
     this.create();
@@ -21,7 +20,7 @@ Chest.prototype = {
         this.sprite = this.game.add.sprite(this.x, this.y, 'chest_closed');
         this.game.physics.arcade.enable(this.sprite);
         var rand = [Math.floor((Math.random() * 2) + 1)];
-        var rand = 2;
+        var rand = 1;
         if(rand === 1){
             this.item = this.elements[Math.floor(Math.random() * this.elements.length)];
         } else {
@@ -51,7 +50,7 @@ Chest.prototype = {
     },
 
     giveItem: function(player){
-        var element = new Element(player.inventory.length * 20 + 20, 100, this.item, this.game, this.level);
+        var element = new Element(player.inventory.length * 35 + 35, 100, this.item, this.game, this.level);
         player.elements.push(element);
         player.inventory.add(element.sprite);
     }
