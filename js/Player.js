@@ -42,8 +42,6 @@ Player.prototype = {
 		this.sprite.body.velocity.x = 0;
 		this.movement();
 
-		
-		
 	},
 
     movement: function(){
