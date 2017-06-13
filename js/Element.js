@@ -2,7 +2,7 @@ function Element(x, y, name, game, level){
 
     this.x = x;
     this.y = y;
-    this.name = name;
+    this.category = name;
     this.game = game;
     this.level = level;
     this.create();
@@ -15,31 +15,31 @@ Element.prototype = {
 
     create: function(){
 
-        this.sprite = this.game.add.sprite(this.x, this.y, this.name);
-        if(this.name === 'actions'){
+        this.sprite = this.game.add.sprite(this.x, this.y, this.category);
+        if(this.category === 'actions'){
             this.actions();
-        } else if(this.name === 'art'){
+        } else if(this.category === 'art'){
             this.art();
-        } else if(this.name === 'avatar'){
+        } else if(this.category === 'avatar'){
             this.avatar();
-        } else if(this.name === 'balance'){
+        } else if(this.category === 'balance'){
             this.balance();
-        } else if(this.name === 'challenge'){
+        } else if(this.category === 'challenge'){
             this.feedback();
-        } else if(this.name === 'levels'){
+        } else if(this.category === 'levels'){
             this.levels();
-        } else if(this.name === 'luck'){
+        } else if(this.category === 'luck'){
             this.luck();
-        } else if(this.name === 'progress'){
+        } else if(this.category === 'progress'){
             this.progress();
-        } else if(this.name === 'scoreboard'){
+        } else if(this.category === 'scoreboard'){
             this.scoreboard();
         }
     },
 
     //krister
     actions: function(){
-	var this.luckyNumber= math.floor(math.random(1,2));
+	var this.luckyNumber= Math.floor(Math.random(1,2));
 	if (this.luckyNumber == 1){
 		
 		if (!this.level.player.moveAbility) {
@@ -51,7 +51,7 @@ Element.prototype = {
 			}, this);
 		} else {
 			this.level.player.moveAbility = false;
-			this.elementname = "jump"
+			this.elementname = "move";
 		}
 	} else if (this.luckyNumber == 2) {
 
@@ -64,7 +64,13 @@ Element.prototype = {
 			}, this);
 		} else {
 			this.level.player.jumpAbility = false;
-		this.elementname = "jump"
+		this.elementname = "jump";
+		} 
+	} else {
+		if(!this.level.player.chestOpen) {
+			this.level.player.chestOpen = true;
+		} else {
+			this.level.player.chestOpen = false;
 		}
 	}
         //can't collect items

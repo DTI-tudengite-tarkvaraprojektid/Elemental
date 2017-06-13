@@ -11,6 +11,7 @@ function Player(game, level, x, y){
 	this.camera = null;
 	this.jumpAbility = true;
 	this.moveAbility = true;
+	this.chestOpen = true;
 	this.create();
 	
 }
@@ -93,7 +94,7 @@ Player.prototype = {
 	},
 	
 	interact: function(player, chest){
-		if (this.game.input.keyboard.createCursorKeys().up.isDown && !chest.isEmpty){
+		if (this.game.input.keyboard.createCursorKeys().up.isDown && !chest.isEmpty && this.chestOpen){
 			chest.opened = true;
 		}
 	}
