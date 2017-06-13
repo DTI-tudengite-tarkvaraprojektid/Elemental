@@ -33,6 +33,7 @@ Player.prototype = {
 		this.cursors = this.game.input.keyboard.createCursorKeys();
 		this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
+		this.elements = [];
         this.inventory = this.game.add.group();
     },
 
@@ -43,8 +44,6 @@ Player.prototype = {
 		this.sprite.body.velocity.x = 0;
 		this.movement();
 
-		
-		
 	},
 
     movement: function(){
