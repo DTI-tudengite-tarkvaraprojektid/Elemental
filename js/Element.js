@@ -16,11 +16,9 @@ Element.prototype = {
     create: function(){
 
         this.sprite = this.game.add.sprite(this.x, this.y, this.category);
-        if(this.category === 'actions'){
-        this.sprite = this.game.add.sprite(this.x, this.y, this.name);
         this.sprite.fixedToCamera = true;
         this.sprite.scale.setTo(0.5, 0.5);
-        if(this.name === 'actions'){
+        if(this.category === 'actions'){
             this.actions();
         } else if(this.category === 'art'){
             this.art();
@@ -30,7 +28,7 @@ Element.prototype = {
             this.sprite.animations.add('armor', [0]);
             this.sprite.animations.add('nosword', [1]);
             this.balance();
-        } else if(this.category === 'challenge'){
+        } else if(this.category === 'feedback'){
             this.sprite.animations.add('timer', [0]);
             this.sprite.animations.add('points', [1]);
             this.sprite.animations.add('health', [2]);
@@ -43,10 +41,11 @@ Element.prototype = {
         } else if(this.category === 'scoreboard'){
             this.scoreboard();
         }
-    },
+	},
 
     //krister
     actions: function(){
+	console.log("bla");
 	this.luckyNumber = Math.floor((Math.random() * 2) + 1);
 	if (this.luckyNumber == 1){
 		
@@ -58,9 +57,18 @@ Element.prototype = {
 				}
 			}, this);
 		} else {
+			if(this.level.player.jumpAbility) {
 			this.level.player.moveAbility = false;
 			this.elementname = "move";
-		}
+			} else {
+				this.level.player.jumpAbility = true;
+				if(element.elementname === "jump") {
+					element.kill();
+				}
+				this.level.player.moveAbility = false;
+				this.elementname = "move";
+			}
+		} 
 	} else if (this.luckyNumber == 2) {
 
 				if (!this.level.player.jumpAbility) {
@@ -71,8 +79,17 @@ Element.prototype = {
 				}
 			}, this);
 		} else {
+			if(this.level.player.moveAbility){
 			this.level.player.jumpAbility = false;
-		this.elementname = "jump";
+			this.elementname = "jump";
+			} else {
+				this.level.player.moveAbility = true;
+				if(element.elementname === "move") {
+					element.kill();
+				}
+				this.level.player.jumpAbility = false;
+				this.elementname = "jump"
+			}
 		} 
 	} else {
 		if(!this.level.player.chestOpen) {
@@ -94,6 +111,7 @@ Element.prototype = {
     },
 
     balance: function(){
+		console.log("bla");
         this.sprite.animations.play('armor');
         this.sprite.animations.play('nosword');
     //krister
