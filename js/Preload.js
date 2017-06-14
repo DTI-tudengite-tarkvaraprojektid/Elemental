@@ -6,8 +6,9 @@ Elemental.Preload.prototype = {
     preload: function() {
 
         //load game assets
-        this.load.tilemap('level', 'Assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap('level', 'Assets/maps/level_11.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.image('tiles', 'Assets/maps/tiles.png');
+        this.load.image('tileset1', 'Assets/maps/tileset1.png');
         this.load.image('chest_opened', 'Assets/openchest.png');
         this.load.image('chest_closed', 'Assets/chest.png');
         //this.load.spritesheet('actions', 'Assets/actions.png');
