@@ -114,6 +114,7 @@ Player.prototype = {
 			this.sprite.animations.play('unarmored_attack', 10, false);
 			console.log("pikachu uses quick attack");
         }
+		if(this.sprite.body)
 		this.sprite.animations.currentAnim.onComplete.add(function () {
 			this.attacking = false;
 		}, this);
