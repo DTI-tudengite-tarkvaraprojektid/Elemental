@@ -36,8 +36,8 @@ Player.prototype = {
         this.sprite.scale.setTo(3, 3);
         this.sprite.anchor.setTo(0.5, 0.5);
 		this.cursors = this.game.input.keyboard.createCursorKeys();
-		this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-		this.attackButton = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
+		this.attackButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+		this.openChests = this.game.input.keyboard.addKey(Phaser.Keyboard.Z);
 		this.elements = [];
         this.inventory = this.game.add.group();
     },
@@ -88,7 +88,7 @@ Player.prototype = {
 		this.jumping = false;
 	}
 	//this.sprite.animations.play('idle');
-	if (this.jumpButton.isDown && this.sprite.body.onFloor() && this.jumpAbility) {
+	if (this.cursors.up.isDown && this.sprite.body.onFloor() && this.jumpAbility) {
 		this.sprite.body.velocity.y = -500;
 	}
 	if (!this.sprite.body.onFloor() && this.cursors.right.isDown && !this.moveAbility){
@@ -102,7 +102,7 @@ Player.prototype = {
 	},
 	
 	interact: function(player, chest){
-		if (this.game.input.keyboard.createCursorKeys().up.isDown && !chest.isEmpty && this.chestOpen){
+		if (this.openChests.isDown && !chest.isEmpty && this.chestOpen){
 			chest.opened = true;
 		}
 	},
@@ -114,7 +114,7 @@ Player.prototype = {
 			this.sprite.animations.play('unarmored_attack', 10, false);
 			console.log("pikachu uses quick attack");
         }
-		if(this.sprite.body
+		if(this.sprite.body)
 		this.sprite.animations.currentAnim.onComplete.add(function () {
 			this.attacking = false;
 		}, this);
