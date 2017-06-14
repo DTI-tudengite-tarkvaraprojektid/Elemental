@@ -32,7 +32,7 @@ Enemy.prototype = {
     update: function(player){
         this.sprite.body.velocity.x = 50 * this.sprite.scale.x;
         this.game.physics.arcade.collide(this.sprite, this.level.wall);
-        this.game.physics.arcade.collide(this.sprite, player.sprite);
+        this.game.physics.arcade.overlap(this.sprite, player.sprite);
         this.level.tilemap.objects['spawners'].forEach(function(element) {
             if(element.name === "reverse"){
                 if(this.sprite.body.x < element.x + element.width && this.sprite.body.x > element.x ||

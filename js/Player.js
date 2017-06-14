@@ -89,7 +89,7 @@ Player.prototype = {
 	}
 	//this.sprite.animations.play('idle');
 	if (this.cursors.up.isDown && this.sprite.body.onFloor() && this.jumpAbility) {
-		this.sprite.body.velocity.y = -500;
+		this.sprite.body.velocity.y = -380;
 	}
 	if (!this.sprite.body.onFloor() && this.cursors.right.isDown && !this.moveAbility){
 		this.sprite.body.velocity.x = 250;
