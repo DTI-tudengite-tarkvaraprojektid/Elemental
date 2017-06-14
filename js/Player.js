@@ -14,6 +14,8 @@ function Player(game, level, x, y){
 	this.moveAbility = true;
 	this.chestOpen = true;
 	this.attack_cd = 0;
+	this.armored = true;
+	this.armed = true;
 	this.create();
 	
 	
@@ -26,13 +28,21 @@ Player.prototype = {
         this.sprite = this.game.add.sprite(this.x, this.y, 'player');
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.collideWorldBounds = true;
-        this.sprite.body.gravity.y = 500;
+        this.sprite.body.gravity.y = 1100;
         this.sprite.body.setSize(18, 64, 38, 0);
         this.camera = this.game.camera.follow(this.sprite);
-        this.sprite.animations.add('player_walk', [22, 23, 24, 25]);
-		this.sprite.animations.add('player_jump', [21]);
-        this.sprite.animations.add('idle', [20]);
+        this.sprite.animations.add('unarmored_walk', [22, 23, 24, 25]);
+		this.sprite.animations.add('unarmored_wepwalk', [27, 28, 29, 30, 31]);
+		this.sprite.animations.add('unarmored_wepidle', [26]);
+		this.sprite.animations.add('unarmored_jump', [21]);
+        this.sprite.animations.add('unarmored_idle', [20]);
 		this.sprite.animations.add('unarmored_attack', [16,17,18,19]);
+        this.sprite.animations.add('armored_walk', [12, 13, 14, 15]);
+		this.sprite.animations.add('armored_wepwalk', [11, 10, 9, 8]);
+		this.sprite.animations.add('armored_wepidle', [6]);
+		this.sprite.animations.add('armored_jump', [5]);
+        this.sprite.animations.add('armored_idle', [4]);
+		this.sprite.animations.add('armored_attack', [0,1,2,3]);		
         this.sprite.scale.setTo(3, 3);
         this.sprite.anchor.setTo(0.5, 0.5);
 		this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -48,7 +58,7 @@ Player.prototype = {
 		this.game.physics.arcade.overlap(this.sprite, this.level.chests, this.interact, null, this);
 		this.sprite.body.velocity.x = 0;
 		this.movement();
-		if (this.attackButton.isDown && !this.walking){
+		if (this.attackButton.isDown){
 			this.attack();
 			}
 		
@@ -57,9 +67,21 @@ Player.prototype = {
     movement: function(){
 
     this.walking = false;
-	if (this.moveAbility) {
+	if (this.moveAbility && !this.attacking) {
         if (this.cursors.left.isDown) {
-            this.sprite.animations.play('player_walk', 5, true);
+			if(!this.armored){
+				if(!this.armed){
+					this.sprite.animations.play('unarmored_walk', 5, true);
+				} else {
+					this.sprite.animations.play('unarmored_wepwalk', 5, true);
+				}
+			} else {
+				if(!this.armed){
+					this.sprite.animations.play('armored_walk', 5, true);
+				} else {
+					this.sprite.animations.play('armored_wepwalk', 5, true);
+				}
+			}
             this.sprite.body.velocity.x = -250;
             if (this.sprite.scale.x > 0) {
                 this.sprite.scale.x *= -1;
@@ -67,7 +89,19 @@ Player.prototype = {
             this.walking = true;
         }
         else if (this.cursors.right.isDown) {
-            this.sprite.animations.play('player_walk', 5, true);
+			if(!this.armored){
+				if(!this.armed){
+					this.sprite.animations.play('unarmored_walk', 5, true);
+				} else {
+					this.sprite.animations.play('unarmored_wepwalk', 5, true);
+				}
+			} else {
+				if(!this.armed){
+					this.sprite.animations.play('armored_walk', 5, true);
+				} else {
+					this.sprite.animations.play('armored_wepwalk', 5, true);
+				}
+			}
             this.sprite.body.velocity.x = 250;
             if (this.sprite.scale.x < 0) {
                 this.sprite.scale.x *= -1;
@@ -76,20 +110,37 @@ Player.prototype = {
         }
 
     }
+
+
     if(!this.walking && !this.jumping && !this.attacking){
-		this.sprite.animations.play('idle');
+		if(!this.armored){
+			if(!this.armed){
+				this.sprite.animations.play('unarmored_idle');
+			} else {
+				this.sprite.animations.play('unarmored_wepidle');
+			}
+		} else{
+			if(!this.armed){
+				this.sprite.animations.play('armored_idle');
+			} else {
+				this.sprite.animations.play('armored_wepidle');
+			}
+		}
 	}
 	if(this.jumping){
-		this.sprite.animations.play('player_jump', 1, true);
+		if(!this.armored){
+		this.sprite.animations.play('unarmored_jump', 1, true);
+		} else {
+		this.sprite.animations.play('armored_jump', 1, true);
+		}
 	}
 	if(!this.sprite.body.onFloor() && !this.sprite.body.blocked.up){
 		this.jumping = true;
 	} else {
 		this.jumping = false;
 	}
-	//this.sprite.animations.play('idle');
 	if (this.cursors.up.isDown && this.sprite.body.onFloor() && this.jumpAbility) {
-		this.sprite.body.velocity.y = -380;
+		this.sprite.body.velocity.y = -600;
 	}
 	if (!this.sprite.body.onFloor() && this.cursors.right.isDown && !this.moveAbility){
 		this.sprite.body.velocity.x = 250;
@@ -111,7 +162,11 @@ Player.prototype = {
 		if(this.game.time.now - this.attack_cd >= 450 && !this.jumping){
             this.attack_cd = this.game.time.now;
 			this.attacking = true;
-			this.sprite.animations.play('unarmored_attack', 10, false);
+			if(!this.armored){
+				this.sprite.animations.play('unarmored_attack', 10, false);
+			} else {
+				this.sprite.animations.play('armored_attack', 10, false);
+			}
 			console.log("pikachu uses quick attack");
         }
 		if(this.sprite.body)
