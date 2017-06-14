@@ -21,7 +21,7 @@ Level.prototype = {
 
         //the first parameter is the tileset name as specified in Tiled,
         //the second is the key to the asset in game.js
-        this.tilemap.addTilesetImage('tiles', 'tiles', 64, 64);
+        this.tilemap.addTilesetImage('tileset1', 'tileset1', 64, 64);
 
         //create layers
         this.background = this.tilemap.createLayer('background');
