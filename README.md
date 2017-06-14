@@ -6,7 +6,7 @@ Mängu eesmärk on näidata kuidas mäng koosneb erinevatest elementidest ja kui
 
 * Projekt on tehtud Digitehnoloogia Instituudi suvepraktika raames ja on suunatud mängu arendajatele ja mängu arenduse õpilastele.
 
-* Kasutatud on javascript'i, HTML, Phaser raamistik 2.8.0 ning kunsti jaoks GIMP 2.8.22 ja paint.net 4.0.13.
+* Kasutatud on javascript'i, HTML5, Phaser raamistik 2.8.0 ning kunsti jaoks GIMP 2.8.22 ja paint.net 4.0.13.
 
 ## Liikmed
 - Richard Kajaste
