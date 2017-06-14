@@ -23,6 +23,10 @@ Enemy.prototype = {
         this.sprite.anchor.setTo(0.5, 0.5);
         this.sprite.animations.add('walk', [0, 1, 2, 3]);
         this.sprite.animations.add('attack', [1, 2]);
+
+        this.attackbox = this.game.add.sprite(this.sprite.body.x-this.sprite.body.x*0.2, this.sprite.body.y * 0.5, null);
+        this.game.physics.arcade.enable(this.attackbox);
+        this.sprite.body.immovable = true;
     },
 //collision here
     update: function(player){
@@ -41,8 +45,7 @@ Enemy.prototype = {
                 }
             }
         }, this);
-        if(Math.abs(this.sprite.body.x - player.sprite.body.x) < 80 && Math.abs(this.sprite.body.y - player.sprite.body.y) < 100){
-            this.sprite.body.velocity.x = 0;
+        if(Math.abs(this.sprite.body.x - player.sprite.body.x) < 80){
             this.attack(player);
         } else {
             this.sprite.animations.play('walk', 5, true);
@@ -58,9 +61,11 @@ Enemy.prototype = {
 
     attack: function(player){
         this.sprite.animations.play('attack', 5, true);
-        /*
+
         if(Math.abs(this.sprite.body.x - player.sprite.body.x) < 80 && this.sprite.animations.currentAnim.frame === 2){
-            player.health = Number(player.health) - 1;
-        } */
+            this.attackbox = this.game.add.sprite(this.sprite.body.x, this.sprite.body.y + this.sprite.body.height*0.5, null);
+            this.game.physics.arcade.enable(this.attackbox);
+            this.sprite.body.immovable = true;
+        }
     }
 };

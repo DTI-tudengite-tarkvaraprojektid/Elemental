@@ -26,7 +26,6 @@ Level.prototype = {
         //create layers
         this.background = this.tilemap.createLayer('background');
         this.wall = this.tilemap.createLayer('wall');
-        this.wall
         //collision on walls
         this.tilemap.setCollisionBetween(1, 2000, true, this.wall);
 
