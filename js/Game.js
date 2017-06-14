@@ -24,6 +24,6 @@ Elemental.Game.prototype = {
         group.forEachAlive(function (member){
             this.game.debug.body(member);
         }, this);
-    }*/
+    } */
 
 };

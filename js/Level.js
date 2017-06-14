@@ -26,7 +26,7 @@ Level.prototype = {
         //create layers
         this.background = this.tilemap.createLayer('background');
         this.wall = this.tilemap.createLayer('wall');
-
+        this.wall
         //collision on walls
         this.tilemap.setCollisionBetween(1, 2000, true, this.wall);
 
@@ -36,14 +36,15 @@ Level.prototype = {
         this.chest_objs = [];
         this.enemy_objs = [];
         this.chests = this.game.add.group();
+        this.players = this.game.add.group();
         this.enemies = this.game.add.group();
-
         //iterate over all objects in the 'spawner' layer, spawning player and enemies
         // at coordinates given by json
         this.tilemap.objects['spawners'].forEach(function(element){
 
             if(element.name === "player"){
                 this.player = new Player(this.game, this, element.x, element.y);
+                this.players.add(this.player.sprite);
             }
             else if(element.name === "enemy"){
                 var enemy = new Enemy(this.game, this, element.x, element.y);
