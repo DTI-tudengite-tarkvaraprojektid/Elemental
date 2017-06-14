@@ -19,6 +19,7 @@ Chest.prototype = {
     create: function(){
         this.sprite = this.game.add.sprite(this.x, this.y, 'chest_closed');
         this.game.physics.arcade.enable(this.sprite);
+        this.sprite.body.gravity.y = 500;
         var rand = [Math.floor((Math.random() * 2) + 1)];
         var rand = 1;
         if(rand === 1){
@@ -32,9 +33,10 @@ Chest.prototype = {
     },
 
     update: function(player){
+        this.game.physics.arcade.collide(this.sprite, this.level.wall);
         if(this.sprite.opened){
             this.sprite.loadTexture('chest_opened');
-
+            this.sprite.body.gravity.y = 0;
             if(this.item.slice(2, 3) === '0'){
                 this.setScore();
             } else {
