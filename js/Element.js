@@ -118,6 +118,7 @@ Element.prototype = {
 		if(rand === 1){
 			if(this.level.player.armored){
 			this.sprite.animations.play('noArmor');
+			
 			this.level.player.armored = false;		
 			} else {
 				this.sprite.animations.play('armor');

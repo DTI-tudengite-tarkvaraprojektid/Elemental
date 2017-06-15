@@ -12,7 +12,9 @@ Elemental.Game.prototype = {
 
     update: function(){
         this.level.update();
+
     },/*
+
 
     render: function (){
         this.game.debug.body(this.level.player.sprite);
