@@ -35,8 +35,10 @@ Level.prototype = {
         this.chest_objs = [];
         this.enemy_objs = [];
         this.chests = this.game.add.group();
-        this.players = this.game.add.group();
         this.enemies = this.game.add.group();
+        this.players = this.game.add.group();
+        this.hearts = this.game.add.group();
+
         //iterate over all objects in the 'spawner' layer, spawning player and enemies
         // at coordinates given by json
         this.tilemap.objects['spawners'].forEach(function(element){
@@ -60,6 +62,13 @@ Level.prototype = {
             "Timer: " + this.countdown, {font: "24px Alagard", fill: '#d5aa00'});
         this.scoresprite = this.game.add.text(SCREEN_WIDTH*0.15, SCREEN_HEIGHT*0.05,
             "Score: " + this.score, {font: "24px Alagard", fill: '#d5aa00'});
+
+
+        for(var i=0; i<this.player.health; i++){
+            this.hearts.create(SCREEN_WIDTH * 0.23 + i * 32, SCREEN_HEIGHT*0.03, 'heart');
+        }
+        this.hearts.scale.set(2, 2);
+        this.hearts.fixedToCamera = true;
         this.timesprite.fixedToCamera = true;
         this.scoresprite.fixedToCamera = true;
     },
