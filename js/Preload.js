@@ -8,6 +8,8 @@ Elemental.Preload.prototype = {
         //load game assets
         this.load.tilemap('level', 'Assets/maps/level_11.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.tilemap('level2', 'Assets/maps/level_2.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap('level3', 'Assets/maps/level_3.json', null, Phaser.Tilemap.TILED_JSON);
+
         this.load.image('tiles', 'Assets/maps/tiles.png');
         this.load.image('tileset1', 'Assets/maps/tileset1.png');
         this.load.spritesheet('chests', 'Assets/chests.png', 84, 64);
@@ -22,11 +24,9 @@ Elemental.Preload.prototype = {
         this.load.spritesheet('avatar', 'Assets/avatar.png', 64, 64);
         this.load.spritesheet('challenges', 'Assets/challenges.png', 64, 64);
         this.load.spritesheet('art', 'Assets/art.png', 64, 64);
+		this.load.spritesheet('buttons', 'Assets/buttons.png', 79, 16);
 
         this.load.image('heart', 'Assets/heart.png');
-
-        this.load.image('startgame', 'Assets/startgame.png');
-        this.load.image('scoreboard', 'Assets/scoreboard.png');
         this.load.image('stats', 'Assets/stats.png');
         /*
         this.load.spritesheet('levels', 'Assets/levels.png');
@@ -37,6 +37,6 @@ Elemental.Preload.prototype = {
 
     },
     create: function() {
-        this.state.start('Game');
+        this.state.start('Menu');
     }
 };
