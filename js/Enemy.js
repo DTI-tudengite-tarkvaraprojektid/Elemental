@@ -83,10 +83,13 @@ Enemy.prototype = {
                 this.attackbox.body.x = this.sprite.body.x + this.sprite.width * 0.35;
                 this.attackbox.body.y = this.sprite.body.y + this.sprite.body.height * 0.4;
                 this.game.physics.arcade.overlap(this.attackbox, player.sprite, function (e, p) {
-                    player.health--;
-                    self.level.hearts.
-                    console.log(player.health);
-                    }, null, this);
+                    if(self.level.hearts.children.length !== 0){
+                        player.health--;
+                        self.level.hearts.children[self.level.hearts.children.length-1].kill();
+                        self.level.hearts.remove(self.level.hearts.children[self.level.hearts.children.length-1]);
+                    }
+                }, null, this);
+
                 this.sprite.animations.currentAnim.onComplete.add(function () {
                     this.sprite.animations.play('idle')
                 }, this);
