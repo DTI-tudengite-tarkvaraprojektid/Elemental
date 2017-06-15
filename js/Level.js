@@ -57,9 +57,9 @@ Level.prototype = {
             }
         }, this);
         this.timesprite = this.game.add.text(SCREEN_WIDTH*0.8, SCREEN_HEIGHT* 0.05,
-            "Timer: " + this.countdown, {fill: 'white'});
+            "Timer: " + this.countdown, {font: "24px Alagard", fill: '#d5aa00'});
         this.scoresprite = this.game.add.text(SCREEN_WIDTH*0.15, SCREEN_HEIGHT*0.05,
-            "Score: " + this.score, {fill: 'white'});
+            "Score: " + this.score, {font: "24px Alagard", fill: '#d5aa00'});
         this.timesprite.fixedToCamera = true;
         this.scoresprite.fixedToCamera = true;
     },
