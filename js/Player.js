@@ -16,6 +16,7 @@ function Player(game, level, x, y){
 	this.attack_cd = 0;
 	this.armored = true;
 	this.armed = true;
+	this.greyAvatar = true;
 	this.create();
 	
 	
@@ -71,15 +72,23 @@ Player.prototype = {
         if (this.cursors.left.isDown) {
 			if(!this.armored){
 				if(!this.armed){
+					if(!this.greyAvatar){
 					this.sprite.animations.play('unarmored_walk', 5, true);
+					}
 				} else {
+					if(!this.greyAvatar){
 					this.sprite.animations.play('unarmored_wepwalk', 5, true);
+					}
 				}
 			} else {
 				if(!this.armed){
+					if(!this.greyAvatar){
 					this.sprite.animations.play('armored_walk', 5, true);
+					}
 				} else {
+					if(!this.greyAvatar){
 					this.sprite.animations.play('armored_wepwalk', 5, true);
+					}
 				}
 			}
             this.sprite.body.velocity.x = -250;
@@ -91,15 +100,23 @@ Player.prototype = {
         else if (this.cursors.right.isDown) {
 			if(!this.armored){
 				if(!this.armed){
+					if(!this.greyAvatar){
 					this.sprite.animations.play('unarmored_walk', 5, true);
+					}
 				} else {
+					if(!this.greyAvatar){
 					this.sprite.animations.play('unarmored_wepwalk', 5, true);
+					}
 				}
 			} else {
 				if(!this.armed){
+					if(!this.greyAvatar){
 					this.sprite.animations.play('armored_walk', 5, true);
+					}
 				} else {
+					if(!this.greyAvatar){
 					this.sprite.animations.play('armored_wepwalk', 5, true);
+					}
 				}
 			}
             this.sprite.body.velocity.x = 250;
@@ -115,23 +132,35 @@ Player.prototype = {
     if(!this.walking && !this.jumping && !this.attacking){
 		if(!this.armored){
 			if(!this.armed){
+				if(!this.greyAvatar){
 				this.sprite.animations.play('unarmored_idle');
+				}
 			} else {
+				if(!this.greyAvatar){
 				this.sprite.animations.play('unarmored_wepidle');
+				}
 			}
 		} else{
 			if(!this.armed){
+				if(!this.greyAvatar){
 				this.sprite.animations.play('armored_idle');
+				}
 			} else {
+				if(!this.greyAvatar){
 				this.sprite.animations.play('armored_wepidle');
+				}
 			}
 		}
 	}
 	if(this.jumping){
 		if(!this.armored){
-		this.sprite.animations.play('unarmored_jump', 1, true);
+			if(!this.greyAvatar){
+			this.sprite.animations.play('unarmored_jump', 1, true);
+			}
 		} else {
-		this.sprite.animations.play('armored_jump', 1, true);
+			if(!this.greyAvatar){
+			this.sprite.animations.play('armored_jump', 1, true);
+			}
 		}
 	}
 	if(!this.sprite.body.onFloor() && !this.sprite.body.blocked.up){

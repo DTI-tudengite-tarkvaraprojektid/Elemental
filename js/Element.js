@@ -45,7 +45,6 @@ Element.prototype = {
 
     //krister
     actions: function(){
-	console.log("bla");
 	this.luckyNumber = Math.floor((Math.random() * 2) + 1);
 	if (this.luckyNumber == 1){
 		
