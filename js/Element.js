@@ -26,7 +26,11 @@ Element.prototype = {
             this.avatar();
         } else if(this.category === 'balance'){
             this.sprite.animations.add('armor', [0]);
-            this.sprite.animations.add('nosword', [1]);
+			this.sprite.animations.add('noArmor', [1]);
+            this.sprite.animations.add('noSword', [2]);
+			this.sprite.animations.add('enemySpawn', [3]);
+			this.sprite.animations.add('sword',[4]);
+			this.sprite.animations.add('reGainElements', [5]);
             this.balance();
         } else if(this.category === 'feedback'){
             this.sprite.animations.add('timer', [0]);
@@ -110,15 +114,40 @@ Element.prototype = {
     },
 
     balance: function(){
-		console.log("bla");
-        this.sprite.animations.play('armor');
-        this.sprite.animations.play('nosword');
-    //krister
-        //NPCs are weakened(player gains weapon/armor)
-        //NPCs are strengthened(player loses all armor/weapon)
-    //richard
+        var rand = Math.floor((Math.random() * 2) + 1);
+		if(rand === 1){
+			if(this.level.player.armored){
+			this.sprite.animations.play('noArmor');
+			this.level.player.armored = false;		
+			} else {
+				this.sprite.animations.play('armor');
+				this.level.player.armored = true;
+			}
+		
+		} else if (rand === 2){
+			if(this.level.player.armed){
+				this.sprite.animations.play('noSword');
+				this.level.player.armed = false;	
+			} else {
+				this.sprite.animations.play('sword');
+				this.level.player.armed = true;
+			}
+						 
+		} /*
+		
+		//richard
         //More NPCs spawned
         //Take back as many elements you want for free
+				
+			else if (rand === 3){
+			this.sprite.animations.play('enemySpawn');
+			this.level.player.armed = false;
+			this.level.player.armored = false;	
+		} else {
+			this.sprite.animations.play('reGainElements');
+		}*/
+		
+
     },
 
     //richard

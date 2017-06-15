@@ -198,7 +198,7 @@ Player.prototype = {
 	},
 	
 	attack: function (enemy){
-		if(this.game.time.now - this.attack_cd >= 450 && !this.jumping && !this.greyAvatar){
+		if(this.game.time.now - this.attack_cd >= 450 && !this.jumping && this.armed &&!this.greyAvatar){
             this.attack_cd = this.game.time.now;
 			this.attacking = true;
 			if(!this.armored){
