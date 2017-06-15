@@ -4,7 +4,7 @@ function Player(game, level, x, y){
     this.x = x;
     this.y = y;
     this.sprite = null;
-    this.health = 100;
+    this.health = 3;
 	this.jumpTimer = 0;
 	this.walking = false;
 	this.jumping = false;

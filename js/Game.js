@@ -16,7 +16,7 @@ Elemental.Game.prototype = {
 
     render: function (){
         this.game.debug.body(this.level.player.sprite);
-        this.level.wall.debug = true;
+        //this.level.wall.debug = true;
         this.renderGroup(this.level.enemy_objs);
     },
 
