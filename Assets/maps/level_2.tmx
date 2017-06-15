@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="2017.05.26" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="64" tileheight="64" nextobjectid="1">
- <tileset firstgid="1" source="tileset2.tsx"/>
+<map version="2017.05.26" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="64" tileheight="64" nextobjectid="31">
+ <tileset firstgid="1" name="tileset2" tilewidth="64" tileheight="64" tilecount="8" columns="2">
+  <image source="tileset2.png" width="128" height="256"/>
+ </tileset>
  <layer name="BG" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJztwzENAAAMBKGb3r/kuugECaumqqr68ABo2xLB
+   eJxjYBgFIwEwAjHTIHYDMxCz0NEtg9UNowA7GAzpFx8YTTuDA4ymk8EDyI0LcvSRo4fcuCBH30iK91EwCogFALkfAEc=
   </data>
  </layer>
- <layer name="ÜMBRUS" width="40" height="20">
+ <layer name="wall" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJztzrEJAAAMhMBvfv+Vs0NsEvDA3iapoa7yj/GP8Y/xj/GP8Y/xj/nyZ/sGhVkDwQ==
+   eJztVEEKwDAMyqXs/z/eqVBGUqy2aw4RPCZoMDYza0WJWVH6NHR9j8MMWLmf52GnD283qu/WTRF9jLZdN470ncziym7mf6McnvAz/u8tzHx9+yUbvP7LAKRf2FypWWT67y+w/YzsUmYjsv+h9AqqbdRX5PkCPogGhA==
   </data>
  </layer>
- <layer name="PLATVORMID" width="40" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUUAuwo2F62zlQAN3fA+kWagBK/DKUw4HWbseWTugRXgMVJ0M1HQxmMJjDk5T4JidN0qJcGsj6iphygJ7hRKzbBmv6G2oAAJgiAnA=
-  </data>
- </layer>
- <layer name="KAUNISTUS" width="40" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFIwEwAjHTIHYDMxCz0NEtg9UNowA7GAzpFx8YTTuDA4ymE9oAeoYrOXaRE67k+olecThU08ooGAXEAgC5HwBH
-  </data>
- </layer>
+ <objectgroup name="spawners">
+  <object id="1" name="player" x="181.818" y="945.455"/>
+  <object id="2" name="enemy" x="990.909" y="451.515" width="63.6364" height="36.3636"/>
+  <object id="4" name="enemy" x="2036.36" y="887.879"/>
+  <object id="5" name="chest" x="1009.09" y="972.727"/>
+  <object id="6" name="chest" x="142.424" y="278.788"/>
+  <object id="7" name="chest" x="2275.76" y="278.788"/>
+  <object id="10" name="chest" x="545.455" y="860.606"/>
+  <object id="15" name="reverse" x="766.667" y="448.485" width="36.3636" height="190.909"/>
+  <object id="16" name="reverse" x="1303.03" y="448.485" width="36.3636" height="190.909"/>
+  <object id="17" name="reverse" x="1857.58" y="824.242" width="36.3636" height="190.909"/>
+  <object id="18" name="reverse" x="2190.91" y="830.303" width="36.3636" height="190.909"/>
+  <object id="19" name="enemy" x="1881.82" y="463.636"/>
+  <object id="22" name="reverse" x="1787.88" y="381.818" width="36.3636" height="190.909"/>
+  <object id="24" name="reverse" x="2006.06" y="381.818" width="36.3636" height="190.909"/>
+  <object id="26" name="chest" x="1475.76" y="451.515"/>
+  <object id="27" name="enemy" x="460.606" y="1018.18"/>
+  <object id="29" name="reverse" x="193.939" y="954.545" width="36.3636" height="190.909"/>
+  <object id="30" name="reverse" x="784.848" y="951.515" width="36.3636" height="190.909"/>
+ </objectgroup>
 </map>
