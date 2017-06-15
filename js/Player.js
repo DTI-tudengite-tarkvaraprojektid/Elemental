@@ -16,7 +16,7 @@ function Player(game, level, x, y){
 	this.attack_cd = 0;
 	this.armored = true;
 	this.armed = true;
-	this.greyAvatar = true;
+	this.greyAvatar = false;
 	this.create();
 	
 	
@@ -33,17 +33,20 @@ Player.prototype = {
         this.sprite.body.setSize(18, 64, 38, 0);
         this.camera = this.game.camera.follow(this.sprite);
         this.sprite.animations.add('unarmored_walk', [22, 23, 24, 25]);
-		this.sprite.animations.add('unarmored_wepwalk', [27, 28, 29, 30, 31]);
+		this.sprite.animations.add('unarmored_wepwalk', [28, 29, 30, 31]);
 		this.sprite.animations.add('unarmored_wepidle', [26]);
 		this.sprite.animations.add('unarmored_jump', [21]);
+		this.sprite.animations.add('unarmored_wepjump', [27]);
         this.sprite.animations.add('unarmored_idle', [20]);
-		this.sprite.animations.add('unarmored_attack', [16,17,18,19]);
+		this.sprite.animations.add('unarmored_attack', [16, 17, 18, 19]);
         this.sprite.animations.add('armored_walk', [12, 13, 14, 15]);
 		this.sprite.animations.add('armored_wepwalk', [11, 10, 9, 8]);
 		this.sprite.animations.add('armored_wepidle', [6]);
 		this.sprite.animations.add('armored_jump', [5]);
+		this.sprite.animations.add('armored_wepjump', [7]);
         this.sprite.animations.add('armored_idle', [4]);
-		this.sprite.animations.add('armored_attack', [0,1,2,3]);		
+		this.sprite.animations.add('armored_attack', [0, 1, 2, 3]);
+		this.sprite.animations.add('grey_box', [32]);
         this.sprite.scale.setTo(3, 3);
         this.sprite.anchor.setTo(0.5, 0.5);
 		this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -66,29 +69,33 @@ Player.prototype = {
 	},
 
     movement: function(){
-
+	
+	if(this.greyAvatar){
+		this.sprite.animations.play('grey_box');
+	}
+	
     this.walking = false;
-	if (this.moveAbility && !this.attacking) {
+	if (this.moveAbility && !this.attacking ) {
         if (this.cursors.left.isDown) {
-			if(!this.armored){
+			if(!this.armored&& !this.greyAvatar){
 				if(!this.armed){
-					if(!this.greyAvatar){
+
 					this.sprite.animations.play('unarmored_walk', 5, true);
-					}
+					
 				} else {
-					if(!this.greyAvatar){
+
 					this.sprite.animations.play('unarmored_wepwalk', 5, true);
-					}
+					
 				}
-			} else {
+			} else if( !this.greyAvatar){
 				if(!this.armed){
-					if(!this.greyAvatar){
+
 					this.sprite.animations.play('armored_walk', 5, true);
-					}
+
 				} else {
-					if(!this.greyAvatar){
+
 					this.sprite.animations.play('armored_wepwalk', 5, true);
-					}
+
 				}
 			}
             this.sprite.body.velocity.x = -250;
@@ -96,27 +103,26 @@ Player.prototype = {
                 this.sprite.scale.x *= -1;
             }
             this.walking = true;
-        }
-        else if (this.cursors.right.isDown) {
-			if(!this.armored){
+        } else if (this.cursors.right.isDown) {
+			if(!this.armored && !this.greyAvatar){
 				if(!this.armed){
-					if(!this.greyAvatar){
+
 					this.sprite.animations.play('unarmored_walk', 5, true);
-					}
-				} else {
-					if(!this.greyAvatar){
+			
+				} else if(!this.greyAvatar) {
+				
 					this.sprite.animations.play('unarmored_wepwalk', 5, true);
-					}
+				
 				}
-			} else {
+			} else if (!this.greyAvatar){
 				if(!this.armed){
-					if(!this.greyAvatar){
+				
 					this.sprite.animations.play('armored_walk', 5, true);
-					}
+				
 				} else {
-					if(!this.greyAvatar){
+				
 					this.sprite.animations.play('armored_wepwalk', 5, true);
-					}
+				
 				}
 			}
             this.sprite.body.velocity.x = 250;
@@ -129,37 +135,41 @@ Player.prototype = {
     }
 
 
-    if(!this.walking && !this.jumping && !this.attacking){
+    if(!this.walking && !this.jumping && !this.attacking && !this.greyAvatar){
 		if(!this.armored){
-			if(!this.armed){
-				if(!this.greyAvatar){
+			if(!this.armed && !this.greyAvatar){
+			
 				this.sprite.animations.play('unarmored_idle');
-				}
-			} else {
-				if(!this.greyAvatar){
+			
+			} else if (!this.greyAvatar){
+			
 				this.sprite.animations.play('unarmored_wepidle');
-				}
+			
 			}
-		} else{
+		} else if(!this.greyAvatar){
 			if(!this.armed){
-				if(!this.greyAvatar){
+			
 				this.sprite.animations.play('armored_idle');
-				}
+			
 			} else {
-				if(!this.greyAvatar){
+			
 				this.sprite.animations.play('armored_wepidle');
-				}
+			
 			}
 		}
 	}
-	if(this.jumping){
+	if(this.jumping && !this.greyAvatar){
 		if(!this.armored){
-			if(!this.greyAvatar){
-			this.sprite.animations.play('unarmored_jump', 1, true);
+			if(!this.armed){
+			this.sprite.animations.play('unarmored_jump');
+			} else {
+				this.sprite.animations.play('unarmored_wepjump');
 			}
 		} else {
-			if(!this.greyAvatar){
-			this.sprite.animations.play('armored_jump', 1, true);
+			if(!this.armed){
+			this.sprite.animations.play('armored_jump');
+			} else {
+				this.sprite.animations.play('armored_wepjump');
 			}
 		}
 	}
@@ -188,7 +198,7 @@ Player.prototype = {
 	},
 	
 	attack: function (enemy){
-		if(this.game.time.now - this.attack_cd >= 450 && !this.jumping){
+		if(this.game.time.now - this.attack_cd >= 450 && !this.jumping && !this.greyAvatar){
             this.attack_cd = this.game.time.now;
 			this.attacking = true;
 			if(!this.armored){

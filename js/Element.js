@@ -106,7 +106,7 @@ Element.prototype = {
     },
     //krister
     avatar: function(){
-        //player avatar is low quality
+	//low leveled art
     },
 
     balance: function(){
