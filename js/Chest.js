@@ -20,21 +20,21 @@ Chest.prototype = {
         this.sprite = this.game.add.sprite(this.x, this.y, 'chests');
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.gravity.y = 500;
-        var rand = [Math.floor((Math.random() * 2) + 1)];
-        if(rand === 1){
-            this.item = this.elements[Math.floor(Math.random() * this.elements.length)];
-            this.sprite.animations.play('echest');
-        } else {
-            this.item = this.points[Math.floor(Math.random() * this.points.length)];
-            this.sprite.animations.play('chest');
-        }
-        this.sprite.body.immovable = true;
-
+        var rand = Math.floor((Math.random() * 2) + 1);
         this.sprite.animations.add('chest', [0]);
         this.sprite.animations.add('chest_open', [1]);
         this.sprite.animations.add('echest', [2]);
         this.sprite.animations.add('echest_open', [3]);
-
+        if(rand === 1){
+            this.item = this.elements[Math.floor(Math.random() * this.elements.length)];
+            this.sprite.animations.play('echest');
+            console.log('points');
+        } else if(rand === 2){
+            this.item = this.points[Math.floor(Math.random() * this.points.length)];
+            this.sprite.animations.play('chest');
+            console.log('elements');
+        }
+        this.sprite.body.immovable = true;
 
 
 

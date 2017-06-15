@@ -6,6 +6,7 @@ function Enemy(game, level, x, y){
     this.sprite = null;
     this.health = 100;
     this.reverse_cd = 0;
+    this.hit_cd = 0;
     this.create();
 }
 
@@ -23,6 +24,7 @@ Enemy.prototype = {
         this.sprite.anchor.setTo(0.5, 0.5);
         this.sprite.animations.add('walk', [0, 1, 2, 3]);
         this.sprite.animations.add('attack', [1, 2]);
+        this.sprite.animations.add('idle', [0]);
 
         this.attackbox = this.game.add.sprite(this.sprite.body.x + this.sprite.width * 0.3,
             this.sprite.body.y + this.sprite.body.height * 0.4, null);
@@ -47,8 +49,19 @@ Enemy.prototype = {
                 }
             }
         }, this);
-        if(Math.abs(this.sprite.body.x - player.sprite.body.x) < 80){
+        if(Math.abs(this.sprite.body.x - player.sprite.body.x) < 160) {
+            this.sprite.body.velocity.x = 0;
+            if(this.sprite.body.x + this.sprite.body.width < player.sprite.body.x && this.sprite.scale.x < 0){
+
+                this.sprite.scale.x *= -1;
+
+            } else if(this.sprite.body.x > player.sprite.body.x + player.sprite.body.width && this.sprite.scale.x > 0){
+
+                this.sprite.scale.x *= -1;
+            }
+
             this.attack(player);
+
         } else {
             this.sprite.animations.play('walk', 5, true);
         }
@@ -61,15 +74,23 @@ Enemy.prototype = {
 
     },
 
-    attack: function(player){
-        this.sprite.animations.play('attack', 5, true);
-
-        if(Math.abs(this.sprite.body.x - player.sprite.body.x) < 80 && this.sprite.animations.currentAnim.frame === 2){
-            this.game.physics.arcade.enable(this.attackbox);
-            this.attackbox.body.x = this.sprite.body.x + this.sprite.width * 0.35;
-            this.attackbox.body.y = this.sprite.body.y + this.sprite.body.height * 0.4;
-            this.sprite.body.immovable = true;
-            this.game.physics.arcade.overlap(this.attackbox, player.sprite);
+    attack: function(player) {
+        if (this.game.time.now - this.hit_cd >= 1500) {
+            this.hit_cd = this.game.time.now;
+            this.sprite.animations.play('attack', 5, false);
+            if (this.sprite.animations.currentAnim.frame === 1) {
+                var self = this;
+                this.attackbox.body.x = this.sprite.body.x + this.sprite.width * 0.35;
+                this.attackbox.body.y = this.sprite.body.y + this.sprite.body.height * 0.4;
+                this.game.physics.arcade.overlap(this.attackbox, player.sprite, function (e, p) {
+                    player.health--;
+                    self.level.hearts.
+                    console.log(player.health);
+                    }, null, this);
+                this.sprite.animations.currentAnim.onComplete.add(function () {
+                    this.sprite.animations.play('idle')
+                }, this);
+            }
         }
     }
-};
+}
