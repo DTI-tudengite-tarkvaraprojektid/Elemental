@@ -17,30 +17,39 @@ function Chest(game, level, x, y){
 Chest.prototype = {
 
     create: function(){
-        this.sprite = this.game.add.sprite(this.x, this.y, 'chest_closed');
+        this.sprite = this.game.add.sprite(this.x, this.y, 'chests');
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.gravity.y = 500;
         var rand = [Math.floor((Math.random() * 2) + 1)];
-        var rand = 1;
         if(rand === 1){
             this.item = this.elements[Math.floor(Math.random() * this.elements.length)];
+            this.sprite.animations.play('echest');
         } else {
             this.item = this.points[Math.floor(Math.random() * this.points.length)];
+            this.sprite.animations.play('chest');
         }
         this.sprite.body.immovable = true;
-        console.log(this.item.slice(2, 3));
+
+        this.sprite.animations.add('chest', [0]);
+        this.sprite.animations.add('chest_open', [1]);
+        this.sprite.animations.add('echest', [2]);
+        this.sprite.animations.add('echest_open', [3]);
+
+
+
 
     },
 
     update: function(player){
         this.game.physics.arcade.collide(this.sprite, this.level.wall);
         if(this.sprite.opened){
-            this.sprite.loadTexture('chest_opened');
             this.sprite.body.gravity.y = 0;
             if(this.item.slice(2, 3) === '0'){
                 this.setScore();
+                this.sprite.animations.play('chest_open');
             } else {
                 this.giveItem(player);
+                this.sprite.animations.play('echest_open');
             }
             this.isEmpty = true;
         }
