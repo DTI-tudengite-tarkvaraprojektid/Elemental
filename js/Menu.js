@@ -1,9 +1,9 @@
 var Elemental = Elemental || {};
 
-Elemental.Menu = function(){
-	this.button = null;
-	this.button2 = null;
-}
+Elemental.Menu = function() {
+    this.button = null;
+    this.button2 = null;
+};
 
 Elemental.Menu.prototype = {
 	
