@@ -6,7 +6,7 @@
  <tileset firstgid="9" source="khvjbk.tsx"/>
  <layer name="background" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFIwUwAjHTIHYDMxCzkGAWO+XOodgNAwUo9TuxaWGg0gyx8TBU4ms4AzYqmTMYyid8YCSntcESN7jcgR43xJSPhPxEjp+pmUYImUWqXdTKp6NgFFALAAD+UgB8
+   eJxjYBgFIwUwAjHTIHYDMxCzkGgeO2XOoYobBgJQ6m9i08JApRli42GoxNdwBmxUMmcwlE/4wEhOa4MlbnC5Az1uiCkfCfmJHD9TM40QMotUu6iVT0fBKKAWAAD+NgB8
   </data>
  </layer>
  <layer name="wall" width="40" height="20">
@@ -46,6 +46,6 @@
   <object id="31" name="reverse" x="2069.7" y="706.061" width="39.3939" height="190.909"/>
   <object id="32" name="reverse" x="2236.36" y="521.212" width="39.3939" height="190.909"/>
   <object id="33" name="reverse" x="2463.64" y="512.121" width="39.3939" height="190.909"/>
-  <object id="34" name="chest" x="1109.09" y="272.727"/>
+  <object id="34" name="chest" x="1124.24" y="278.788"/>
  </objectgroup>
 </map>
