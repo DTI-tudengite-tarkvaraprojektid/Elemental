@@ -70,7 +70,7 @@ Level.prototype = {
         }
         this.hearts.scale.set(2, 2);
         this.timeframe.scale.set(3, 3);
-        this.scoreframe.scale.set(3, 3);
+        this.scoreframe.scale.set(3.5, 3);
         this.hearts.fixedToCamera = true;
         this.timeframe.fixedToCamera = true;
         this.scoreframe.fixedToCamera = true;
