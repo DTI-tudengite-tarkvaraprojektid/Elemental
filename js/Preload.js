@@ -24,11 +24,9 @@ Elemental.Preload.prototype = {
         this.load.spritesheet('avatar', 'Assets/avatar.png', 64, 64);
         this.load.spritesheet('challenges', 'Assets/challenges.png', 64, 64);
         this.load.spritesheet('art', 'Assets/art.png', 64, 64);
+		this.load.spritesheet('buttons', 'Assets/buttons.png', 76, 19);
 
         this.load.image('heart', 'Assets/heart.png');
-
-        this.load.image('startgame', 'Assets/startgame.png');
-        this.load.image('scoreboard', 'Assets/scoreboard.png');
         this.load.image('stats', 'Assets/stats.png');
         /*
         this.load.spritesheet('levels', 'Assets/levels.png');
@@ -39,6 +37,6 @@ Elemental.Preload.prototype = {
 
     },
     create: function() {
-        this.state.start('Game');
+        this.state.start('Menu');
     }
 };
