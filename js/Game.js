@@ -13,20 +13,20 @@ Elemental.Game.prototype = {
     update: function(){
         this.level.update();
 
-    },
+    }/*,
 
-    /*
+
     render: function (){
-        this.game.debug.body(this.level.player.sprite);
+        this.game.debug.body(this.level.player.attackbox);
         //this.level.wall.debug = true;
         this.renderGroup(this.level.enemy_objs);
     },
-    */
+
     renderGroup: function(group){
         group.forEach(function (member){
             this.game.debug.body(member.sprite);
             this.game.debug.body(member.attackbox);
         }, this);
-    }
+    }*/
 
-}
+};

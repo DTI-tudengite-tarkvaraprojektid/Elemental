@@ -62,6 +62,10 @@ Player.prototype = {
         this.inventory = this.game.add.group();
         this.attackbox = this.game.add.sprite(this.sprite.body.x + this.sprite.width * 0.4,
             this.sprite.body.y + this.sprite.body.height * 0.5, null);
+        this.attackbox.anchor.setTo(0.5, 0.5);
+        this.game.physics.arcade.enable(this.attackbox);
+        this.attackbox.body.immovable = true;
+        this.attackbox.body.setSize(40, 32);
     },
 
     update: function(){
@@ -73,7 +77,7 @@ Player.prototype = {
 		this.movement();
 		if (this.attackButton.isDown){
 			this.attack();
-			}
+        }
         if(this.isHit){
             this.getHit();
         } else {
@@ -217,18 +221,20 @@ Player.prototype = {
 				this.sprite.animations.play('unarmored_attack', 10, false);
 			} else {
 				this.sprite.animations.play('armored_attack', 10, false);
+
 			}
-			console.log("pikachu uses quick attack");
-            if (this.sprite.animations.currentAnim.frame === 2) {
-                var self = this;
-                this.attackbox.body.x = this.sprite.body.x + this.sprite.width * 0.35;
-                this.attackbox.body.y = this.sprite.body.y + this.sprite.body.height * 0.4;
-                //if player hit, kill heart sprite and remove it from memory
-                this.game.physics.arcade.overlap(this.attackbox, player.sprite, function (e, p) {
-                    enemy.health--;
-                    enemy.isHit = true;
-                }, null, this);
-            }
+        }
+        console.log(this.sprite.animations.currentAnim.frame);
+        if (this.sprite.animations.currentAnim.frame === 1 ||
+            this.sprite.animations.currentAnim.frame === 2) {
+            this.attackbox.body.x = this.sprite.body.x + this.sprite.width * 0.35;
+            this.attackbox.body.y = this.sprite.body.y + this.sprite.body.height * 0.4;
+            var self = this;
+            this.game.physics.arcade.overlap(this.attackbox, this.level.enemies, function (p, e) {
+                e.health--;
+                e.isHit = true;
+                console.log(e.health);
+            }, null, this);
         }
         this.sprite.animations.currentAnim.onComplete.add(function () {
             this.attacking = false;
