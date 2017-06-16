@@ -4,10 +4,8 @@ function Enemy(game, level, x, y){
     this.x = x;
     this.y = y;
     this.sprite = null;
-    this.health = 100;
     this.reverse_cd = 0;
     this.hit_cd = 0;
-    this.isHit = false;
     this.lastRedFlash = 0;
     this.flashCount = 4;
     this.create();
@@ -19,6 +17,8 @@ Enemy.prototype = {
     create: function(){
         this.sprite = this.game.add.sprite(this.x, this.y, 'enemy');
         this.sprite.smoothed = false;
+        this.sprite.health = 2;
+        this.sprite.isHit = false;
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.collideWorldBounds = true;
         this.sprite.body.gravity.y = 500;
@@ -71,7 +71,7 @@ Enemy.prototype = {
         } else {
             this.sprite.animations.play('walk', 5, true);
         }
-        if(this.isHit){
+        if(this.sprite.isHit){
             this.getHit();
         } else {
             this.flashCount = 4;
@@ -117,13 +117,15 @@ Enemy.prototype = {
             this.sprite.tint = 16777215;
         }
         if(this.flashCount === 0){
-            this.isHit = false;
+            this.sprite.isHit = false;
             this.sprite.tint = 16777215;
-            if(this.health === 0){
+            if(this.sprite.health <= 0){
                 this.sprite.kill();
                 this.level.enemies.remove(this.sprite);
-                this.level.enemy_objs.remove(this);
+                var index = this.level.enemy_objs.indexOf(this);
+                this.level.enemy_objs.splice(index, 1);
+
             }
         }
     }
-}
+};
