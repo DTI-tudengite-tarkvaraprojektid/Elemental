@@ -14,12 +14,12 @@ Elemental.Boot.prototype = {
         this.load.reset();
         this.load.removeAll();
         //stretch screen
-        this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        //this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
         //have the game centered horizontally
         this.scale.pageAlignHorizontally = true;
         this.scale.pageAlignVertically = true;
-
+		this.game.stage.smoothed = false;
         //physics system
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.state.start('Preload');

@@ -25,9 +25,13 @@ Elemental.Preload.prototype = {
         this.load.spritesheet('challenges', 'Assets/challenges.png', 64, 64);
         this.load.spritesheet('art', 'Assets/art.png', 64, 64);
 		this.load.spritesheet('buttons', 'Assets/buttons.png', 79, 16);
+		this.load.spritesheet('shopbtns', 'Assets/shopbtns.png', 192, 64);
 
         this.load.image('heart', 'Assets/heart.png');
         this.load.image('stats', 'Assets/stats.png');
+		this.load.image('exit', 'Assets/exit.png');
+		this.load.image('shop', 'Assets/shop.png');
+		this.load.image('shoptitle', 'Assets/shopbtn.png');
         /*
         this.load.spritesheet('levels', 'Assets/levels.png');
         this.load.spritesheet('luck', 'Assets/luck.png');

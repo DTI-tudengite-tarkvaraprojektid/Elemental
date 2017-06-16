@@ -22,6 +22,7 @@ function Player(game, level, x, y){
 	this.isHit = false;
 	this.lastRedFlash = 0;
 	this.flashCount = 4;
+	this.shop = null;
 	this.create();
 	
 	
@@ -256,8 +257,6 @@ Player.prototype = {
                 this.sprite.x = this.init_x;
                 this.sprite.y = this.init_y;
                 this.health = 3;
-                //this.shop = new Shop(this.game, this.level);
-                //activate shop window here
             }
         }
     }
