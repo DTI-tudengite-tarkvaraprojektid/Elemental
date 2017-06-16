@@ -4,9 +4,17 @@
   <image source="tileset3.png" width="128" height="256"/>
  </tileset>
  <tileset firstgid="9" source="khvjbk.tsx"/>
+ <tileset firstgid="13" source="tileset1.tsx"/>
+ <tileset firstgid="29" source="wterer.tsx"/>
+ <tileset firstgid="30" source="efwr.tsx"/>
+ <layer name="r3we" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztw0ENAAAMA6HTUf9C52IvSFg1VVXVhwecxFFB
+  </data>
+ </layer>
  <layer name="background" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFIwUwAjHTIHYDMxCzkGEmO/nOoZob6A0o9TOxaWGg0gyx8TBU4ms4AzYqmTMYyid8YCSntcESN7jcgR43xJSPhPxEjp+pmUYImUWqXdTKp6NgFFALAAD+GgB8
+   eJxjYBgFIwUwAjHTIHYDMxCzkGGmLPnOoZob6A0o9TOxaWGg0gyx8TBU4ms4AzkqmTMYyid8YCSntcESN7jcgR43xJSPhPxEjp+pmUYImUWqXdTKp6NgFFALAAC5jwDu
   </data>
  </layer>
  <layer name="wall" width="40" height="20">
