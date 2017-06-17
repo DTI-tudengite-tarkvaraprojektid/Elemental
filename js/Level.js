@@ -7,6 +7,7 @@ function Level(game){
     this.platforms = null;
     this.background = null;
     this.wall = null;
+	this.shop = null;
     this.score = 0;
     this.countdown = 10;
     this.last_tick = 0;
@@ -87,7 +88,9 @@ Level.prototype = {
         }
 
         this.player.update();
-
+		if(this.player.health === 0){
+			this.shop = new Shop(this.game, this.level);
+		}
         this.chest_objs.forEach(function(chest) {
             if(!chest.isEmpty){
                 chest.update(this.player);

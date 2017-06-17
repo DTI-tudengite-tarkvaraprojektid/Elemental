@@ -16,13 +16,21 @@ Element.prototype = {
     create: function(){
 
         this.sprite = this.game.add.sprite(this.x, this.y, this.category);
+        this.sprite.smoothed = false;
         this.sprite.fixedToCamera = true;
         this.sprite.scale.setTo(0.5, 0.5);
         if(this.category === 'actions'){
+            this.sprite.animations.add('lock', [0]);
+            this.sprite.animations.add('shop', [1]);
+            this.sprite.animations.add('jump', [2]);
+            this.sprite.animations.add('move', [3]);
             this.actions();
         } else if(this.category === 'art'){
+            this.sprite.animations.add('art', [0]);
+            this.sprite.animations.add('text', [1]);
             this.art();
         } else if(this.category === 'avatar'){
+            this.sprite.animations.add('avatar', [0]);
             this.avatar();
         } else if(this.category === 'balance'){
             this.sprite.animations.add('armor', [0]);
@@ -30,7 +38,7 @@ Element.prototype = {
             this.sprite.animations.add('noSword', [2]);
 			this.sprite.animations.add('enemySpawn', [3]);
 			this.sprite.animations.add('sword',[4]);
-			this.sprite.animations.add('reGainElements', [5]);
+			this.sprite.animations.add('getElements', [5]);
             this.balance();
         } else if(this.category === 'feedback'){
             this.sprite.animations.add('timer', [0]);
@@ -41,6 +49,8 @@ Element.prototype = {
         } else if(this.category === 'luck'){
             this.luck();
         } else if(this.category === 'progress'){
+            this.sprite.animations.add('allempty', [0]);
+            this.sprite.animations.add('zeropoints', [1]);
             this.progress();
         } else if(this.category === 'scoreboard'){
             this.scoreboard();
@@ -83,8 +93,8 @@ Element.prototype = {
 			}, this);
 		} else {
 			if(this.level.player.moveAbility){
-			this.level.player.jumpAbility = false;
-			this.elementname = "jump";
+			this.level.player.moveAbility = false;
+			this.elementname = "move";
 			} else {
 				this.level.player.moveAbility = true;
 				if(element.elementname === "move") {
@@ -110,7 +120,8 @@ Element.prototype = {
     },
     //krister
     avatar: function(){
-	//low leveled art
+	    //low leveled avatar
+
     },
 
     balance: function(){
@@ -145,7 +156,7 @@ Element.prototype = {
 			this.level.player.armed = false;
 			this.level.player.armored = false;	
 		} else {
-			this.sprite.animations.play('reGainElements');
+			this.sprite.animations.play('getElements');
 		}*/
 		
 
@@ -158,18 +169,22 @@ Element.prototype = {
     },
 
     feedback: function(){
-        var rand = Math.floor((Math.random() * 3) + 1);
-        if(rand === 1){
-            this.sprite.animations.play('timer');
-        } else if(rand === 2){
-            this.sprite.animations.play('points');
-        } else if(rand === 3){
-            this.sprite.animations.play('health');
-        }
-
         // health bar removed
         // timer removed(still ticking)
         // points removed
+        var rand = Math.floor((Math.random() * 3) + 1);
+        if(rand === 1){
+            this.sprite.animations.play('timer');
+            this.level.timesprite.kill();
+        } else if(rand === 2){
+            this.sprite.animations.play('points');
+            this.level.scoresprite.kill();
+        } else if(rand === 3){
+            this.sprite.animations.play('health');
+            this.level.hearts.forEachAlive(function(heart){
+                heart.kill();
+            });
+        }
     },
 
     //richard

@@ -28,11 +28,11 @@ Chest.prototype = {
         if(rand === 1){
             this.item = this.elements[Math.floor(Math.random() * this.elements.length)];
             this.sprite.animations.play('echest');
-            console.log('points');
+            console.log(this.item);
         } else if(rand === 2){
             this.item = this.points[Math.floor(Math.random() * this.points.length)];
             this.sprite.animations.play('chest');
-            console.log('elements');
+            console.log(this.item);
         }
         this.sprite.body.immovable = true;
 
