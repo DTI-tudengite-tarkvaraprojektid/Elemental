@@ -71,7 +71,6 @@ Player.prototype = {
 
     update: function(){
 
-
         this.game.physics.arcade.collide(this.sprite, this.level.wall);
 		this.game.physics.arcade.overlap(this.sprite, this.level.chests, this.interact, null, this);
 

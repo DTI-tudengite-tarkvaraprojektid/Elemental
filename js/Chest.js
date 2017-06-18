@@ -48,29 +48,41 @@ Chest.prototype = {
 
     update: function(player){
         this.game.physics.arcade.collide(this.sprite, this.level.wall);
-        if(this.sprite.opened && !this.locked){
+        if(this.sprite.opened && !this.sprite.locked){
             this.sprite.body.gravity.y = 0;
             if(this.item.slice(2, 3) === '0'){
                 this.setScore();
                 this.sprite.animations.play('chest_open');
             } else {
                 this.giveItem(player);
-                this.sprite.animations.play('echest_open');
+                if(this.sprite.differentiate){
+                    this.sprite.animations.play('echest_open');
+                } else {
+                    this.sprite.animations.play('chest_open');
+                }
             }
             this.isEmpty = true;
         }
-        if(this.sprite.locked){
+        /*if(this.sprite.locked){
             if(this.item.slice(2, 3) === '0'){
                 this.sprite.animations.play('chest_locked');
             } else {
-                this.sprite.animations.play('echest_locked');
+                if(this.sprite.differentiate){
+                    this.sprite.animations.play('echest_locked');
+                } else {
+                    this.sprite.animation.play('chest_locked');
+                }
             }
-        }
+        } */
         if(!this.sprite.opened && !this.sprite.locked){
             if(this.item.slice(2, 3) === '0'){
-                this.sprite.animations.play('chest_closed');
+                this.sprite.animations.play('chest');
             } else {
-                this.sprite.animations.play('echest_closed');
+                if(this.sprite.differentiate){
+                    this.sprite.animations.play('echest');
+                } else {
+                    this.sprite.animations.play('chest');
+                }
             }
         }
     },
