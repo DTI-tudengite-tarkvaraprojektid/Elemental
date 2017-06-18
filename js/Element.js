@@ -46,8 +46,17 @@ Element.prototype = {
             this.sprite.animations.add('health', [2]);
             this.feedback();
         } else if(this.category === 'levels'){
-        } else if(this.category === 'luck'){
+            this.sprite.animations.add('levels', [0]);
+            this.levels();
+        } else if(this.category === 'challenges'){
+            this.sprite.animations.add('enemyKill', [0]);
+            this.sprite.animations.add('freeze', [1]);
+            this.challenge();
+        }
+        else if(this.category === 'luck'){
+            this.sprite.animations.add('luck', [0]);
             this.luck();
+
         } else if(this.category === 'progress'){
             this.sprite.animations.add('allempty', [0]);
             this.sprite.animations.add('zeropoints', [1]);
@@ -59,73 +68,57 @@ Element.prototype = {
 
     //krister
     actions: function(){
-	this.luckyNumber = Math.floor((Math.random() * 2) + 1);
-	if (this.luckyNumber == 1){
-		
-		if (!this.level.player.moveAbility) {
-			this.level.player.moveAbility = true;
-			this.level.player.inventory.forEach(function(element){
-				if(element.elementname === "move"){
-				element.kill();
-				}
-			}, this);
-		} else {
-			if(this.level.player.jumpAbility) {
-			this.level.player.moveAbility = false;
-			this.elementname = "move";
-			} else {
-				this.level.player.jumpAbility = true;
-				if(element.elementname === "jump") {
-					element.kill();
-				}
-				this.level.player.moveAbility = false;
-				this.elementname = "move";
-			}
-		} 
-	} else if (this.luckyNumber == 2) {
-
-				if (!this.level.player.jumpAbility) {
-			this.level.player.jumpAbility = true;
-			this.level.player.inventory.forEach(function(element){
-				if(element.elementname === "jump"){
-				element.kill();
-				}
-			}, this);
-		} else {
-			if(this.level.player.moveAbility){
-			this.level.player.moveAbility = false;
-			this.elementname = "move";
-			} else {
-				this.level.player.moveAbility = true;
-				if(element.elementname === "move") {
-					element.kill();
-				}
-				this.level.player.jumpAbility = false;
-				this.elementname = "jump"
-			}
-		} 
-	} else {
-		if(!this.level.player.chestOpen) {
-			this.level.player.chestOpen = true;
-		} else {
-			this.level.player.chestOpen = false;
-		}
-	}
-        //can't collect items
+        this.luckyNumber = Math.floor((Math.random() * 4) + 1);
+        if (this.luckyNumber === 1){
+            this.sprite.animations.play('move');
+            if (!this.level.player.moveAbility) {
+                this.level.player.moveAbility = true;
+            } else {
+                if(this.level.player.jumpAbility) {
+                    this.level.player.moveAbility = false;
+                } else {
+                    this.level.player.jumpAbility = true;
+                    this.level.player.moveAbility = false;
+                }
+            }
+        } else if (this.luckyNumber === 2) {
+            this.sprite.animations.play('jump');
+            if (!this.level.player.jumpAbility) {
+                this.level.player.jumpAbility = true;
+            } else {
+                if(this.level.player.moveAbility){
+                this.level.player.moveAbility = false;
+                } else {
+                    this.level.player.moveAbility = true;
+                    this.level.player.jumpAbility = false;
+                }
+            }
+        } else if(this.luckyNumber === 3){
+            this.sprite.animations.play('lock');
+            this.level.chests.forEach(function(chest){
+                chest.locked = true;
+            });
+        } else if (this.luckyNumber === 4){
+            this.sprite.animations.play('shop');
+            this.level.canShop = false;
+        }
     },
 
     //richard
     art: function(){
-        //level is low quality
+        //UI is low quality
+
     },
     //krister
     avatar: function(){
 	    //low leveled avatar
+        this.sprite.animations.play('avatar');
+        this.level.player.greyAvatar = true;
 
     },
 
     balance: function(){
-        var rand = Math.floor((Math.random() * 2) + 1);
+        var rand = Math.floor((Math.random() * 4) + 1);
 		if(rand === 1){
 			if(this.level.player.armored){
 			this.sprite.animations.play('noArmor');
@@ -144,25 +137,37 @@ Element.prototype = {
 				this.level.player.armed = true;
 			}
 						 
-		} /*
-		
-		//richard
-        //More NPCs spawned
-        //Take back as many elements you want for free
-				
-			else if (rand === 3){
+		}
+        else if (rand === 3){
 			this.sprite.animations.play('enemySpawn');
-			this.level.player.armed = false;
-			this.level.player.armored = false;	
-		} else {
+            this.level.tilemap.objects['spawners'].forEach(function(element){
+                if(element.name === "enemy"){
+                    var enemy = new Enemy(this.game, this.level, element.x, element.y);
+                    this.level.enemy_objs.push(enemy);
+                    this.level.enemies.add(enemy.sprite);
+
+                }
+            }, this);
+		} else if(rand === 4){
 			this.sprite.animations.play('getElements');
-		}*/
+			//choose from items displayed in shop (open shop, 0 price??)
+		}
 		
 
     },
 
     //richard
     challenge: function(){
+        var rand = Math.floor((Math.random() * 2) + 1);
+        if(rand === 1){
+            this.sprite.animations.play('freeze');
+            this.level.timerStopped = true;
+        } else if (rand === 2){
+            this.sprite.animations.play('enemyKill');
+            this.level.enemies.destroy();
+            this.level.enemies = this.game.add.group();
+            this.level.enemy_objs = [];
+        }
         //timer is stopped
         //All NPCs removed
     },
@@ -188,11 +193,16 @@ Element.prototype = {
 
     //richard
     levels: function(){
+        this.sprite.animations.play('levels');
         // all levels are same
     },
 
     luck: function(){
         //chests with points and elements differentiated
+        this.sprite.animations.play('luck');
+        this.level.chests.forEachAlive(function(chest){
+            chest.differentiate = true;
+        });
 
     },
 

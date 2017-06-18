@@ -11,9 +11,11 @@ function Level(game, name, tileset, gamestate, score_needed){
     this.background = null;
     this.wall = null;
 	this.shop = null;
-    this.countdown = 10;
+    this.countdown = 60;
     this.last_tick = 0;
     this.score_needed = score_needed;
+    this.timerStopped = false;
+    this.canShop = true;
 }
 
 Level.prototype = {
@@ -51,11 +53,6 @@ Level.prototype = {
                 this.player = new Player(this.game, this, element.x, element.y);
                 this.players.add(this.player.sprite);
             }
-            else if(element.name === "enemy"){
-                var enemy = new Enemy(this.game, this, element.x, element.y);
-                this.enemy_objs.push(enemy);
-                this.enemies.add(enemy.sprite);
-            }
             else if(element.name === "chest"){
                 var chest = new Chest(this.game, this, element.x, element.y);
                 this.chest_objs.push(chest);
@@ -91,14 +88,14 @@ Level.prototype = {
 
     //call all the update functions of sprites
     update: function() {
-        if(this.game.time.now - this.last_tick >= 1000 && this.countdown !== 0){
+        if(this.game.time.now - this.last_tick >= 1000 && this.countdown !== 0 && this.timerStopped === false){
             this.last_tick = this.game.time.now;
             this.countdown = Number(this.countdown) - 1;
             this.timesprite.setText("Timer: " + this.countdown);
         }
 
         this.player.update();
-		if(this.player.health === 0 && this.shop === null){
+		if(this.player.health === 0 && this.shop === null && this.canShop){
 			this.shop = new Shop(this.game, this.level);
 		}
         this.chest_objs.forEach(function(chest) {
