@@ -6,8 +6,8 @@ function Chest(game, level, x, y){
     this.sprite = null;
     this.opened = false;
     this.isEmpty = false;
-    //'actions', 'art', 'avatar', 'challenges', 'levels', 'luck', 'progress', 'scoreboard'
-    this.elements = ['balance', 'feedback'];
+    //'art',  'levels', , 'progress', 'scoreboard'
+    this.elements = [/*'actions', 'avatar', 'balance', 'feedback',*/ 'art'/*, 'luck'*/];
     this.points = [ '100', '150', '200', '250', '300'];
     this.item = null;
     this.create();
@@ -18,31 +18,37 @@ Chest.prototype = {
 
     create: function(){
         this.sprite = this.game.add.sprite(this.x, this.y, 'chests');
+
+        this.sprite.differentiate = true;
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.gravity.y = 500;
         var rand = Math.floor((Math.random() * 2) + 1);
+        //differentiate chests: echest = element chest, chest = score chest
         this.sprite.animations.add('chest', [0]);
         this.sprite.animations.add('chest_open', [1]);
         this.sprite.animations.add('echest', [2]);
         this.sprite.animations.add('echest_open', [3]);
         if(rand === 1){
             this.item = this.elements[Math.floor(Math.random() * this.elements.length)];
-            this.sprite.animations.play('echest');
-            console.log(this.item);
+            if(this.sprite.differentiate){
+                this.sprite.animations.play('echest');
+            } else {
+                this.sprite.animations.play('chest');
+            }
         } else if(rand === 2){
             this.item = this.points[Math.floor(Math.random() * this.points.length)];
             this.sprite.animations.play('chest');
-            console.log(this.item);
         }
+        console.log(this.item);
         this.sprite.body.immovable = true;
-
+        this.sprite.locked = false;
 
 
     },
 
     update: function(player){
         this.game.physics.arcade.collide(this.sprite, this.level.wall);
-        if(this.sprite.opened){
+        if(this.sprite.opened && !this.locked){
             this.sprite.body.gravity.y = 0;
             if(this.item.slice(2, 3) === '0'){
                 this.setScore();
@@ -52,6 +58,20 @@ Chest.prototype = {
                 this.sprite.animations.play('echest_open');
             }
             this.isEmpty = true;
+        }
+        if(this.sprite.locked){
+            if(this.item.slice(2, 3) === '0'){
+                this.sprite.animations.play('chest_locked');
+            } else {
+                this.sprite.animations.play('echest_locked');
+            }
+        }
+        if(!this.sprite.opened && !this.sprite.locked){
+            if(this.item.slice(2, 3) === '0'){
+                this.sprite.animations.play('chest_closed');
+            } else {
+                this.sprite.animations.play('echest_closed');
+            }
         }
     },
 

@@ -14,8 +14,8 @@ Elemental.Game.prototype = {
         if(this.level === null){
             this.level = new Level(this.game, 'level', 'tileset1', this, 150);
         } if(SCORE >= 150){
-            this.level = new Level(this.game, 'level2', 'tileset2', this, 400);
-        } if(SCORE >= 400){
+            this.level = new Level(this.game, 'level2', 'tileset2', this, 600);
+        } if(SCORE >= 600){
             this.level = new Level(this.game, 'level3', 'tileset3', this, 1000);
         }
         this.level.create();
@@ -24,9 +24,10 @@ Elemental.Game.prototype = {
     update: function(){
         this.level.update();
 
+
     },
 
-
+	
     render: function (){
         this.game.debug.body(this.level.player.attackbox);
         //this.level.wall.debug = true;

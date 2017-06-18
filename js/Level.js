@@ -11,9 +11,11 @@ function Level(game, name, tileset, gamestate, score_needed){
     this.background = null;
     this.wall = null;
 	this.shop = null;
-    this.countdown = 10;
+    this.countdown = 60;
     this.last_tick = 0;
     this.score_needed = score_needed;
+    this.timerStopped = false;
+    this.canShop = true;
 }
 
 Level.prototype = {
@@ -51,11 +53,6 @@ Level.prototype = {
                 this.player = new Player(this.game, this, element.x, element.y);
                 this.players.add(this.player.sprite);
             }
-            else if(element.name === "enemy"){
-                var enemy = new Enemy(this.game, this, element.x, element.y);
-                this.enemy_objs.push(enemy);
-                this.enemies.add(enemy.sprite);
-            }
             else if(element.name === "chest"){
                 var chest = new Chest(this.game, this, element.x, element.y);
                 this.chest_objs.push(chest);
@@ -75,30 +72,29 @@ Level.prototype = {
         this.scoresprite = this.game.add.text(SCREEN_WIDTH*0.15, SCREEN_HEIGHT*0.05,
             "Score: " + SCORE, {font: "24px Alagard", fill: '#d5aa00'});
 
-
         for(var i=0; i<this.player.health; i++){
             this.hearts.create(SCREEN_WIDTH * 0.23 + i * 32, SCREEN_HEIGHT*0.03, 'heart');
         }
         this.hearts.scale.set(2, 2);
         this.timeframe.scale.set(3, 3);
         this.scoreframe.scale.set(3.5, 3);
+		this.timeframe.fixedToCamera = true;
+		this.scoreframe.fixedToCamera = true;
         this.hearts.fixedToCamera = true;
-        this.timeframe.fixedToCamera = true;
-        this.scoreframe.fixedToCamera = true;
         this.timesprite.fixedToCamera = true;
         this.scoresprite.fixedToCamera = true;
     },
 
     //call all the update functions of sprites
     update: function() {
-        if(this.game.time.now - this.last_tick >= 1000 && this.countdown !== 0){
+        if(this.game.time.now - this.last_tick >= 1000 && this.countdown !== 0 && this.timerStopped === false){
             this.last_tick = this.game.time.now;
             this.countdown = Number(this.countdown) - 1;
             this.timesprite.setText("Timer: " + this.countdown);
         }
 
         this.player.update();
-		if(this.player.health === 0 && this.shop === null){
+		if(this.player.health === 0 && this.shop === null && this.canShop){
 			this.shop = new Shop(this.game, this.level);
 		}
         this.chest_objs.forEach(function(chest) {
@@ -117,5 +113,3 @@ Level.prototype = {
 
 
 };
-
-
