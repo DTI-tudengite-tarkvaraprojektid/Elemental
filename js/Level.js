@@ -1,5 +1,8 @@
-function Level(game){
+function Level(game, name, tileset, gamestate, score_needed){
+    this.gamestate = gamestate;
     this.game = game;
+    this.name = name;
+    this.tileset = tileset;
     this.tilemap = null;
     this.player = null;
     this.enemies = null;
@@ -8,21 +11,21 @@ function Level(game){
     this.background = null;
     this.wall = null;
 	this.shop = null;
-    this.score = 0;
     this.countdown = 10;
     this.last_tick = 0;
+    this.score_needed = score_needed;
 }
 
 Level.prototype = {
 
     //load tilemap here
     create: function(){
-
-        this.tilemap = this.game.add.tilemap('level');
+        console.log(SCORE);
+        this.tilemap = this.game.add.tilemap(this.name);
 
         //the first parameter is the tileset name as specified in Tiled,
         //the second is the key to the asset in game.js
-        this.tilemap.addTilesetImage('tileset1', 'tileset1', 64, 64);
+        this.tilemap.addTilesetImage(this.tileset, this.tileset, 64, 64);
 
         //create layers
         this.background = this.tilemap.createLayer('background');
@@ -35,6 +38,7 @@ Level.prototype = {
 
         this.chest_objs = [];
         this.enemy_objs = [];
+        this.torches = this.game.add.group();
         this.chests = this.game.add.group();
         this.enemies = this.game.add.group();
         this.players = this.game.add.group();
@@ -57,13 +61,19 @@ Level.prototype = {
                 this.chest_objs.push(chest);
                 this.chests.add(chest.sprite);
             }
+            else if(element.name === "torch"){
+                var torch = this.game.add.sprite(element.x, element.y, 'torch');
+                torch.animations.add('flame', [0, 1]);
+                torch.animations.play('flame', 5, true);
+                this.torches.add(torch);
+            }
         }, this);
         this.timeframe = this.game.add.sprite(SCREEN_WIDTH*0.765, SCREEN_HEIGHT* 0.035, 'stats');
         this.timesprite = this.game.add.text(SCREEN_WIDTH*0.8, SCREEN_HEIGHT* 0.05,
             "Timer: " + this.countdown, {font: "24px Alagard", fill: '#d5aa00'});
         this.scoreframe = this.game.add.sprite(SCREEN_WIDTH*0.115, SCREEN_HEIGHT* 0.035, 'stats');
         this.scoresprite = this.game.add.text(SCREEN_WIDTH*0.15, SCREEN_HEIGHT*0.05,
-            "Score: " + this.score, {font: "24px Alagard", fill: '#d5aa00'});
+            "Score: " + SCORE, {font: "24px Alagard", fill: '#d5aa00'});
 
 
         for(var i=0; i<this.player.health; i++){
@@ -88,7 +98,7 @@ Level.prototype = {
         }
 
         this.player.update();
-		if(this.player.health === 0){
+		if(this.player.health === 0 && this.shop === null){
 			this.shop = new Shop(this.game, this.level);
 		}
         this.chest_objs.forEach(function(chest) {
@@ -99,6 +109,10 @@ Level.prototype = {
         this.enemy_objs.forEach(function(enemy){
             enemy.update(this.player);
         }, this);
+
+        if(SCORE >= this.score_needed){
+            this.game.state.start('Game');
+        }
     }
 
 
