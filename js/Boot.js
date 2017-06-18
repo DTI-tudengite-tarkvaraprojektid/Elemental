@@ -19,7 +19,7 @@ Elemental.Boot.prototype = {
         //have the game centered horizontally
         this.scale.pageAlignHorizontally = true;
         this.scale.pageAlignVertically = true;
-
+		this.game.stage.smoothed = false;
         //physics system
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.state.start('Preload');

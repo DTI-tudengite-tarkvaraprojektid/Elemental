@@ -28,11 +28,11 @@ Chest.prototype = {
         if(rand === 1){
             this.item = this.elements[Math.floor(Math.random() * this.elements.length)];
             this.sprite.animations.play('echest');
-            console.log('points');
+            console.log(this.item);
         } else if(rand === 2){
             this.item = this.points[Math.floor(Math.random() * this.points.length)];
             this.sprite.animations.play('chest');
-            console.log('elements');
+            console.log(this.item);
         }
         this.sprite.body.immovable = true;
 
@@ -56,8 +56,8 @@ Chest.prototype = {
     },
 
     setScore: function(){
-        this.level.score = Number(this.level.score) + Number(this.item);
-        this.level.scoresprite.setText("Score: " + this.level.score);
+        SCORE = Number(SCORE) + Number(this.item);
+        this.level.scoresprite.setText("Score: " + SCORE);
     },
 
     giveItem: function(player){
