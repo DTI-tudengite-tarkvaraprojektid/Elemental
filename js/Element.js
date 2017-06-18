@@ -203,7 +203,6 @@ Element.prototype = {
         this.level.chests.forEachAlive(function(chest){
             chest.differentiate = true;
         });
-
     },
 
     //richard
