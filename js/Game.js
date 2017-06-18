@@ -40,6 +40,6 @@ Elemental.Game.prototype = {
             this.game.debug.body(member.sprite);
             this.game.debug.body(member.attackbox);
         }, this);
-    }*/
+    }
 
 };

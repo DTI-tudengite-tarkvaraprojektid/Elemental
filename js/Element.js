@@ -150,14 +150,7 @@ Element.prototype = {
 		//richard
         //More NPCs spawned
         //Take back as many elements you want for free
-				
-			else if (rand === 3){
-			this.sprite.animations.play('enemySpawn');
-			this.level.player.armed = false;
-			this.level.player.armored = false;	
-		} else {
-			this.sprite.animations.play('getElements');
-		}*/
+		*/
 		
 
     },
