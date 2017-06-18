@@ -25,7 +25,7 @@ Elemental.Preload.prototype = {
         this.load.spritesheet('feedback', 'Assets/feedback.png', 64, 64);
         this.load.spritesheet('progress', 'Assets/progress.png', 64, 64);
         this.load.spritesheet('avatar', 'Assets/avatar.png', 64, 64);
-        this.load.spritesheet('challenges', 'Assets/challenges.png', 64, 64);
+        this.load.spritesheet('challenges', 'Assets/challenge.png', 64, 64);
         this.load.spritesheet('art', 'Assets/art.png', 64, 64);
 		this.load.spritesheet('buttons', 'Assets/buttons.png', 79, 16);
 		this.load.spritesheet('shopbtns', 'Assets/shopbtns.png', 192, 64);
@@ -35,12 +35,11 @@ Elemental.Preload.prototype = {
 		this.load.image('exit', 'Assets/exit.png');
 		this.load.image('shop', 'Assets/shop.png');
 		this.load.image('shoptitle', 'Assets/shopbtn.png');
-        /*
-        this.load.spritesheet('levels', 'Assets/levels.png');
-        this.load.spritesheet('luck', 'Assets/luck.png');
+        this.load.spritesheet('levels', 'Assets/levels.png', 64, 64);
+        this.load.spritesheet('luck', 'Assets/luck.png', 64, 64);
 
-        this.load.spritesheet('scoreboard', 'Assets/scoreboard.png');
-        */
+        //this.load.spritesheet('scoreboard', 'Assets/scoreboard.png');
+
 
     },
     create: function() {
