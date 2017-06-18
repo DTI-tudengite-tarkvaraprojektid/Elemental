@@ -7,7 +7,7 @@ function Chest(game, level, x, y){
     this.opened = false;
     this.isEmpty = false;
     //'art',  'levels', , 'progress', 'scoreboard'
-    this.elements = ['actions', 'avatar', 'balance', 'feedback', 'challenges', 'luck'];
+    this.elements = [/*'actions', 'avatar', 'balance', 'feedback',*/ 'art'/*, 'luck'*/];
     this.points = [ '100', '150', '200', '250', '300'];
     this.item = null;
     this.create();
@@ -19,7 +19,7 @@ Chest.prototype = {
     create: function(){
         this.sprite = this.game.add.sprite(this.x, this.y, 'chests');
 
-        this.sprite.differentiate = false;
+        this.sprite.differentiate = true;
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.gravity.y = 500;
         var rand = Math.floor((Math.random() * 2) + 1);

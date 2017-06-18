@@ -103,11 +103,15 @@ Element.prototype = {
             this.level.canShop = false;
         }
     },
+	//DONE
 
-    //richard
     art: function(){
         //UI is low quality
-
+		this.level.timeframe.destroy();
+		this.level.timesprite.font = 'Times New Roman';
+		this.level.scoresprite.font = 'Times New Roman';
+		this.level.scoreframe.destroy();
+		//DONE
     },
     //krister
     avatar: function(){
@@ -171,6 +175,8 @@ Element.prototype = {
         }
         //timer is stopped
         //All NPCs removed
+		//DONE
+		
     },
 
     feedback: function(){
@@ -209,9 +215,25 @@ Element.prototype = {
 
     //richard
     progress: function(){
-        //all chests become empty
+		//all chests become empty
         //no more points awarded
-    },
+		//to be finished
+		var rand = Math.floor((Math.random() * 3) + 1);
+		if(rand === 1){
+            this.sprite.animations.play('allempty');
+            this.level.chests.forEachAlive(function(chest){
+			chest.isEmpty = true;
+			
+			});
+        } else {
+            this.sprite.animations.play('zeropoints');
+			this.level.chest_objs.forEach(function(chest){
+				chest.isEmpty = true;
+				chest.sprite.opened = true;
+			
+			});
+		}
+	},
 
     scoreboard: function(){
         //scoreboard removed
