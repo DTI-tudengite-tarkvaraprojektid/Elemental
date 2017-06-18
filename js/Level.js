@@ -1,5 +1,8 @@
-function Level(game){
+function Level(game, name, tileset, gamestate, score_needed){
+    this.gamestate = gamestate;
     this.game = game;
+    this.name = name;
+    this.tileset = tileset;
     this.tilemap = null;
     this.player = null;
     this.enemies = null;
@@ -11,6 +14,7 @@ function Level(game){
     this.score = 0;
     this.countdown = 10;
     this.last_tick = 0;
+    this.score_needed = score_needed;
 }
 
 Level.prototype = {
@@ -18,11 +22,11 @@ Level.prototype = {
     //load tilemap here
     create: function(){
 
-        this.tilemap = this.game.add.tilemap('level');
+        this.tilemap = this.game.add.tilemap(this.name);
 
         //the first parameter is the tileset name as specified in Tiled,
         //the second is the key to the asset in game.js
-        this.tilemap.addTilesetImage('tileset1', 'tileset1', 64, 64);
+        this.tilemap.addTilesetImage(this.tileset, this.tileset, 64, 64);
 
         //create layers
         this.background = this.tilemap.createLayer('background');
@@ -99,6 +103,10 @@ Level.prototype = {
         this.enemy_objs.forEach(function(enemy){
             enemy.update(this.player);
         }, this);
+
+        if(this.score >= this.score_needed){
+            this.game.state.start('Game');
+        }
     }
 
 

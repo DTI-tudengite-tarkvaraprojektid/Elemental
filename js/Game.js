@@ -1,12 +1,23 @@
 var Elemental = Elemental || {};
 
 //title screen
-Elemental.Game = function(){this.level = null};
+Elemental.Game = function(){
+    this.level = null;
+    this.index = 0;
+    this.levels = ['level', 'level2', 'level3'];
+};
 
 Elemental.Game.prototype = {
 
     create: function () {
-        this.level = new Level(this.game);
+
+        if(this.level === null){
+            this.level = new Level(this.game, 'level', 'tileset1', this, 150);
+        } if(this.level.score >= 150){
+            this.level = new Level(this.game, 'level2', 'tileset2', this, 400);
+        } if(this.level.score >= 400){
+            this.level = new Level(this.game, 'level3', 'tileset3', this, 1000);
+        }
         this.level.create();
     },
 
