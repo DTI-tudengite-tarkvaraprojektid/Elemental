@@ -90,9 +90,8 @@ Level.prototype = {
             this.countdown = Number(this.countdown) - 1;
             this.timesprite.setText("Timer: " + this.countdown);
         }
-
         this.player.update();
-		if(this.player.health === 0){
+		if(this.player.health === 0 && this.shop === null){
 			this.shop = new Shop(this.game, this.level);
 		}
         this.chest_objs.forEach(function(chest) {
