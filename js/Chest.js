@@ -56,8 +56,8 @@ Chest.prototype = {
     },
 
     setScore: function(){
-        this.level.score = Number(this.level.score) + Number(this.item);
-        this.level.scoresprite.setText("Score: " + this.level.score);
+        SCORE = Number(SCORE) + Number(this.item);
+        this.level.scoresprite.setText("Score: " + SCORE);
     },
 
     giveItem: function(player){

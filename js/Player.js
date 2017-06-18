@@ -71,7 +71,6 @@ Player.prototype = {
 
     update: function(){
 
-        console.log(this.health);
         this.game.physics.arcade.collide(this.sprite, this.level.wall);
 		this.game.physics.arcade.overlap(this.sprite, this.level.chests, this.interact, null, this);
 
@@ -226,7 +225,6 @@ Player.prototype = {
 
 			}
         }
-        console.log(this.sprite.animations.currentAnim.frame);
         if (this.sprite.animations.currentAnim.frame === 1 ||
             this.sprite.animations.currentAnim.frame === 2) {
             this.attackbox.body.x = this.sprite.body.x + this.sprite.width * 0.35;
@@ -267,9 +265,7 @@ Player.prototype = {
     }
     //all other functionalities here
 
-    };
-
-
+};
 
 
 
