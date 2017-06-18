@@ -11,7 +11,7 @@
  </layer>
  <layer name="wall" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJztVEEKwCAM60X2/x972qVUDWllGTSQi9Aa05phZqOZoipaXw6vviegAm75x7w18gjRh3h7y/OTvuhef5bxiNV36lGxq0jtn/7vV9jNweeLGqL8U4DPl9W+V+UYW6/2P5h8Rntlaldk9VXND9XX5DkB0qAGmQ==
+   eJztVcsKwCAM60X8/z/eaTBK1D4UM2ggF6E1RhubiLRiiqwofTm8+jogA0755z0r8qcb9Vm8PeX5Sh/aV695tHl9RfosPXa8VUvtn+b3Fmb3oPOFDSj/GKDzZfTeI7k9yrLIjLPNRySfrb0ytZn/w9N/p7avvmKcD1UPBq4=
   </data>
  </layer>
  <objectgroup name="spawners">
@@ -35,7 +35,7 @@
   <object id="30" name="reverse" x="784.848" y="951.515" width="36.3636" height="190.909"/>
   <object id="31" name="scorechest" x="936.364" y="524.241" width="36.3636" height="24.2424"/>
   <object id="32" name="enemy" x="609.09" y="342.424" width="63.6364" height="36.3636"/>
-  <object id="33" name="reverse" x="800" y="251.516" width="36.3636" height="190.909"/>
+  <object id="33" name="reverse" x="790.909" y="257.577" width="36.3636" height="190.909"/>
   <object id="34" name="reverse" x="512.121" y="254.545" width="36.3636" height="190.909"/>
   <object id="35" name="enemy" x="1466.67" y="1033.33" width="63.6364" height="36.3636"/>
   <object id="36" name="reverse" x="1218.18" y="957.576" width="36.3636" height="190.909"/>
