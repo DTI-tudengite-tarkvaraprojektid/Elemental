@@ -65,6 +65,7 @@ Shop.prototype = {
         this.progress = this.shopElements.create(SCREEN_WIDTH*0.65, SCREEN_HEIGHT*0.62, 'shopbtns');
         this.progress.animations.add('progress', [8]);
         this.progress.animations.play('progress');
+        /*
         var amount = 1;
         this.level.player.elements.forEach(function(element){
             console.log('element');
@@ -135,7 +136,7 @@ Shop.prototype = {
                 }
             }
         }, this);
-
+        */
 		this.exit.inputEnabled = true;
 		this.exit.events.onInputDown.add(this.close, this);
 		this.exit.events.onInputOver.add(this.over, this);
