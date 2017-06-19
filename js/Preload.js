@@ -34,6 +34,7 @@ Elemental.Preload.prototype = {
 		this.load.spritesheet('shopbtns', 'Assets/shopbtns.png', 192, 64);
 		this.load.spritesheet('backbtn', 'Assets/backbtns.png', 28, 16);
 
+		this.load.image('logo', 'Assets/logo1.png');
         this.load.image('heart', 'Assets/heart.png');
         this.load.image('stats', 'Assets/stats.png');
 		this.load.image('exit', 'Assets/exit.png');
