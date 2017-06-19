@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="2017.05.26" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="64" tileheight="64" nextobjectid="46">
+<map version="2017.05.26" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="64" tileheight="64" nextobjectid="50">
  <tileset firstgid="1" name="tileset3" tilewidth="64" tileheight="64" tilecount="8" columns="2">
   <image source="tileset3.png" width="128" height="256"/>
  </tileset>
@@ -20,11 +20,11 @@
   <object id="4" name="enemy" x="1254.55" y="1093.94" width="69.697" height="54.5455"/>
   <object id="5" name="enemy" x="139.394" y="900" width="69.697" height="54.5455"/>
   <object id="6" name="enemy" x="2345.45" y="881.818" width="69.697" height="54.5455"/>
-  <object id="7" name="elementchest" x="1342.42" y="554.545" width="69.697" height="48.4848"/>
-  <object id="8" name="scorechest" x="1136.36" y="790.909" width="69.697" height="48.4848"/>
-  <object id="9" name="elementchest" x="1129.84" y="1391.59" width="69.697" height="48.4848" rotation="-1.11544"/>
-  <object id="10" name="elementchest" x="2338.93" y="955.228" width="69.697" height="48.4848" rotation="-1.11544"/>
-  <object id="11" name="elementchest" x="132.868" y="940.077" width="69.697" height="48.4848" rotation="-1.11544"/>
+  <object id="7" name="elementchest" type="allempty" x="1342.42" y="554.545" width="69.697" height="48.4848"/>
+  <object id="8" name="elementchest" type="enemyKill" x="1078.79" y="793.939" width="69.697" height="48.4848"/>
+  <object id="9" name="elementchest" type="armor" x="1129.84" y="1391.59" width="69.697" height="48.4848" rotation="-1.11544"/>
+  <object id="10" name="elementchest" type="noArmor" x="2338.93" y="955.228" width="69.697" height="48.4848" rotation="-1.11544"/>
+  <object id="11" name="elementchest" type="health" x="154.08" y="976.441" width="69.697" height="48.4848" rotation="-1.11544"/>
   <object id="12" name="scorechest" x="1002.56" y="246.138" width="69.697" height="48.4848" rotation="-1.11544"/>
   <object id="13" name="scorechest" x="1472.26" y="230.986" width="69.697" height="48.4848" rotation="-1.11544"/>
   <object id="15" name="player" x="130.303" y="1230.3" width="81.8182" height="42.4242"/>
@@ -44,7 +44,7 @@
   <object id="31" name="reverse" x="1787.88" y="203.031" width="42.4242" height="184.848"/>
   <object id="32" name="reverse" x="721.212" y="203.03" width="42.4242" height="184.848"/>
   <object id="33" name="reverse" x="384.848" y="193.94" width="42.4242" height="184.848"/>
-  <object id="34" name="elementchest" x="2402.56" y="1337.05" width="69.697" height="48.4848" rotation="-1.11544"/>
+  <object id="34" name="elementchest" type="enemySpawn" x="2402.56" y="1337.05" width="69.697" height="48.4848" rotation="-1.11544"/>
   <object id="35" name="torch" x="66.3638" y="251.333" width="129.333" height="130.667"/>
   <object id="36" name="torch" x="317.575" y="1082.67" width="129.333" height="130.667"/>
   <object id="37" name="torch" x="1026.42" y="387.697" width="129.333" height="130.667"/>
@@ -55,6 +55,10 @@
   <object id="42" name="torch" x="2372.36" y="257.394" width="129.333" height="130.667"/>
   <object id="43" name="reverse" x="1427.27" y="1042.43" width="42.4242" height="184.848"/>
   <object id="44" name="reverse" x="1093.94" y="1033.33" width="42.4242" height="184.848"/>
-  <object id="45" name="elementchest" x="1341.96" y="1158.26" width="69.697" height="48.4848" rotation="-1.11544"/>
+  <object id="45" name="elementchest" type="sword" x="1332.87" y="1103.71" width="69.697" height="48.4848" rotation="-1.11544"/>
+  <object id="46" name="elementchest" type="levels" x="2060.6" y="548.484" width="69.697" height="48.4848"/>
+  <object id="47" name="elementchest" type="shop" x="475.753" y="300" width="69.697" height="48.4848"/>
+  <object id="48" name="elementchest" type="zeropoints" x="412.117" y="545.454" width="69.697" height="48.4848"/>
+  <object id="49" name="elementchest" type="getElements" x="1887.87" y="269.697" width="69.697" height="48.4848"/>
  </objectgroup>
 </map>
