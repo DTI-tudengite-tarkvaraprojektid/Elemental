@@ -225,17 +225,16 @@ Player.prototype = {
 
 			}
         }
-        if (this.sprite.animations.currentAnim.frame === 1 ||
-            this.sprite.animations.currentAnim.frame === 2) {
-            this.attackbox.body.x = this.sprite.body.x + this.sprite.width * 0.35;
-            this.attackbox.body.y = this.sprite.body.y + this.sprite.body.height * 0.4;
-            var self = this;
-            this.game.physics.arcade.overlap(this.attackbox, this.level.enemies, function (p, e) {
-                e.health--;
-                e.isHit = true;
-                console.log(e.health);
-            }, null, this);
-        }
+
+        this.attackbox.body.x = this.sprite.body.x + this.sprite.width * 0.35;
+        this.attackbox.body.y = this.sprite.body.y + this.sprite.body.height * 0.4;
+        var self = this;
+        this.game.physics.arcade.overlap(this.attackbox, this.level.enemies, function (p, e) {
+            e.health--;
+            e.isHit = true;
+            console.log(e.health);
+        }, null, this);
+        
         this.sprite.animations.currentAnim.onComplete.add(function () {
             this.attacking = false;
         }, this);
