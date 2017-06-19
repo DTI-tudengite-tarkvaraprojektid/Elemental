@@ -7,7 +7,7 @@ function Chest(game, level, x, y){
     this.opened = false;
     this.isEmpty = false;
     //'art',  'levels', , 'progress', 'scoreboard'
-    this.elements = ['actions', 'avatar', 'balance', 'feedback', 'progress', 'luck'];
+    this.elements = ['actions', 'avatar', 'balance', 'feedback', 'progress', 'luck', 'art'];
     this.points = [ '100', '150', '200', '250', '300'];
     this.item = null;
     this.create();
