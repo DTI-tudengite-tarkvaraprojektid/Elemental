@@ -6,10 +6,8 @@ function Chest(game, level, x, y, chesttype, elementname){
     this.sprite = null;
     this.opened = false;
     this.isEmpty = false;
-    //'art',  'levels', , 'progress', 'scoreboard'
-    //this.elements = ['actions', 'avatar', 'balance', 'feedback', 'progress', 'luck'];
-    this.elements = ['balance'];
-	this.elementtype = elementname;
+    this.elements = ['actions', 'avatar', 'balance', 'feedback', 'progress', 'luck', 'art', 'levels', 'challenges'];
+	this.elementname = elementname;
     this.points = [ '100', '150', '200', '250', '300'];
     this.chest_type = chesttype;
     this.item = null;
@@ -31,7 +29,38 @@ Chest.prototype = {
         this.sprite.animations.add('echest', [2]);
         this.sprite.animations.add('echest_open', [3]);
         if(this.chest_type === 'elementchest'){
-            this.item = this.elements[Math.floor(Math.random() * this.elements.length)];
+            if(this.elementname === 'lock' || this.elementname === 'shop' || this.elementname === 'jump' ||
+                this.elementname === 'move'){
+                this.item = 'actions';
+            }
+            else if(this.elementname === 'art' || this.elementname === 'text'){
+                this.item = 'art';
+            }
+            else if(this.elementname === 'avatar'){
+                this.item = 'avatar';
+            }
+            else if(this.elementname === 'noArmor' || this.elementname === 'noSword' ||
+                this.elementname === 'enemySpawn' || this.elementname === 'armor' || this.elementname === 'sword' ||
+                this.elementname === 'getElements'){
+                this.item = 'balance';
+            }
+            else if(this.elementname === 'timer' || this.elementname === 'health' ||
+                this.elementname === 'points'){
+                this.item = 'feedback';
+            }
+            else if(this.elementname === 'allempty' || this.elementname === 'zeropoints'){
+                this.item = 'progress';
+            }
+            else if(this.elementname === 'levels'){
+                this.item = 'levels';
+            }
+            else if(this.elementname === 'enemyKill' || this.elementname === 'freeze'){
+                this.item = 'challenges';
+            }
+            else if(this.elementname === 'luck'){
+                this.item = 'luck';
+            }
+
             if(this.sprite.differentiate){
                 this.sprite.animations.play('echest');
             } else {
@@ -95,7 +124,7 @@ Chest.prototype = {
     },
 
     giveItem: function(player){
-        var element = new Element(player.inventory.length * 35 + 35, 100, this.item, this.game, this.level, this.elementtype);
+        var element = new Element(player.inventory.length * 35 + 35, 100, this.item, this.game, this.level, this.elementname);
         player.elements.push(element);
         player.inventory.add(element.sprite);
     }

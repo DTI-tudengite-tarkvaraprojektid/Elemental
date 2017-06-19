@@ -10,7 +10,7 @@ Elemental.Game = function(){
 Elemental.Game.prototype = {
 
     create: function () {
-
+        COUNTDOWN = INIT_COUNTDOWN;
         if(this.level === null){
             this.level = new Level(this.game, 'level', 'tileset1', this, 150);
         } if(SCORE >= 150){
