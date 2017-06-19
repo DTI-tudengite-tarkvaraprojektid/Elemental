@@ -220,18 +220,23 @@ Element.prototype = {
 		var rand = Math.floor((Math.random() * 3) + 1);
 		if(rand === 1){
             this.sprite.animations.play('allempty');
-            this.level.chests.forEachAlive(function(chest){
-			chest.isEmpty = true;
+            this.level.chest_objs.forEach(function(chest){
+                if (chest.item.slice(2, 3) === "0") {
+                    chest.item = '000';
+                } else {
+                    chest.item = '';
+                }
+
 			});
         } else {
-			this.level.chest_objs.forEach(function(c){
-					console.log(c);
-					if (c.item.slice(2, 3) === "0") {
-						c.item = '0'; 
-					}
+            this.sprite.animations.play('zeropoints');
+		    this.level.chest_objs.forEach(function(c){
+                if (c.item.slice(2, 3) === "0") {
+                    c.item = '000';
+                }
 			});
 			
-			this.sprite.animations.play('zeropoints');
+
 		}
 	},
 
