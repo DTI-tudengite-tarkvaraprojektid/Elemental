@@ -19,17 +19,17 @@
   <object id="2" name="enemy" x="1454.55" y="809.091" width="63.6364" height="36.3636"/>
   <object id="4" name="enemy" x="2036.36" y="887.879"/>
   <object id="5" name="elementchest" type="sword" x="1009.09" y="972.727"/>
-  <object id="6" name="scorechest" x="142.424" y="215.152"/>
-  <object id="7" name="scorechest" x="2275.76" y="278.788"/>
-  <object id="10" name="elementchest" type="noSword" x="618.182" y="842.424"/>
+  <object id="6" name="scorechest" x="109.091" y="181.819" width="100" height="63.6364"/>
+  <object id="7" name="scorechest" x="2281.82" y="257.576"/>
+  <object id="10" name="elementchest" type="noSword" x="636.364" y="730.303"/>
   <object id="15" name="reverse" x="1284.85" y="712.121" width="36.3636" height="190.909"/>
   <object id="16" name="reverse" x="1684.85" y="706.061" width="36.3636" height="190.909"/>
   <object id="17" name="reverse" x="1857.58" y="824.242" width="36.3636" height="190.909"/>
   <object id="18" name="reverse" x="2190.91" y="830.303" width="36.3636" height="190.909"/>
-  <object id="19" name="enemy" x="1881.82" y="463.636"/>
+  <object id="19" name="enemy" x="1863.64" y="387.878"/>
   <object id="22" name="reverse" x="1733.33" y="327.273" width="36.3636" height="190.909"/>
   <object id="24" name="reverse" x="1939.39" y="321.212" width="36.3636" height="190.909"/>
-  <object id="26" name="elementchest" type="art" x="1475.76" y="336.363"/>
+  <object id="26" name="elementchest" type="art" x="1466.67" y="275.757"/>
   <object id="27" name="enemy" x="566.667" y="1003.03"/>
   <object id="29" name="reverse" x="251.515" y="960.606" width="36.3636" height="190.909"/>
   <object id="30" name="reverse" x="784.848" y="951.515" width="36.3636" height="190.909"/>
@@ -47,10 +47,9 @@
   <object id="48" name="torch" x="1921.21" y="836.364" width="124.242" height="124.242"/>
   <object id="49" name="torch" x="963.636" y="830.303" width="124.242" height="124.242"/>
   <object id="50" name="torch" x="193.939" y="960.606" width="124.242" height="124.242"/>
-  <object id="52" name="elementchest" type="lock" x="2163.64" y="639.394"/>
-  <object id="53" name="elementchest" type="points" x="2118.19" y="945.455"/>
-  <object id="54" name="elementchest" type="points" x="2118.19" y="945.455"/>
-  <object id="55" name="elementchest" type="timer" x="1642.43" y="1075.76"/>
-  <object id="56" name="elementchest" type="move" x="1606.06" y="842.424"/>
+  <object id="52" name="elementchest" type="lock" x="2172.73" y="572.727"/>
+  <object id="53" name="elementchest" type="points" x="2103.04" y="906.061"/>
+  <object id="55" name="elementchest" type="timer" x="1642.43" y="1030.31"/>
+  <object id="56" name="elementchest" type="move" x="1612.12" y="781.818"/>
  </objectgroup>
 </map>
