@@ -126,8 +126,8 @@ Element.prototype = {
     },
 
     balance: function(){
-        var rand = Math.floor((Math.random() * 4) + 1);
-		if(rand === 1){
+       
+		if(this.elementname === 'noArmor'){
 			if(this.level.player.armored){
 			this.sprite.animations.play('noArmor');
 			
@@ -137,7 +137,7 @@ Element.prototype = {
 				this.level.player.armored = true;
 			}
 		
-		} else if (rand === 2){
+		} else if (this.elementname === 'noSword'){
 			if(this.level.player.armed){
 				this.sprite.animations.play('noSword');
 				this.level.player.armed = false;	
@@ -147,7 +147,7 @@ Element.prototype = {
 			}
 						 
 
-		} else if (rand === 3){
+		} else if (this.elementname === 'enemySpawn'){
 			this.sprite.animations.play('enemySpawn');
             this.level.tilemap.objects['spawners'].forEach(function(element){
                 if(element.name === "enemy"){
@@ -157,7 +157,7 @@ Element.prototype = {
 
                 }
             }, this);
-		} else if(rand === 4){
+		} else if(this.elementname === 'getElements'){
 			this.sprite.animations.play('getElements');
 			//choose from items displayed in shop (open shop, 0 price??)
 		}
@@ -167,11 +167,10 @@ Element.prototype = {
 
     //richard
     challenge: function(){
-        var rand = Math.floor((Math.random() * 2) + 1);
-        if(rand === 1){
+        if(this.elementname === 'freeze'){
             this.sprite.animations.play('freeze');
             this.level.timerStopped = true;
-        } else if (rand === 2){
+        } else if (this.elementname === 'enemyKill'){
             this.sprite.animations.play('enemyKill');
             this.level.enemies.destroy();
             this.level.enemies = this.game.add.group();
@@ -187,14 +186,13 @@ Element.prototype = {
         // health bar removed
         // timer removed(still ticking)
         // points removed
-        var rand = Math.floor((Math.random() * 3) + 1);
-        if(rand === 1){
+        if(this.elementname === 'timer'){
             this.sprite.animations.play('timer');
             this.level.timesprite.kill();
-        } else if(rand === 2){
+        } else if(this.elementname === 'points'){
             this.sprite.animations.play('points');
             this.level.scoresprite.kill();
-        } else if(rand === 3){
+        } else if(this.elementname === 'health'){
             this.sprite.animations.play('health');
             this.level.hearts.forEachAlive(function(heart){
                 heart.kill();
@@ -210,10 +208,12 @@ Element.prototype = {
 
     luck: function(){
         //chests with points and elements differentiated
-        this.sprite.animations.play('luck');
-        this.level.chests.forEachAlive(function(chest){
-            chest.differentiate = true;
-        });
+		if (this.elementname === 'luck') {
+			this.sprite.animations.play('luck');
+			this.level.chests.forEachAlive(function(chest){
+				chest.differentiate = true;
+			});
+		}
     },
 
     //richard
@@ -221,8 +221,8 @@ Element.prototype = {
 		//all chests become empty: DONE
         //no more points awarded: DONE: 
 		//Level peab jätkuma. mõlemad suudavad takistada edasi liikumist.
-		var rand = Math.floor((Math.random() * 2) + 1);
-		if(rand === 1){
+
+		if(this.elementname === 'allempty'){
             this.sprite.animations.play('allempty');
             this.level.chest_objs.forEach(function(chest){
                 if (chest.item.slice(2, 3) === "0") {
@@ -232,7 +232,7 @@ Element.prototype = {
                 }
 			
 			});
-        } else {
+        } else if (this.elementname === 'zeropoints'){
             this.sprite.animations.play('zeropoints');
 		    this.level.chest_objs.forEach(function(c){
                 if (c.item.slice(2, 3) === "0") {
