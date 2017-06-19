@@ -17,6 +17,8 @@ Elemental.Game.prototype = {
             this.level = new Level(this.game, 'level2', 'tileset2', this, 600);
         } if(SCORE >= 600){
             this.level = new Level(this.game, 'level3', 'tileset3', this, 1000);
+        } if(SCORE >= 1000){
+            this.level = new Level(this.game, 'level4', 'tileset4', this, 2000);
         }
         this.level.create();
     },

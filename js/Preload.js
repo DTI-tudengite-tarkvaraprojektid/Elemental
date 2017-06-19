@@ -9,11 +9,13 @@ Elemental.Preload.prototype = {
         this.load.tilemap('level', 'Assets/maps/level_1.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.tilemap('level2', 'Assets/maps/level_2.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.tilemap('level3', 'Assets/maps/level_3.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap('level4', 'Assets/maps/level_4.json', null, Phaser.Tilemap.TILED_JSON);
 
-        this.load.image('tiles', 'Assets/maps/tiles.png');
         this.load.image('tileset1', 'Assets/maps/tileset1.png');
         this.load.image('tileset2', 'Assets/maps/tileset2.png');
         this.load.image('tileset3', 'Assets/maps/tileset3.png');
+        this.load.image('tileset4', 'Assets/maps/tileset4.png');
+
         this.load.spritesheet('torch', 'Assets/flames.png', 128, 128);
         this.load.spritesheet('chests', 'Assets/chests.png', 84, 64);
 
