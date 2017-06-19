@@ -5,8 +5,10 @@ function Element(x, y, name, game, level){
     this.category = name;
     this.game = game;
     this.level = level;
-    this.create();
 	this.elementname = "";
+	this.levelCD = 0;
+    this.create();
+	
 
 
 }
@@ -217,7 +219,7 @@ Element.prototype = {
 		//all chests become empty: DONE
         //no more points awarded: DONE: 
 		//Level peab jätkuma. mõlemad suudavad takistada edasi liikumist.
-		var rand = Math.floor((Math.random() * 3) + 1);
+		var rand = Math.floor((Math.random() * 2) + 1);
 		if(rand === 1){
             this.sprite.animations.play('allempty');
             this.level.chest_objs.forEach(function(chest){
@@ -226,7 +228,7 @@ Element.prototype = {
                 } else {
                     chest.item = '';
                 }
-
+			
 			});
         } else {
             this.sprite.animations.play('zeropoints');
@@ -236,7 +238,7 @@ Element.prototype = {
                 }
 			});
 			
-
+			setTimeout(function(){ this.game.state.start('Game') }, 5000);
 		}
 	},
 

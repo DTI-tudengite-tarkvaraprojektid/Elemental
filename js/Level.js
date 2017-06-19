@@ -11,7 +11,6 @@ function Level(game, name, tileset, gamestate, score_needed){
     this.background = null;
     this.wall = null;
 	this.shop = null;
-    this.countdown = 60;
     this.last_tick = 0;
     this.score_needed = score_needed;
     this.timerStopped = false;
@@ -67,7 +66,7 @@ Level.prototype = {
         }, this);
         this.timeframe = this.game.add.sprite(SCREEN_WIDTH*0.765, SCREEN_HEIGHT* 0.035, 'stats');
         this.timesprite = this.game.add.text(SCREEN_WIDTH*0.8, SCREEN_HEIGHT* 0.05,
-            "Timer: " + this.countdown, {font: "24px Alagard", fill: '#d5aa00'});
+            "Timer: " + COUNTDOWN, {font: "24px Alagard", fill: '#d5aa00'});
         this.scoreframe = this.game.add.sprite(SCREEN_WIDTH*0.115, SCREEN_HEIGHT* 0.035, 'stats');
         this.scoresprite = this.game.add.text(SCREEN_WIDTH*0.15, SCREEN_HEIGHT*0.05,
             "Score: " + SCORE, {font: "24px Alagard", fill: '#d5aa00'});
@@ -87,10 +86,13 @@ Level.prototype = {
 
     //call all the update functions of sprites
     update: function() {
-        if(this.game.time.now - this.last_tick >= 1000 && this.countdown !== 0 && this.timerStopped === false){
+        if(this.game.time.now - this.last_tick >= 1000 && COUNTDOWN !== 0 && this.timerStopped === false){
             this.last_tick = this.game.time.now;
-            this.countdown = Number(this.countdown) - 1;
-            this.timesprite.setText("Timer: " + this.countdown);
+            COUNTDOWN = Number(COUNTDOWN) - 1;
+            this.timesprite.setText("Timer: " + COUNTDOWN);
+			if (COUNTDOWN === 0) {
+				this.game.state.start('Boot');
+			}
         }
 
         this.player.update();
