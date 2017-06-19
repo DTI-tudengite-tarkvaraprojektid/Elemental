@@ -214,23 +214,24 @@ Element.prototype = {
 
     //richard
     progress: function(){
-		//all chests become empty
-        //no more points awarded
-		//to be finished
+		//all chests become empty: DONE
+        //no more points awarded: DONE: 
+		//Level peab jätkuma. mõlemad suudavad takistada edasi liikumist.
 		var rand = Math.floor((Math.random() * 3) + 1);
 		if(rand === 1){
             this.sprite.animations.play('allempty');
             this.level.chests.forEachAlive(function(chest){
 			chest.isEmpty = true;
-			
 			});
         } else {
-            this.sprite.animations.play('zeropoints');
-			this.level.chest_objs.forEach(function(chest){
-				chest.isEmpty = true;
-				chest.sprite.opened = true;
-			
+			this.level.chest_objs.forEach(function(c){
+					console.log(c);
+					if (c.item.slice(2, 3) === "0") {
+						c.item = '0'; 
+					}
 			});
+			
+			this.sprite.animations.play('zeropoints');
 		}
 	},
 

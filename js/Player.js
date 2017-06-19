@@ -210,6 +210,7 @@ Player.prototype = {
 	
 	interact: function(player, chest){
 		if (this.openChests.isDown && !chest.isEmpty && this.chestOpen){
+			console.log(chest);
 			chest.opened = true;
 		}
 	},

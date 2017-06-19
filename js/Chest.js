@@ -7,7 +7,7 @@ function Chest(game, level, x, y){
     this.opened = false;
     this.isEmpty = false;
     //'art',  'levels', , 'progress', 'scoreboard'
-    this.elements = [/*'actions', 'avatar', 'balance', 'feedback',*/ 'art'/*, 'luck'*/];
+    this.elements = [/*'actions', 'avatar', 'balance', 'feedback',*/ 'progress'/*, 'luck'*/];
     this.points = [ '100', '150', '200', '250', '300'];
     this.item = null;
     this.create();
@@ -18,7 +18,6 @@ Chest.prototype = {
 
     create: function(){
         this.sprite = this.game.add.sprite(this.x, this.y, 'chests');
-
         this.sprite.differentiate = true;
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.gravity.y = 500;
@@ -50,7 +49,7 @@ Chest.prototype = {
         this.game.physics.arcade.collide(this.sprite, this.level.wall);
         if(this.sprite.opened && !this.sprite.locked){
             this.sprite.body.gravity.y = 0;
-            if(this.item.slice(2, 3) === '0'){
+            if(this.item.slice(2, 3) === '0' || this.item.slice(0,1) === '0'){
                 this.setScore();
                 this.sprite.animations.play('chest_open');
             } else {
@@ -75,7 +74,7 @@ Chest.prototype = {
             }
         } */
         if(!this.sprite.opened && !this.sprite.locked){
-            if(this.item.slice(2, 3) === '0'){
+            if(this.item.slice(2, 3) === '0' || this.item.slice(0, 1) === '0'){
                 this.sprite.animations.play('chest');
             } else {
                 if(this.sprite.differentiate){
