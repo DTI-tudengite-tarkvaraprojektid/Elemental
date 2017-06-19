@@ -25,7 +25,7 @@ Elemental.Game.prototype = {
         this.level.update();
 
 
-    },
+    }/*,
 
 	
     render: function (){
@@ -40,5 +40,5 @@ Elemental.Game.prototype = {
             this.game.debug.body(member.attackbox);
         }, this);
     }
-
+    */
 };
