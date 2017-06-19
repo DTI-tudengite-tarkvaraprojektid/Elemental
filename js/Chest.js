@@ -1,4 +1,4 @@
-function Chest(game, level, x, y){
+function Chest(game, level, x, y, chesttype){
     this.game = game;
     this.level = level;
     this.x = x;
@@ -9,6 +9,7 @@ function Chest(game, level, x, y){
     //'art',  'levels', , 'progress', 'scoreboard'
     this.elements = ['actions', 'avatar', 'balance', 'feedback', 'progress', 'luck'];
     this.points = [ '100', '150', '200', '250', '300'];
+    this.chest_type = chesttype;
     this.item = null;
     this.create();
 
@@ -27,14 +28,14 @@ Chest.prototype = {
         this.sprite.animations.add('chest_open', [1]);
         this.sprite.animations.add('echest', [2]);
         this.sprite.animations.add('echest_open', [3]);
-        if(rand === 1){
+        if(this.chest_type === 'elementchest'){
             this.item = this.elements[Math.floor(Math.random() * this.elements.length)];
             if(this.sprite.differentiate){
                 this.sprite.animations.play('echest');
             } else {
                 this.sprite.animations.play('chest');
             }
-        } else if(rand === 2){
+        } else if(this.chest_type === 'scorechest'){
             this.item = this.points[Math.floor(Math.random() * this.points.length)];
             this.sprite.animations.play('chest');
         }

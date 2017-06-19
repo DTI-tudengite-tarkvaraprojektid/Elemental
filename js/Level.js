@@ -53,8 +53,8 @@ Level.prototype = {
                 this.player = new Player(this.game, this, element.x, element.y);
                 this.players.add(this.player.sprite);
             }
-            else if(element.name === "chest"){
-                var chest = new Chest(this.game, this, element.x, element.y);
+            else if(element.name === "scorechest" || element.name === "elementchest"){
+                var chest = new Chest(this.game, this, element.x, element.y, element.name);
                 this.chest_objs.push(chest);
                 this.chests.add(chest.sprite);
             }
