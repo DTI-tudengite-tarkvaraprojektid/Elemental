@@ -36,8 +36,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":124.242,
-                 "y":1075.76
+                 "x":142.424,
+                 "y":984.851
                 }, 
                 {
                  "height":36.3636,
@@ -66,7 +66,7 @@
                  "id":5,
                  "name":"elementchest",
                  "rotation":0,
-                 "type":"",
+                 "type":"sword",
                  "visible":true,
                  "width":0,
                  "x":1009.09,
@@ -99,7 +99,7 @@
                  "id":10,
                  "name":"elementchest",
                  "rotation":0,
-                 "type":"",
+                 "type":"noSword",
                  "visible":true,
                  "width":0,
                  "x":618.182,
@@ -187,7 +187,7 @@
                  "id":26,
                  "name":"elementchest",
                  "rotation":0,
-                 "type":"",
+                 "type":"art",
                  "visible":true,
                  "width":0,
                  "x":1475.76,
@@ -201,8 +201,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":560.606,
-                 "y":1039.39
+                 "x":566.667,
+                 "y":1003.03
                 }, 
                 {
                  "height":190.909,
@@ -229,9 +229,9 @@
                 {
                  "height":24.2424,
                  "id":31,
-                 "name":"scorechest",
+                 "name":"elementchest",
                  "rotation":0,
-                 "type":"",
+                 "type":"armor",
                  "visible":true,
                  "width":36.3636,
                  "x":936.364,
@@ -278,8 +278,8 @@
                  "type":"",
                  "visible":true,
                  "width":63.6364,
-                 "x":1466.67,
-                 "y":1033.33
+                 "x":1478.79,
+                 "y":972.724
                 }, 
                 {
                  "height":190.909,
@@ -385,11 +385,55 @@
                  "id":52,
                  "name":"elementchest",
                  "rotation":0,
-                 "type":"",
+                 "type":"lock",
                  "visible":true,
                  "width":0,
                  "x":2163.64,
                  "y":639.394
+                }, 
+                {
+                 "height":0,
+                 "id":53,
+                 "name":"elementchest",
+                 "rotation":0,
+                 "type":"points",
+                 "visible":true,
+                 "width":0,
+                 "x":2118.19,
+                 "y":945.455
+                }, 
+                {
+                 "height":0,
+                 "id":54,
+                 "name":"elementchest",
+                 "rotation":0,
+                 "type":"points",
+                 "visible":true,
+                 "width":0,
+                 "x":2118.19,
+                 "y":945.455
+                }, 
+                {
+                 "height":0,
+                 "id":55,
+                 "name":"elementchest",
+                 "rotation":0,
+                 "type":"timer",
+                 "visible":true,
+                 "width":0,
+                 "x":1642.43,
+                 "y":1075.76
+                }, 
+                {
+                 "height":0,
+                 "id":56,
+                 "name":"elementchest",
+                 "rotation":0,
+                 "type":"move",
+                 "visible":true,
+                 "width":0,
+                 "x":1606.06,
+                 "y":842.424
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -397,7 +441,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":53,
+ "nextobjectid":57,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2017.06.13",
@@ -415,10 +459,6 @@
          "tilecount":8,
          "tileheight":64,
          "tilewidth":64
-        }, 
-        {
-         "firstgid":9,
-         "source":"tileset1.tsx"
         }],
  "tilewidth":64,
  "type":"map",
