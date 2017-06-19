@@ -36,8 +36,8 @@
                  "type":"freeze",
                  "visible":true,
                  "width":78.7879,
-                 "x":142.424,
-                 "y":445.455
+                 "x":151.515,
+                 "y":336.364
                 }, 
                 {
                  "height":60.6061,
@@ -47,8 +47,8 @@
                  "type":"",
                  "visible":true,
                  "width":84.8489,
-                 "x":1251.52,
-                 "y":260.606
+                 "x":1290.91,
+                 "y":218.181
                 }, 
                 {
                  "height":81.8182,
@@ -58,8 +58,8 @@
                  "type":"sword",
                  "visible":true,
                  "width":87.8788,
-                 "x":854.545,
-                 "y":403.03
+                 "x":860.606,
+                 "y":300
                 }, 
                 {
                  "height":93.9394,
@@ -81,7 +81,7 @@
                  "visible":true,
                  "width":87.8788,
                  "x":2060.61,
-                 "y":981.818
+                 "y":878.788
                 }, 
                 {
                  "height":78.7879,
@@ -91,8 +91,8 @@
                  "type":"luck",
                  "visible":true,
                  "width":106.061,
-                 "x":1993.94,
-                 "y":324.242
+                 "x":1990.91,
+                 "y":233.333
                 }, 
                 {
                  "height":81.8182,
@@ -125,7 +125,7 @@
                  "visible":true,
                  "width":75.7576,
                  "x":472.727,
-                 "y":327.273
+                 "y":284.849
                 }, 
                 {
                  "height":63.6364,
@@ -368,6 +368,17 @@
                  "width":130.303,
                  "x":193.939,
                  "y":960.606
+                }, 
+                {
+                 "height":81.8182,
+                 "id":35,
+                 "name":"elementchest",
+                 "rotation":0,
+                 "type":"sword",
+                 "visible":true,
+                 "width":87.8788,
+                 "x":1218.18,
+                 "y":730.303
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -375,7 +386,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":35,
+ "nextobjectid":36,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2017.06.13",

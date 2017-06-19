@@ -73,15 +73,15 @@
                  "y":972.727
                 }, 
                 {
-                 "height":0,
+                 "height":63.6364,
                  "id":6,
                  "name":"scorechest",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":0,
-                 "x":142.424,
-                 "y":278.788
+                 "width":100,
+                 "x":109.091,
+                 "y":181.819
                 }, 
                 {
                  "height":0,
@@ -91,8 +91,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":2275.76,
-                 "y":278.788
+                 "x":2281.82,
+                 "y":257.576
                 }, 
                 {
                  "height":0,
@@ -102,8 +102,8 @@
                  "type":"noSword",
                  "visible":true,
                  "width":0,
-                 "x":618.182,
-                 "y":842.424
+                 "x":636.364,
+                 "y":730.303
                 }, 
                 {
                  "height":190.909,
@@ -157,8 +157,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1881.82,
-                 "y":463.636
+                 "x":1863.64,
+                 "y":387.878
                 }, 
                 {
                  "height":190.909,
@@ -190,8 +190,8 @@
                  "type":"art",
                  "visible":true,
                  "width":0,
-                 "x":1475.76,
-                 "y":336.363
+                 "x":1466.67,
+                 "y":275.757
                 }, 
                 {
                  "height":0,
@@ -388,8 +388,8 @@
                  "type":"lock",
                  "visible":true,
                  "width":0,
-                 "x":2163.64,
-                 "y":639.394
+                 "x":2172.73,
+                 "y":572.727
                 }, 
                 {
                  "height":0,
@@ -399,19 +399,8 @@
                  "type":"points",
                  "visible":true,
                  "width":0,
-                 "x":2118.19,
-                 "y":945.455
-                }, 
-                {
-                 "height":0,
-                 "id":54,
-                 "name":"elementchest",
-                 "rotation":0,
-                 "type":"points",
-                 "visible":true,
-                 "width":0,
-                 "x":2118.19,
-                 "y":945.455
+                 "x":2103.04,
+                 "y":906.061
                 }, 
                 {
                  "height":0,
@@ -422,7 +411,7 @@
                  "visible":true,
                  "width":0,
                  "x":1642.43,
-                 "y":1075.76
+                 "y":1030.31
                 }, 
                 {
                  "height":0,
@@ -432,8 +421,8 @@
                  "type":"move",
                  "visible":true,
                  "width":0,
-                 "x":1606.06,
-                 "y":842.424
+                 "x":1612.12,
+                 "y":781.818
                 }],
          "opacity":1,
          "type":"objectgroup",
