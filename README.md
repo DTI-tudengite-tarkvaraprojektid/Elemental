@@ -6,9 +6,14 @@ Mängu eesmärk on näidata kuidas mäng koosneb erinevatest elementidest ja kui
 
 * Projekt on tehtud Digitehnoloogia Instituudi suvepraktika raames ja on suunatud mängu arendajatele ja mängu arenduse õpilastele.
 
-* Kasutatud on javascript'i, HTML5, Phaser raamistik 2.8.0 ning kunsti jaoks GIMP 2.8.22 ja paint.net 4.0.13.
+## Kasutatud tehnoloogiad
+* Javascript
+* HTML5
+* Phaser raamistik 2.8.0
+* GIMP 2.8.22 
+* paint.net 4.0.13.
 
-## Liikmed
+## Projekti panustasid
 - Richard Kajaste
 - Krister Tarnamaa
 - Ege-Rita Noor
@@ -21,6 +26,6 @@ Mängu käima panemiseks on vaja antud repositoorium endale kopeerida või alla 
 ```
 
 ## Litsents
-```
-See projekt on MIT litsendi all - vaata LICENSE.md faili täpsema info jaoks.
-```
+
+See projekt on MIT litsendi all - vaata [LITSENTS](https://github.com/rkajaste/Elemental/blob/master/LICENSE.md/) täpsema info jaoks.
+
