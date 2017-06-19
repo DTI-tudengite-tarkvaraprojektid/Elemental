@@ -16,7 +16,7 @@ Elemental.Preload.prototype = {
         this.load.image('tileset3', 'Assets/maps/tileset3.png');
         this.load.image('tileset4', 'Assets/maps/tileset4.png');
 
-        this.load.spritesheet('torch', 'Assets/flames.png', 128, 128);
+        this.load.spritesheet('torch', 'Assets/flames2.png', 128, 128);
         this.load.spritesheet('chests', 'Assets/chests.png', 84, 64);
 
         this.load.spritesheet('player', 'Assets/playersprites.png', 92, 64);
