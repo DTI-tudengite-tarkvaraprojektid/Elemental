@@ -19,9 +19,9 @@ Elemental.Menu.prototype = {
 
     startGame: function(){
         this.game.state.start("Game");
-    }
+    },
 
-    /*scoreboard: function(){
-        this.game.state.start("Scoreboard");
-    }*/
+    credits: function(){
+        this.game.state.start("Credits");
+    }
 };
