@@ -123,6 +123,7 @@ Element.prototype = {
 
     balance: function(){
         var rand = Math.floor((Math.random() * 4) + 1);
+        rand = 3;
 		if(rand === 1){
 			if(this.level.player.armored){
 			this.sprite.animations.play('noArmor');
