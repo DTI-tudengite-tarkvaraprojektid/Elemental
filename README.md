@@ -26,6 +26,6 @@ Mängu käima panemiseks on vaja antud repositoorium endale kopeerida või alla 
 ```
 
 ## Litsents
-```
+
 See projekt on MIT litsendi all - vaata [LITSENTS](https://github.com/rkajaste/Elemental/master/LICENSE.md/) täpsema info jaoks.
-```
+
