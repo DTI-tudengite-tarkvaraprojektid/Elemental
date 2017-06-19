@@ -1,6 +1,7 @@
 var Elemental = Elemental || {};
 var SCREEN_WIDTH = 1360;
 var SCREEN_HEIGHT = 768;
+var SCORE = 0;
 
 Elemental.game = new Phaser.Game(SCREEN_WIDTH, SCREEN_HEIGHT, Phaser.AUTO, '');
 

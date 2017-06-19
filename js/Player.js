@@ -210,6 +210,7 @@ Player.prototype = {
 	
 	interact: function(player, chest){
 		if (this.openChests.isDown && !chest.isEmpty && this.chestOpen){
+			console.log(chest);
 			chest.opened = true;
 		}
 	},
@@ -225,7 +226,6 @@ Player.prototype = {
 
 			}
         }
-        console.log(this.sprite.animations.currentAnim.frame);
         if (this.sprite.animations.currentAnim.frame === 1 ||
             this.sprite.animations.currentAnim.frame === 2) {
             this.attackbox.body.x = this.sprite.body.x + this.sprite.width * 0.35;
@@ -257,14 +257,16 @@ Player.prototype = {
                 this.sprite.x = this.init_x;
                 this.sprite.y = this.init_y;
                 this.health = 3;
+                for(var i=0; i<this.health; i++){
+                    this.level.hearts.create(SCREEN_WIDTH * 0.23 + i * 32, SCREEN_HEIGHT*0.03, 'heart');
+                }
+                this.level.shop = null;
             }
         }
     }
     //all other functionalities here
 
-    };
-
-
+};
 
 
 

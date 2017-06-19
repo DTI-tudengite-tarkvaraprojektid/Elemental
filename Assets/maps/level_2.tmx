@@ -1,40 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="2017.05.26" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="64" tileheight="64" nextobjectid="35">
+<map version="2017.05.26" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="64" tileheight="64" nextobjectid="53">
  <tileset firstgid="1" name="tileset2" tilewidth="64" tileheight="64" tilecount="8" columns="2">
   <image source="tileset2.png" width="128" height="256"/>
  </tileset>
- <layer name="BG" width="40" height="20">
+ <tileset firstgid="9" source="tileset1.tsx"/>
+ <layer name="background" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFIwEwAjHTIHYDMxCz0NEtg9UNowA7GAzpFx8YTTuDA4ymk8EDyI0LcvSRo4fcuCBH30iK91EwCogFALkfAEc=
+   eJztwTEBAAAAwqD1T20LL6AAAAA+BgyAAAE=
   </data>
  </layer>
  <layer name="wall" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJztVEEKwDAMyqXs/z/eqVBGUqy2aw4RPCZoMDYza0WJWVH6NHR9j8MMWLmf52GnD283qu/WTRF9jLZdN470ncziym7mf6McnvAz/u8tzHx9+yUbvP7LAKRf2FypWWT67y+w/YzsUmYjsv+h9AqqbdRX5PkCPogGhA==
+   eJztVcsKwCAM60X8/z/eaTBK1D4UM2ggF6E1RhubiLRiiqwofTm8+jogA0755z0r8qcb9Vm8PeX5Sh/aV695tHl9RfosPXa8VUvtn+b3Fmb3oPOFDSj/GKDzZfTeI7k9yrLIjLPNRySfrb0ytZn/w9N/p7avvmKcD1UPBq4=
   </data>
  </layer>
  <objectgroup name="spawners">
-  <object id="1" name="player" x="181.818" y="945.455"/>
-  <object id="2" name="enemy" x="990.909" y="451.515" width="63.6364" height="36.3636"/>
+  <object id="1" name="player" x="124.242" y="1075.76"/>
+  <object id="2" name="enemy" x="1454.55" y="809.091" width="63.6364" height="36.3636"/>
   <object id="4" name="enemy" x="2036.36" y="887.879"/>
-  <object id="5" name="chest" x="1009.09" y="972.727"/>
-  <object id="6" name="chest" x="142.424" y="278.788"/>
-  <object id="7" name="chest" x="2275.76" y="278.788"/>
-  <object id="10" name="chest" x="545.455" y="860.606"/>
-  <object id="15" name="reverse" x="766.667" y="448.485" width="36.3636" height="190.909"/>
-  <object id="16" name="reverse" x="1303.03" y="448.485" width="36.3636" height="190.909"/>
+  <object id="5" name="elementchest" x="1009.09" y="972.727"/>
+  <object id="6" name="scorechest" x="142.424" y="278.788"/>
+  <object id="7" name="scorechest" x="2275.76" y="278.788"/>
+  <object id="10" name="elementchest" x="618.182" y="842.424"/>
+  <object id="15" name="reverse" x="1284.85" y="712.121" width="36.3636" height="190.909"/>
+  <object id="16" name="reverse" x="1684.85" y="706.061" width="36.3636" height="190.909"/>
   <object id="17" name="reverse" x="1857.58" y="824.242" width="36.3636" height="190.909"/>
   <object id="18" name="reverse" x="2190.91" y="830.303" width="36.3636" height="190.909"/>
   <object id="19" name="enemy" x="1881.82" y="463.636"/>
-  <object id="22" name="reverse" x="1787.88" y="381.818" width="36.3636" height="190.909"/>
-  <object id="24" name="reverse" x="2006.06" y="381.818" width="36.3636" height="190.909"/>
-  <object id="26" name="chest" x="1475.76" y="451.515"/>
-  <object id="27" name="enemy" x="460.606" y="1018.18"/>
-  <object id="29" name="reverse" x="193.939" y="954.545" width="36.3636" height="190.909"/>
+  <object id="22" name="reverse" x="1733.33" y="327.273" width="36.3636" height="190.909"/>
+  <object id="24" name="reverse" x="1939.39" y="321.212" width="36.3636" height="190.909"/>
+  <object id="26" name="elementchest" x="1475.76" y="336.363"/>
+  <object id="27" name="enemy" x="560.606" y="1039.39"/>
+  <object id="29" name="reverse" x="251.515" y="960.606" width="36.3636" height="190.909"/>
   <object id="30" name="reverse" x="784.848" y="951.515" width="36.3636" height="190.909"/>
-  <object id="31" name="chest" x="93.9394" y="1018.18" width="36.3636" height="24.2424"/>
-  <object id="32" name="enemy" x="815.151" y="278.788" width="63.6364" height="36.3636"/>
-  <object id="33" name="reverse" x="984.848" y="193.94" width="36.3636" height="190.909"/>
-  <object id="34" name="reverse" x="642.424" y="190.909" width="36.3636" height="190.909"/>
+  <object id="31" name="scorechest" x="936.364" y="524.241" width="36.3636" height="24.2424"/>
+  <object id="32" name="enemy" x="609.09" y="342.424" width="63.6364" height="36.3636"/>
+  <object id="33" name="reverse" x="790.909" y="257.577" width="36.3636" height="190.909"/>
+  <object id="34" name="reverse" x="512.121" y="254.545" width="36.3636" height="190.909"/>
+  <object id="35" name="enemy" x="1466.67" y="1033.33" width="63.6364" height="36.3636"/>
+  <object id="36" name="reverse" x="1218.18" y="957.576" width="36.3636" height="190.909"/>
+  <object id="37" name="reverse" x="1754.55" y="966.667" width="36.3636" height="190.909"/>
+  <object id="39" name="torch" x="127.273" y="127.273" width="124.242" height="124.242"/>
+  <object id="45" name="torch" x="1403.03" y="184.848" width="124.242" height="124.242"/>
+  <object id="46" name="torch" x="2239.39" y="190.909" width="124.242" height="124.242"/>
+  <object id="47" name="torch" x="2309.09" y="642.424" width="124.242" height="124.242"/>
+  <object id="48" name="torch" x="1921.21" y="836.364" width="124.242" height="124.242"/>
+  <object id="49" name="torch" x="963.636" y="830.303" width="124.242" height="124.242"/>
+  <object id="50" name="torch" x="193.939" y="960.606" width="124.242" height="124.242"/>
+  <object id="52" name="elementchest" x="2163.64" y="639.394"/>
  </objectgroup>
 </map>
