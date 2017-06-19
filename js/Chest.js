@@ -1,4 +1,4 @@
-function Chest(game, level, x, y, chesttype){
+function Chest(game, level, x, y, chesttype, elementname){
     this.game = game;
     this.level = level;
     this.x = x;
@@ -7,12 +7,9 @@ function Chest(game, level, x, y, chesttype){
     this.opened = false;
     this.isEmpty = false;
     //'art',  'levels', , 'progress', 'scoreboard'
-<<<<<<< HEAD
-    this.elements = ['actions', 'avatar', 'balance', 'feedback', 'progress', 'luck', 'art'];
-=======
     //this.elements = ['actions', 'avatar', 'balance', 'feedback', 'progress', 'luck'];
     this.elements = ['balance'];
->>>>>>> f0a32dcbeeea05990ce6202cdd4dabeb9216f98c
+	this.elementtype = elementname;
     this.points = [ '100', '150', '200', '250', '300'];
     this.chest_type = chesttype;
     this.item = null;
@@ -98,7 +95,7 @@ Chest.prototype = {
     },
 
     giveItem: function(player){
-        var element = new Element(player.inventory.length * 35 + 35, 100, this.item, this.game, this.level);
+        var element = new Element(player.inventory.length * 35 + 35, 100, this.item, this.game, this.level, this.elementtype);
         player.elements.push(element);
         player.inventory.add(element.sprite);
     }

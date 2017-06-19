@@ -1,11 +1,11 @@
-function Element(x, y, name, game, level){
+function Element(x, y, name, game, level, elementname){
 
     this.x = x;
     this.y = y;
     this.category = name;
     this.game = game;
     this.level = level;
-	this.elementname = "";
+	this.elementname = elementname;
 	this.levelCD = 0;
     this.create();
 	
@@ -70,8 +70,7 @@ Element.prototype = {
 
     //krister
     actions: function(){
-        this.luckyNumber = Math.floor((Math.random() * 4) + 1);
-        if (this.luckyNumber === 1){
+        if (this.elementname === 'move'){
             this.sprite.animations.play('move');
             if (!this.level.player.moveAbility) {
                 this.level.player.moveAbility = true;
@@ -83,7 +82,7 @@ Element.prototype = {
                     this.level.player.moveAbility = false;
                 }
             }
-        } else if (this.luckyNumber === 2) {
+        } else if (this.elementname === 'jump') {
             this.sprite.animations.play('jump');
             if (!this.level.player.jumpAbility) {
                 this.level.player.jumpAbility = true;
@@ -95,12 +94,12 @@ Element.prototype = {
                     this.level.player.jumpAbility = false;
                 }
             }
-        } else if(this.luckyNumber === 3){
+        } else if(this.elementname === 'lock'){
             this.sprite.animations.play('lock');
             this.level.chests.forEach(function(chest){
                 chest.locked = true;
             });
-        } else if (this.luckyNumber === 4){
+        } else if (this.elementname === 'shop'){
             this.sprite.animations.play('shop');
             this.level.canShop = false;
         }
@@ -109,23 +108,25 @@ Element.prototype = {
 
     art: function(){
         //UI is low quality
-		this.level.timeframe.destroy();
-		this.level.timesprite.font = 'Times New Roman';
-		this.level.scoresprite.font = 'Times New Roman';
-		this.level.scoreframe.destroy();
+		if (this.elementname === 'shop') {
+			this.level.timeframe.destroy();
+			this.level.timesprite.font = 'Times New Roman';
+			this.level.scoresprite.font = 'Times New Roman';
+			this.level.scoreframe.destroy();
+		}
 		//DONE
     },
     //krister
     avatar: function(){
 	    //low leveled avatar
-        this.sprite.animations.play('avatar');
-        this.level.player.greyAvatar = true;
-
+		if (this.elementname === 'avatar') {
+			this.sprite.animations.play('avatar');
+			this.level.player.greyAvatar = true;
+		}
     },
 
     balance: function(){
         var rand = Math.floor((Math.random() * 4) + 1);
-        rand = 3;
 		if(rand === 1){
 			if(this.level.player.armored){
 			this.sprite.animations.play('noArmor');
