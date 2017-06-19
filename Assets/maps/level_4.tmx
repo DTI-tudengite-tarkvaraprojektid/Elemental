@@ -10,7 +10,7 @@
  </layer>
  <layer name="wall" width="50" height="20">
   <data encoding="base64" compression="zlib">
-   eJztl8EOgCAMQ9EL/v8XeyIhE1kLTNHxkt6AtBssIYYQ4tJU+jorx1x4yHEI5WyKNJj9NR9IjlGg2XpIOZhaMiC1bCX3/EQ/LDJI7nLsQhqy7jXfzFrUj4d5VYKdSyyt53voB1obeXeR98TsQXz8rR9Ws9H6PSXfMsfILKX5anX+2/+epatOd/UH6Q==
+   eJztl8EOgCAMQ6cX/P8v9kRCKrIVmSLwkt6EtBuMGEQkLHWlv7Ny9MUMOQ5QyqZIg1lf8mHJ0QprtifEHEwtGSy1rCX1/EY/PDIgdzl2kAbWveSb+dbqZ4Z5lYOdSyy1+4/eD+ZNwLNruU/MGouX0frhNRu971P0jTlaZsnNV6/9v/7vWbrqBICRB+s=
   </data>
  </layer>
  <objectgroup name="spawners">
