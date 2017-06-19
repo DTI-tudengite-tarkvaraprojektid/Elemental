@@ -21,7 +21,6 @@ Level.prototype = {
 
     //load tilemap here
     create: function(){
-        console.log(SCORE);
         this.tilemap = this.game.add.tilemap(this.name);
 
         //the first parameter is the tileset name as specified in Tiled,

@@ -16,7 +16,7 @@ function Element(x, y, name, game, level, elementname){
 Element.prototype = {
 
     create: function(){
-
+        console.log(this.elementname);
         this.sprite = this.game.add.sprite(this.x, this.y, this.category);
         this.sprite.smoothed = false;
         this.sprite.fixedToCamera = true;
@@ -72,33 +72,18 @@ Element.prototype = {
     actions: function(){
         if (this.elementname === 'move'){
             this.sprite.animations.play('move');
-            if (!this.level.player.moveAbility) {
-                this.level.player.moveAbility = true;
-            } else {
-                if(this.level.player.jumpAbility) {
-                    this.level.player.moveAbility = false;
-                } else {
-                    this.level.player.jumpAbility = true;
-                    this.level.player.moveAbility = false;
-                }
-            }
+            this.level.player.moveAbility = false;
+
         } else if (this.elementname === 'jump') {
             this.sprite.animations.play('jump');
-            if (!this.level.player.jumpAbility) {
-                this.level.player.jumpAbility = true;
-            } else {
-                if(this.level.player.moveAbility){
-                this.level.player.moveAbility = false;
-                } else {
-                    this.level.player.moveAbility = true;
-                    this.level.player.jumpAbility = false;
-                }
-            }
+            this.level.player.jumpAbility = false;
+
         } else if(this.elementname === 'lock'){
             this.sprite.animations.play('lock');
             this.level.chests.forEach(function(chest){
                 chest.locked = true;
             });
+
         } else if (this.elementname === 'shop'){
             this.sprite.animations.play('shop');
             this.level.canShop = false;
@@ -128,27 +113,24 @@ Element.prototype = {
     balance: function(){
        
 		if(this.elementname === 'noArmor'){
-			if(this.level.player.armored){
-			this.sprite.animations.play('noArmor');
-			
-			this.level.player.armored = false;		
-			} else {
-				this.sprite.animations.play('armor');
-				this.level.player.armored = true;
-			}
-		
-		} else if (this.elementname === 'noSword'){
-			if(this.level.player.armed){
-				this.sprite.animations.play('noSword');
-				this.level.player.armed = false;	
-			} else {
-				this.sprite.animations.play('sword');
-				this.level.player.armed = true;
-			}
-						 
+		    this.sprite.animations.play('noArmor');
+            this.level.player.armored = false;
+        }
+        else if (this.elementname === 'noSword'){
+            this.sprite.animations.play('noSword');
+            this.level.player.armed = false;
 
-		} else if (this.elementname === 'enemySpawn'){
-			this.sprite.animations.play('enemySpawn');
+        }
+        else if(this.elementname === 'sword'){
+            this.sprite.animations.play('sword');
+            this.level.player.armed = true;
+        }
+        else if(this.elementname === 'armor'){
+            this.sprite.animations.play('armor');
+            this.level.player.armored = true;
+        }
+        else if (this.elementname === 'enemySpawn'){
+            this.sprite.animations.play('enemySpawn');
             this.level.tilemap.objects['spawners'].forEach(function(element){
                 if(element.name === "enemy"){
                     var enemy = new Enemy(this.game, this.level, element.x, element.y);
@@ -157,11 +139,11 @@ Element.prototype = {
 
                 }
             }, this);
-		} else if(this.elementname === 'getElements'){
-			this.sprite.animations.play('getElements');
-			//choose from items displayed in shop (open shop, 0 price??)
-		}
-		
+        }
+        else if(this.elementname === 'getElements'){
+            this.sprite.animations.play('getElements');
+            //choose from items displayed in shop (open shop, 0 price??)
+        }
 
     },
 

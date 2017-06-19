@@ -103,7 +103,7 @@ Shop.prototype = {
                     this.progressGroup.add(element.sprite);
                 }
              }
-            if(amount >= 0){
+            if(amount !== 0){
                 if(this.goodElements.indexOf(element.elementname) > -1){
                     amount--;
                     if(element.elementname === 'armor' || element.elementname === 'sword' ||

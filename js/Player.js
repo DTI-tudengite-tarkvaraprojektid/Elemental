@@ -16,8 +16,8 @@ function Player(game, level, x, y){
 	this.moveAbility = true;
 	this.chestOpen = true;
 	this.attack_cd = 0;
-	this.armored = true;
-	this.armed = true;
+	this.armored = false;
+	this.armed = false;
 	this.greyAvatar = false;
 	this.isHit = false;
 	this.lastRedFlash = 0;
@@ -210,7 +210,6 @@ Player.prototype = {
 	
 	interact: function(player, chest){
 		if (this.openChests.isDown && !chest.isEmpty && this.chestOpen){
-			console.log(chest);
 			chest.opened = true;
 		}
 	},
