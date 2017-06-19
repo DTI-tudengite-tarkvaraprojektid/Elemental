@@ -29,8 +29,10 @@ Elemental.Preload.prototype = {
         this.load.spritesheet('avatar', 'Assets/avatar.png', 64, 64);
         this.load.spritesheet('challenges', 'Assets/challenge.png', 64, 64);
         this.load.spritesheet('art', 'Assets/art.png', 64, 64);
-		this.load.spritesheet('buttons', 'Assets/buttons.png', 79, 16);
+		this.load.spritesheet('buttons', 'Assets/menubtn.png', 65, 11);
+		this.load.spritesheet('buttons2', 'Assets/menubtn2.png', 47, 11);
 		this.load.spritesheet('shopbtns', 'Assets/shopbtns.png', 192, 64);
+		this.load.spritesheet('backbtn', 'Assets/backbtns.png', 28, 16);
 
         this.load.image('heart', 'Assets/heart.png');
         this.load.image('stats', 'Assets/stats.png');
@@ -39,8 +41,6 @@ Elemental.Preload.prototype = {
 		this.load.image('shoptitle', 'Assets/shopbtn.png');
         this.load.spritesheet('levels', 'Assets/levels.png', 64, 64);
         this.load.spritesheet('luck', 'Assets/luck.png', 64, 64);
-
-        //this.load.spritesheet('scoreboard', 'Assets/scoreboard.png');
 
 
     },
