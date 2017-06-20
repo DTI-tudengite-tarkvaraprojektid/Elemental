@@ -93,7 +93,7 @@ Element.prototype = {
 
     art: function(){
         //UI is low quality
-		if (this.elementname === 'shop') {
+		if (this.elementname === 'art') {
 			this.level.timeframe.destroy();
 			this.level.timesprite.font = 'Times New Roman';
 			this.level.scoresprite.font = 'Times New Roman';

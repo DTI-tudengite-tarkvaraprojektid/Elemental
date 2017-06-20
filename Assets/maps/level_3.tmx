@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="2017.05.26" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="64" tileheight="64" nextobjectid="50">
+<map version="2017.05.26" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="64" tileheight="64" nextobjectid="52">
  <tileset firstgid="1" name="tileset3" tilewidth="64" tileheight="64" tilecount="8" columns="2">
   <image source="tileset3.png" width="128" height="256"/>
  </tileset>
@@ -16,13 +16,13 @@
  <objectgroup name="spawners">
   <object id="1" name="enemy" x="1260.61" y="772.727" width="69.697" height="54.5455"/>
   <object id="2" name="enemy" x="1187.87" y="490.909" width="69.697" height="54.5455"/>
-  <object id="3" name="enemy" x="512.118" y="1100" width="69.697" height="54.5455"/>
+  <object id="3" name="enemy" x="527.27" y="1142.42" width="69.697" height="54.5455"/>
   <object id="4" name="enemy" x="1233.34" y="1078.79" width="69.697" height="54.5455"/>
   <object id="5" name="enemy" x="139.394" y="900" width="69.697" height="54.5455"/>
   <object id="6" name="enemy" x="2345.45" y="881.818" width="69.697" height="54.5455"/>
   <object id="7" name="elementchest" type="allempty" x="1345.45" y="490.909" width="69.697" height="48.4848"/>
   <object id="8" name="elementchest" type="enemyKill" x="1112.12" y="748.484" width="69.697" height="48.4848"/>
-  <object id="9" name="elementchest" type="armor" x="523.78" y="1061.29" width="69.697" height="48.4848" rotation="-1.11544"/>
+  <object id="9" name="elementchest" type="sword" x="508.628" y="1088.56" width="69.697" height="48.4848" rotation="-1.11544"/>
   <object id="10" name="elementchest" type="noArmor" x="2351.05" y="858.258" width="69.697" height="48.4848" rotation="-1.11544"/>
   <object id="11" name="elementchest" type="health" x="154.08" y="918.865" width="69.697" height="48.4848" rotation="-1.11544"/>
   <object id="12" name="scorechest" x="1017.71" y="158.259" width="69.697" height="48.4848" rotation="-1.11544"/>
@@ -55,10 +55,11 @@
   <object id="42" name="torch" x="2372.36" y="257.394" width="129.333" height="130.667"/>
   <object id="43" name="reverse" x="1427.27" y="1042.43" width="42.4242" height="184.848"/>
   <object id="44" name="reverse" x="1093.94" y="1033.33" width="42.4242" height="184.848"/>
-  <object id="45" name="elementchest" type="sword" x="1296.5" y="1030.99" width="69.697" height="48.4848" rotation="-1.11544"/>
+  <object id="45" name="elementchest" type="enemySpawn" x="1296.5" y="1030.99" width="69.697" height="48.4848" rotation="-1.11544"/>
   <object id="46" name="elementchest" type="levels" x="2054.54" y="499.999" width="69.697" height="48.4848"/>
   <object id="47" name="elementchest" type="shop" x="487.874" y="215.152" width="69.697" height="48.4848"/>
   <object id="48" name="elementchest" type="zeropoints" x="418.178" y="493.939" width="69.697" height="48.4848"/>
   <object id="49" name="elementchest" type="getElements" x="1893.93" y="169.697" width="69.697" height="48.4848"/>
+  <object id="50" name="elementchest" type="armor" x="2402.56" y="1273.41" width="69.697" height="48.4848" rotation="-1.11544"/>
  </objectgroup>
 </map>
