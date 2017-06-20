@@ -22,7 +22,7 @@ Mängu eesmärk on näidata kuidas mäng koosneb erinevatest elementidest ja kui
 
 ## Juhised
 ```
-Mängu käima panemiseks on vaja antud repositoorium endale kopeerida või alla laadida ning käivitada html fail.
+Mängu käima panemiseks on vaja antud repositoorium endale kopeerida või alla laadida serverisse ning käivitada html fail brauseris.
 ```
 
 ## Litsents
