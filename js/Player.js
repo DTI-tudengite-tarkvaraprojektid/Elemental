@@ -234,7 +234,7 @@ Player.prototype = {
             e.isHit = true;
             console.log(e.health);
         }, null, this);
-        
+
         this.sprite.animations.currentAnim.onComplete.add(function () {
             this.attacking = false;
         }, this);
