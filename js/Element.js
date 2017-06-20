@@ -7,6 +7,7 @@ function Element(x, y, name, game, level, elementname){
     this.level = level;
 	this.elementname = elementname;
 	this.levelCD = 0;
+	this.tooltip = null;
     this.create();
 	
 
@@ -20,6 +21,9 @@ Element.prototype = {
         this.sprite = this.game.add.sprite(this.x, this.y, this.category);
         this.sprite.smoothed = false;
         this.sprite.fixedToCamera = true;
+        this.sprite.inputEnabled = true;
+        this.sprite.events.onInputOver.add(this.over, this);
+        this.sprite.events.onInputOut.add(this.out, this);
         this.sprite.scale.setTo(0.5, 0.5);
         if(this.category === 'actions'){
             this.sprite.animations.add('lock', [0]);
@@ -228,5 +232,82 @@ Element.prototype = {
 
     scoreboard: function(){
         //scoreboard removed
+    },
+
+    over: function(){
+        console.log(this.level.player.inventory.length);
+        if(this.elementname === 'armor'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Player is armored.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'sword'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Player is armed.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'getElements'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Take back elements for free.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'levels'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'All levels become the same.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'enemyKill'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'All enemies are slain.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'freeze'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Timer is stopped.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'luck'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Chests are differentiated', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'lock'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Cannot collect items.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'shop'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Cannot shop.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'jump'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Cannot jump.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'move'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Cannot move.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'art'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'UI becomes uglier', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'avatar'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                "Player's avatar replaced with grey square", {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'text'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Text replaces icons in shop.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'noArmor'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'No armor.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'noSword'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'No sword.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'enemySpawn'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Enemies are spawned.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'timer'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Timer removed from UI.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'health'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Health bar removed from UI.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'points'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Score is removed from UI.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'allempty'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'All chests become empty.', {font:"20px Alagard", fill: '#d5aa00'});
+        } else if(this.elementname === 'zeropoints'){
+            this.tooltip = this.game.add.text(35, 100 + this.sprite.height,
+                'Chests award 0 points.', {font:"20px Alagard", fill: '#d5aa00'});
+        }
+        this.tooltip.fixedToCamera = true;
+    },
+
+    out: function(){
+        this.tooltip.kill();
+        this.tooltip = null;
     }
 };

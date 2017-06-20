@@ -95,9 +95,11 @@ Level.prototype = {
         }
 
         this.player.update();
+        /*
 		if(this.player.health === 0 && this.shop === null && this.canShop){
 			this.shop = new Shop(this.game, this);
 		}
+		*/
         this.chest_objs.forEach(function(chest) {
             if(!chest.isEmpty){
                 chest.update(this.player);
