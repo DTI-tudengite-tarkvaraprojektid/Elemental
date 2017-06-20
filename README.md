@@ -1,5 +1,5 @@
 # Elemental
-
+![alt text](https://raw.githubusercontent.com/rkajaste/Elemental/master/screencaps.png)
 ## Kirjeldus
 Tegemist on single player platvorm-seiklusmänguga, kus mängija peab oma tegelase juhatama kirstudeni, mis on laiali mööda mängumaailma.
 Mängu eesmärk on näidata kuidas mäng koosneb erinevatest elementidest ja kui vajalikud need on tervikliku mängu toimimiseks.
