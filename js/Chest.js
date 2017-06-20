@@ -8,7 +8,7 @@ function Chest(game, level, x, y, chesttype, elementname){
     this.isEmpty = false;
     this.elements = ['actions', 'avatar', 'balance', 'feedback', 'progress', 'luck', 'art', 'levels', 'challenges'];
 	this.elementname = elementname;
-    this.points = [ '100', '150', '200', '250', '300'];
+    this.points = '250';
     this.chest_type = chesttype;
     this.item = null;
     this.create();
@@ -67,7 +67,7 @@ Chest.prototype = {
                 this.sprite.animations.play('chest');
             }
         } else if(this.chest_type === 'scorechest'){
-            this.item = this.points[Math.floor(Math.random() * this.points.length)];
+            this.item = this.points;
             this.sprite.animations.play('chest');
         }
         console.log(this.item);
