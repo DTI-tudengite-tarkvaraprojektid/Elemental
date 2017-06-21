@@ -11,7 +11,8 @@ Mängu eesmärk on näidata kuidas mäng koosneb erinevatest elementidest ja kui
 * HTML5
 * Phaser raamistik 2.8.0
 * GIMP 2.8.22 
-* paint.net 4.0.13.
+* paint.net 4.0.13
+* Tiled Map Editor 1.0.1 
 
 ## Projekti panustasid
 - Richard Kajaste
@@ -23,6 +24,7 @@ Mängu eesmärk on näidata kuidas mäng koosneb erinevatest elementidest ja kui
 ## Juhised
 ```
 Mängu käima panemiseks on vaja antud repositoorium endale kopeerida või alla laadida serverisse ning käivitada html fail brauseris.
+Mängus saab liikuda nooleklahvidega, kirste avada Z klahviga ning rünnata Space nupuga.
 ```
 
 ## Litsents
