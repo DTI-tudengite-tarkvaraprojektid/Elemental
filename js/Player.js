@@ -254,7 +254,11 @@ Player.prototype = {
             if(this.health === 0){
                 this.sprite.x = this.init_x;
                 this.sprite.y = this.init_y;
-                this.health = 3;
+                if(this.armored){
+                    this.health = 5;
+                } else {
+                    this.health = 3;
+                }
                 for(var i=0; i<this.health; i++){
                     this.level.hearts.create(SCREEN_WIDTH * 0.23 + i * 32, SCREEN_HEIGHT*0.03, 'heart');
                 }

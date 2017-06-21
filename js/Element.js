@@ -1,4 +1,4 @@
-function Element(x, y, name, game, level, elementname){
+function Element(x, y, name, game, level, elementname, chest){
 
     this.x = x;
     this.y = y;
@@ -6,6 +6,7 @@ function Element(x, y, name, game, level, elementname){
     this.game = game;
     this.level = level;
 	this.elementname = elementname;
+	this.chest = chest;
 	this.levelCD = 0;
 	this.tooltip = null;
     this.create();
@@ -18,6 +19,11 @@ Element.prototype = {
 
     create: function(){
         console.log(this.elementname);
+        this.floatelement = this.game.add.sprite(this.chest.sprite.x + this.chest.sprite.width / 4,
+            this.chest.sprite.y, this.category);
+        this.game.physics.arcade.enable(this.floatelement);
+        this.floatelement.scale.setTo(0.75, 0.75);
+
         this.sprite = this.game.add.sprite(this.x, this.y, this.category);
         this.sprite.smoothed = false;
         this.sprite.fixedToCamera = true;
@@ -26,19 +32,36 @@ Element.prototype = {
         this.sprite.events.onInputOut.add(this.out, this);
         this.sprite.scale.setTo(0.5, 0.5);
         if(this.category === 'actions'){
+            this.floatelement.animations.add('lock', [0]);
+            this.floatelement.animations.add('shop', [1]);
+            this.floatelement.animations.add('jump', [2]);
+            this.floatelement.animations.add('move', [3]);
+
             this.sprite.animations.add('lock', [0]);
             this.sprite.animations.add('shop', [1]);
             this.sprite.animations.add('jump', [2]);
             this.sprite.animations.add('move', [3]);
             this.actions();
         } else if(this.category === 'art'){
+            this.floatelement.animations.add('art', [0]);
+            this.floatelement.animations.add('text', [1]);
+
             this.sprite.animations.add('art', [0]);
             this.sprite.animations.add('text', [1]);
             this.art();
         } else if(this.category === 'avatar'){
+            this.floatelement.animations.add('avatar', [0]);
+
             this.sprite.animations.add('avatar', [0]);
             this.avatar();
         } else if(this.category === 'balance'){
+            this.floatelement.animations.add('armor', [0]);
+            this.floatelement.animations.add('noArmor', [1]);
+            this.floatelement.animations.add('noSword', [2]);
+            this.floatelement.animations.add('enemySpawn', [3]);
+            this.floatelement.animations.add('sword',[4]);
+            this.floatelement.animations.add('getElements', [5]);
+
             this.sprite.animations.add('armor', [0]);
 			this.sprite.animations.add('noArmor', [1]);
             this.sprite.animations.add('noSword', [2]);
@@ -47,29 +70,45 @@ Element.prototype = {
 			this.sprite.animations.add('getElements', [5]);
             this.balance();
         } else if(this.category === 'feedback'){
+            this.floatelement.animations.add('timer', [0]);
+            this.floatelement.animations.add('points', [1]);
+            this.floatelement.animations.add('health', [2]);
+
             this.sprite.animations.add('timer', [0]);
             this.sprite.animations.add('points', [1]);
             this.sprite.animations.add('health', [2]);
             this.feedback();
         } else if(this.category === 'levels'){
+            this.floatelement.animations.add('levels', [0]);
+
             this.sprite.animations.add('levels', [0]);
             this.levels();
         } else if(this.category === 'challenges'){
+            this.floatelement.animations.add('enemyKill', [0]);
+            this.floatelement.animations.add('freeze', [1]);
+
             this.sprite.animations.add('enemyKill', [0]);
             this.sprite.animations.add('freeze', [1]);
             this.challenge();
         }
         else if(this.category === 'luck'){
+            this.floatelement.animations.add('luck', [0]);
+
             this.sprite.animations.add('luck', [0]);
             this.luck();
 
         } else if(this.category === 'progress'){
+            this.floatelement.animations.add('allempty', [0]);
+            this.floatelement.animations.add('zeropoints', [1]);
+
             this.sprite.animations.add('allempty', [0]);
             this.sprite.animations.add('zeropoints', [1]);
             this.progress();
         } else if(this.category === 'scoreboard'){
             this.scoreboard();
         }
+
+        this.floatelement.animations.play(this.elementname);
 	},
 
     //krister
@@ -119,6 +158,14 @@ Element.prototype = {
 		if(this.elementname === 'noArmor'){
 		    this.sprite.animations.play('noArmor');
             this.level.player.armored = false;
+            if(this.level.player.health > 3){
+                for(i = 0; i < this.level.player.health - 3; i++){
+                    this.level.hearts.children[this.level.hearts.children.length-1].kill();
+                    this.level.hearts.remove(this.level.hearts.children[this.level.hearts.children.length-1]);
+                }
+                this.level.player.health = 3;
+
+            }
         }
         else if (this.elementname === 'noSword'){
             this.sprite.animations.play('noSword');
@@ -132,6 +179,10 @@ Element.prototype = {
         else if(this.elementname === 'armor'){
             this.sprite.animations.play('armor');
             this.level.player.armored = true;
+            this.level.player.health = Number(this.level.player.health) + 2;
+            for(var i=this.level.player.health-2; i<this.level.player.health; i++){
+                this.level.hearts.create(SCREEN_WIDTH * 0.23 + i * 32, SCREEN_HEIGHT*0.03, 'heart');
+            }
         }
         else if (this.elementname === 'enemySpawn'){
             this.sprite.animations.play('enemySpawn');

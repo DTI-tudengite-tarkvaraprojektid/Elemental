@@ -101,15 +101,13 @@ Level.prototype = {
 		}
 		*/
         this.chest_objs.forEach(function(chest) {
-            if(!chest.isEmpty){
-                chest.update(this.player);
-            }
+            chest.update(this.player);
         }, this);
         this.enemy_objs.forEach(function(enemy){
             enemy.update(this.player);
         }, this);
 
-        if(SCORE >= this.score_needed){
+        if(SCORE >= this.score_needed && this.name !== 'level4'){
             this.game.state.start('Game');
         }
     }
